@@ -7,7 +7,7 @@
 <h2>User Registration</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddOrEdit","User",FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -98,6 +98,18 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <label class="label-success">@ViewBag.SuccessMessage</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <label class="label-danger">@ViewBag.DuplicateMessage</label>
         </div>
     </div>
 </div>

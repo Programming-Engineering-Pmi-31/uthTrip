@@ -12,6 +12,7 @@ namespace uthTripProject.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class User
     {
@@ -25,16 +26,35 @@ namespace uthTripProject.Models
         }
     
         public int User_ID { get; set; }
+
+        [Required(ErrorMessage ="This field is required.")]
         public string First_Name { get; set; }
+
+        [Required(ErrorMessage = "This field is required.")]
         public string Last_Name { get; set; }
+
+        [Required(ErrorMessage = "This field is required.")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "This field is required.")]
         public string Username { get; set; }
+
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [DataType(DataType.Password)]
         [DisplayName("Confirm Password")]
+        [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "This field is required.")]
         public System.DateTime Birthday { get; set; }
+
+        [Required(ErrorMessage = "This field is required.")]
         public string Photo_Url { get; set; }
+
+        [Required(ErrorMessage = "This field is required.")]
         public string Info { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
