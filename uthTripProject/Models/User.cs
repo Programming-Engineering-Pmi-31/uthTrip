@@ -26,7 +26,6 @@ namespace uthTripProject.Models
             this.Trips = new HashSet<Trip>();
         }
 
-        //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_ID { get; set; }
 
