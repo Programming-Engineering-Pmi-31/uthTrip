@@ -30,20 +30,25 @@ namespace uthTripProject.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_ID { get; set; }
 
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "First name must have at least 3 chars.")]
         [DisplayName("First name")]
         [Required(ErrorMessage ="This field is required.")]
         public string First_Name { get; set; }
 
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Last name must have at least 3 chars.")]
         [DisplayName("Last name")]
         [Required(ErrorMessage = "This field is required.")]
         public string Last_Name { get; set; }
 
+        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "This field is required.")]
         public string Email { get; set; }
 
+        [StringLength(30, MinimumLength = 4, ErrorMessage = "User name must have at least 3 chars.")]
         [Required(ErrorMessage = "This field is required.")]
         public string Username { get; set; }
 
+        [StringLength(30, MinimumLength = 5, ErrorMessage = "Password must have at least 3 char.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -57,10 +62,12 @@ namespace uthTripProject.Models
         [Required(ErrorMessage = "This field is required.")]
         public System.DateTime Birthday { get; set; }
 
+        [StringLength(30, MinimumLength = 5, ErrorMessage = "Photo URL must have at least 3 char.")]
         [DisplayName("Your photo URL")]
         [Required(ErrorMessage = "This field is required.")]
         public string Photo_Url { get; set; }
 
+        [StringLength(30, MinimumLength = 10, ErrorMessage = "Info must have at least 3 char.")]
         [DisplayName("Some information about you")]
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "This field is required.")]

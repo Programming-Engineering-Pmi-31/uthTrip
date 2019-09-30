@@ -25,6 +25,14 @@ namespace uthTripProject.Controllers
                     ViewBag.DuplicateMessage = "Username already exists.";
                     return View("AddOrEdit", userModel);
                 }
+                try
+                {
+                    userModel.User_ID = dbModel.Users.Max(x => x.User_ID) + 1;
+                }
+                catch (System.InvalidOperationException)
+                {
+                    userModel.User_ID = 0;
+                }
                 dbModel.Users.Add(userModel);
                 dbModel.SaveChanges();
             }
