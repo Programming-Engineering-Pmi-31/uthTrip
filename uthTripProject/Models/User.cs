@@ -13,7 +13,8 @@ namespace uthTripProject.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,12 +25,16 @@ namespace uthTripProject.Models
             this.Rights = new HashSet<Right>();
             this.Trips = new HashSet<Trip>();
         }
-    
+
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_ID { get; set; }
 
+        [DisplayName("First name")]
         [Required(ErrorMessage ="This field is required.")]
         public string First_Name { get; set; }
 
+        [DisplayName("Last name")]
         [Required(ErrorMessage = "This field is required.")]
         public string Last_Name { get; set; }
 
@@ -47,13 +52,17 @@ namespace uthTripProject.Models
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
+        [DisplayName("Birthday date")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "This field is required.")]
         public System.DateTime Birthday { get; set; }
 
+        [DisplayName("Your photo URL")]
         [Required(ErrorMessage = "This field is required.")]
         public string Photo_Url { get; set; }
 
+        [DisplayName("Some information about you")]
+        [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "This field is required.")]
         public string Info { get; set; }
     
