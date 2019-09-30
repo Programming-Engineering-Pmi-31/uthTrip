@@ -62,6 +62,7 @@ namespace uthTripProject.Models
         [Required(ErrorMessage = "This field is required.")]
         public System.DateTime Birthday { get; set; }
 
+
         [StringLength(30, MinimumLength = 5, ErrorMessage = "Photo URL must have at least 3 char.")]
         [DisplayName("Your photo URL")]
         [Required(ErrorMessage = "This field is required.")]
