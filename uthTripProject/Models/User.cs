@@ -29,7 +29,7 @@ namespace uthTripProject.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int User_ID { get; set; }
 
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "First name must have at least 3 chars.")]
+        [StringLength(30, MinimumLength = 4, ErrorMessage = "First name must have at least 4 chars.")]
         [DisplayName("First name")]
         [Required(ErrorMessage ="This field is required.")]
         public string First_Name { get; set; }
