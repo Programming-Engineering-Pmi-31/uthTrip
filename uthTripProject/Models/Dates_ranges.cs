@@ -19,8 +19,17 @@ namespace uthTripProject.Models
         {
             this.Trips = new HashSet<Trip>();
         }
-    
+
+        public Dates_ranges(int date_ID, DateTime? start_date, DateTime? end_date)
+        {
+            Date_ID = date_ID;
+            Start_date = start_date;
+            End_date = end_date;
+        }
+
         public int Date_ID { get; set; }
+
+        
         public Nullable<System.DateTime> Start_date { get; set; }
         public Nullable<System.DateTime> End_date { get; set; }
     
