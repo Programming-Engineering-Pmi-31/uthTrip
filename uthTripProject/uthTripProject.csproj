@@ -294,6 +294,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\User\AddOrEdit.cshtml" />
 
+
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
 
