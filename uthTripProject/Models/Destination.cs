@@ -19,7 +19,15 @@ namespace uthTripProject.Models
         {
             this.Trips = new HashSet<Trip>();
         }
-    
+
+        public Destination(int destination_ID, bool is_Abroad, string country, string city)
+        {
+            Destination_ID = destination_ID;
+            Is_Abroad = is_Abroad;
+            Country = country;
+            City = city;
+        }
+
         public int Destination_ID { get; set; }
         public bool Is_Abroad { get; set; }
         public string Country { get; set; }
