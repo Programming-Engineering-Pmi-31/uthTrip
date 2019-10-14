@@ -10,6 +10,7 @@ namespace uthTripProject.Controllers
 {
     public class TripController : Controller
     {
+
         //// GET: Trip
         //[HttpGet]
         //public ActionResult Create(int id=0)
@@ -54,5 +55,6 @@ namespace uthTripProject.Controllers
         //    ViewBag.SuccessMessage = "Successfull creation of trip.";
         //    return View("Create", new Trip());
         //}
+
     }
 }
