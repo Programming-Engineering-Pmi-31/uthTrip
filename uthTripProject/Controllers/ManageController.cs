@@ -10,8 +10,8 @@ using uthTripProject.Models;
 
 namespace uthTripProject.Controllers
 {
-    [Authorize]
-    public class ManageController : Controller
+   // [Authorize]
+   /* public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -386,4 +386,5 @@ namespace uthTripProject.Controllers
 
 #endregion
     }
+    */
 }
