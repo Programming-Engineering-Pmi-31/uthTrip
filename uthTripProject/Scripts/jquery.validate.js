@@ -1148,7 +1148,7 @@ $.extend( $.validator, {
 	},
 
 	classRuleSettings: {
-		required: { required: true },
+		//required: { required: true },
 		email: { email: true },
 		url: { url: true },
 		date: { date: true },
