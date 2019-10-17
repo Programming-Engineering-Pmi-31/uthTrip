@@ -53,5 +53,10 @@ namespace uthTrip.DAL.Repositories
             if (dates_range != null)
                 db.Dates_ranges.Remove(dates_range);
         }
+
+        public Dates_ranges GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

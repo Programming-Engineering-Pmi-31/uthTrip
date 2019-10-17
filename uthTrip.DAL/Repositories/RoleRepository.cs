@@ -53,5 +53,10 @@ namespace uthTrip.DAL.Repositories
             if (role != null)
                 db.Roles.Remove(role);
         }
+
+        public Role GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -54,5 +54,10 @@ namespace uthTrip.DAL.Repositories
             if (trip != null)
                 db.Trips.Remove(trip);
         }
+
+        public Trip GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

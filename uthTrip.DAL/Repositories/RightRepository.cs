@@ -53,5 +53,10 @@ namespace uthTrip.DAL.Repositories
             if (right != null)
                 db.Rights.Remove(right);
         }
+
+        public Right GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

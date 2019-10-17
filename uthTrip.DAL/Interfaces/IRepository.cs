@@ -10,6 +10,7 @@ namespace uthTrip.DAL.Interfaces
     {
         IEnumerable<T> GetAll();
         T Get(int id);
+        T GetbyPass(string username, string password);
         IEnumerable<T> Find(Func<T, Boolean> predicate);
         void Create(T item);
         void Update(T item);

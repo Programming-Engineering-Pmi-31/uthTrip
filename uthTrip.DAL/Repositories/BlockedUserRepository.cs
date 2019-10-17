@@ -53,5 +53,10 @@ namespace uthTrip.DAL.Repositories
             if (user != null)
                 db.Blocked_Users.Remove(user);
         }
+
+        public Blocked_Users GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

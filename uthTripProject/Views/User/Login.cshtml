@@ -1,4 +1,5 @@
-﻿@model uthTripProject.Models.User
+﻿@model uthTripProject.Models.UserViewModel
+
 @{
     /**/
 
@@ -7,7 +8,7 @@
 
 <h2>@ViewBag.Title</h2>
 @* For now redirect to register after login *@
-@using (Html.BeginForm("Login", "User/AddOrEdit", FormMethod.Post))
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
 {
 
     <div class="row">
@@ -36,6 +37,11 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-2">
+                        <label class="label-danger">@ViewBag.DuplicateMessage</label>
                     </div>
                 </div>
             </section>
