@@ -69,39 +69,35 @@ namespace uthTripProject.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Login(User userModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
+        [HttpPost]
+        public ActionResult Login(UserViewModel userModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var obj = userService.GetByUsernamePassword(userModel.Username,userModel.Password);
+                    if (obj != null)
+                    {
+                        Session["User_ID"] = obj.User_ID.ToString();
+                        Session["Username"] = obj.Username.ToString();
+                        Session["Password"] = obj.Password.ToString();
+                        return RedirectToAction("UserDashBoard");
+                    }
+                //ViewBag.DuplicateMessage = "Incorrect username or password.";
+                return RedirectToAction("UserDashBoard");
+            }
+            return View(userModel);
+        }
 
-        //        using (DbModels dbModel = new DbModels())
-        //        {
-        //            var obj= dbModel.Users.Where(a => a.Username == userModel.Username && a.Password == userModel.Password).FirstOrDefault();
-        //            if (obj != null)
-        //            {
-        //                Session["User_ID"] = obj.User_ID.ToString();
-        //                Session["Username"] = obj.Username.ToString();
-        //                Session["Password"] = obj.Password.ToString();
-        //                return RedirectToAction("UserDashBoard");
-        //            }
-        //            return RedirectToAction("UserDashBoard");
-
-        //        }
-        //    }
-        //    return View(userModel);
-        //}
-
-        //public ActionResult UserDashBoard()
-        //{
-        //    if (Session["User_ID"] != null)
-        //    {
-        //        return View();
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("AddOrEdit");
-        //    }
-        //}
+        public ActionResult UserDashBoard()
+        {
+            if (Session["User_ID"] != null)
+            {
+                return RedirectToAction("AddOrEdit");
+            }
+            else
+            {
+                return RedirectToAction("AddOrEdit");
+            }
+        }
     }
 }

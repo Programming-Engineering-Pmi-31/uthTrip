@@ -77,7 +77,6 @@ namespace uthTrip.BLL.Services
         }
         public IEnumerable<UserDTO> GetAll()
         {
-            // применяем автомаппер для проекции одной коллекции на другую
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<User>, List<UserDTO>>(Database.Users.GetAll());
         }
@@ -89,6 +88,23 @@ namespace uthTrip.BLL.Services
                 Database.Users.Delete(id);
                 Database.Save();
             }
+        }
+
+        public UserDTO GetByUsernamePassword(string username, string password)
+        {
+            var user= Database.Users.GetbyPass(username, password);
+            return new UserDTO
+            {
+                User_ID = user.User_ID,
+                First_Name = user.First_Name,
+                Last_Name = user.Last_Name,
+                Email = user.Email,
+                Username = user.Username,
+                Password = user.Password,
+                Info = user.Info,
+                Birthday = user.Birthday,
+                Photo_Url = user.Photo_Url
+            };
         }
     }
 }

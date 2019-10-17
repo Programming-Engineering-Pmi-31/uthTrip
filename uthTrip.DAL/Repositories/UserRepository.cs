@@ -62,5 +62,10 @@ namespace uthTrip.DAL.Repositories
             return max;
 
         }
+
+        public User GetbyPass(string username, string password)
+        {
+            return db.Users.Where(a => a.Username == username && a.Password==password).ToList().FirstOrDefault();
+        }
     }
 }

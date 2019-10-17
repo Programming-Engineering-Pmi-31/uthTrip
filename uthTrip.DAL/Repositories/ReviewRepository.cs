@@ -53,5 +53,10 @@ namespace uthTrip.DAL.Repositories
             if (review != null)
                 db.Reviews.Remove(review);
         }
+
+        public Review GetbyPass(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
