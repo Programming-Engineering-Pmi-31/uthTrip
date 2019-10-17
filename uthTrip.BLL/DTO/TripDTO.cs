@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace uthTrip.BLL.DTO
 {
-    class TripDTO
+    public class TripDTO
     {
         public int Trip_ID { get; set; }
         public string Trip_Title { get; set; }
@@ -16,5 +16,17 @@ namespace uthTrip.BLL.DTO
         public int Number_Of_People { get; set; }
         public int Destination_ID { get; set; }
         public int Creator_ID { get; set; }
+
+        public TripDTO(int trip_ID, string trip_Title, string description, double price, int date_ID, int number_Of_People, int destination_ID, int creator_ID)
+        {
+            Trip_ID = trip_ID;
+            Trip_Title = trip_Title;
+            Description = description;
+            Price = price;
+            Date_ID = date_ID;
+            Number_Of_People = number_Of_People;
+            Destination_ID = destination_ID;
+            Creator_ID = creator_ID;
+        }
     }
 }
