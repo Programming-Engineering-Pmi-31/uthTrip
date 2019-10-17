@@ -1,60 +1,71 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using uthTripProject.Models;
+using System.Data.Entity.Infrastructure;
+using System.Reflection;
+using AutoMapper;
+using uthTrip.BLL.Interfaces;
+using uthTrip.BLL.DTO;
+using uthTrip.BLL.Infrastructure;
 
 
 namespace uthTripProject.Controllers
 {
     public class TripController : Controller
     {
+        ITripService tripService;
+        IDestinationService destinationService;
+        IDateRangeService dateRangeService;
+        public TripController(ITripService serv)
+        {
+            tripService = serv;
+        }
+        public ActionResult Index()
+        {
+            IEnumerable<TripDTO> tripDtos = tripService.GetAll();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<TripDTO, TripViewModel>()).CreateMapper();
+            var trips = mapper.Map<IEnumerable<TripDTO>, List<UserViewModel>>(tripDtos);
+            return View(trips);
+        }
+        [HttpGet]
+        public ActionResult AddOrEdit(int id = 0)
+        {
+            TripViewModel tripModel = new TripViewModel();
+            return View(tripModel);
+        }
 
-        //// GET: Trip
-        //[HttpGet]
-        //public ActionResult Create(int id=0)
-        //{
-        //    Trip tripModel = new Trip();
-        //    return View(tripModel);
-        //}
-        //[HttpPost]
+        [HttpPost]
+        public ActionResult AddOrEdit(TripViewModel tripModel)
+        {
+            try
+            {
+                //tripModel.Trip_ID = tripService.FindMaxId() + 1;
+                //tripModel.Destination_ID = destinationService.FindMaxId() + 1;
+                //tripModel.Date_ID = dateService.FindMaxId() + 1;
+                //tripModel.Creator_ID = 0;
 
-        //public ActionResult Create(Trip tripModel)
-        //{
-        //    using (DbModels dbModel = new DbModels())
-        //    {
-        //        if (dbModel.Trips.Any(x => x.Trip_Title == tripModel.Trip_Title))
-        //        {
-        //            ViewBag.DuplicateMessage = "This trip already exists.";
-        //            return View("Create", tripModel);
-        //        }
-        //        try
-        //        {
-        //            tripModel.Trip_ID = dbModel.Trips.Max(x => x.Trip_ID) + 1;
-        //            tripModel.Destination_ID = dbModel.Destinations.Max(x => x.Destination_ID) + 1;
-        //            tripModel.Date_ID = dbModel.Dates_ranges.Max(x => x.Date_ID) + 1;
-        //            tripModel.Creator_ID = 0;
+                var tripDto = new TripDTO(tripModel.Trip_ID, tripModel.Trip_Title, tripModel.Description, tripModel.Price, tripModel.Date_ID, tripModel.Number_Of_People, tripModel.Destination_ID, tripModel.Creator_ID);
+                tripService.CreateTrip(tripDto);
+                var destinationDto = new DestinationDTO(tripModel.Destination_ID,tripModel.Is_Abroad,tripModel.Country,tripModel.City);
+                destinationService.CreateDestination(destinationDto);
+                var dateDto = new DatesRangeDTO(tripModel.Date_ID, tripModel.Start_date, tripModel.End_date);
+                dateService.CreateDate(dateDto);
+                ViewBag.SuccessMessage = "Successfull creation of trip.";
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddModelError(ex.Property, ex.Message);
+                ModelState.Clear();
+                ViewBag.DuplicateMessage = "Trip with this name already exists.";
+                return View("Create", tripModel);
 
-
-        //        }
-        //        catch (System.InvalidOperationException)
-        //        {
-        //            tripModel.Trip_ID = 0;
-        //            tripModel.Destination_ID = 0;
-        //            tripModel.Date_ID = 0;
-
-
-        //        }
-        //        dbModel.Destinations.Add(new Destination(tripModel.Destination_ID, tripModel.Is_Abroad,tripModel.Country, tripModel.City));
-        //        dbModel.Dates_ranges.Add(new Dates_ranges(tripModel.Date_ID, tripModel.Start_date, tripModel.End_date));
-        //        dbModel.Trips.Add(tripModel);
-        //        dbModel.SaveChanges();
-        //    }
-        //    ModelState.Clear();
-        //    ViewBag.SuccessMessage = "Successfull creation of trip.";
-        //    return View("Create", new Trip());
-        //}
-
+            }
+            ModelState.Clear();
+            return View("Create", new TripViewModel());
+        }
     }
 }
