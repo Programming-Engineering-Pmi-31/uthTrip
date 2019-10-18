@@ -13,30 +13,32 @@ using AutoMapper;
 
 namespace uthTrip.BLL.Services
 {
-    public class DestinationService:IDestinationService
+    public class DateRangeService : IDateRangeService
     {
         IUnitOfWork Database { get; set; }
         public int FindMaxId()
         {
-            int max = Database.Destinations.MaxId();
+            int max = Database.Dates_ranges.MaxId();
             return max;
         }
-        public DestinationService(IUnitOfWork uow)
+        public DateRangeService(IUnitOfWork uow)
         {
             Database = uow;
         }
-        public void CreateDestination(DestinationDTO destinationDto)
+
+        public void CreateDateRange(DatesRangeDTO dateRangeDto)
         {
-            Destination destination = new Destination
+            Dates_ranges dateRange = new Dates_ranges
             {
-                Destination_ID= destinationDto.Destination_ID,
-                Is_Abroad=destinationDto.Is_Abroad,
-                Country=destinationDto.Country,
-                City=destinationDto.City
+                Date_ID = dateRangeDto.Date_ID,
+                Start_date = dateRangeDto.Start_date,
+                End_date = dateRangeDto.End_date
             };
-            Database.Destinations.Create(destination);
+            Database.Dates_ranges.Create(dateRange);
             Database.Save();
         }
+
+
         //public int Authenticate(string username, string password)
         //{
         //    if (string.IsNullOrEmpty(username))
@@ -61,38 +63,37 @@ namespace uthTrip.BLL.Services
         //    return user.Id;
         //}
 
-
-        public DestinationDTO GetById(int? id)
+        DatesRangeDTO IDateRangeService.GetById(int? id)
         {
             if (id == null)
                 throw new ValidationException("ID not set.", "");
-            var destination = Database.Destinations.Get(id.Value);
-            if (destination == null)
-                throw new ValidationException("Destination with this ID was not found", "");
+            var dateRange = Database.Dates_ranges.Get(id.Value);
+            if (dateRange == null)
+                throw new ValidationException("dateRange with this ID was not found", "");
 
-            return new DestinationDTO
+            return new DatesRangeDTO
             {
-                Destination_ID = destination.Destination_ID,
-                Is_Abroad = destination.Is_Abroad,
-                Country = destination.Country,
-                City = destination.City
+                Date_ID = dateRange.Date_ID,
+                Start_date = dateRange.Start_date,
+                End_date = dateRange.End_date
             };
         }
-        public IEnumerable<DestinationDTO> GetAll()
+        
+        public IEnumerable<DatesRangeDTO> GetAll()
         {
             // применяем автомаппер для проекции одной коллекции на другую
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Destination, DestinationDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Destination>, List<DestinationDTO>>(Database.Destinations.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Dates_ranges, DatesRangeDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Dates_ranges>, List<DatesRangeDTO>>(Database.Dates_ranges.GetAll());
         }
         public void Dispose(int id)
         {
-            var trip = Database.Destinations.Get(id);
-            if (trip != null)
+            var dateRange = Database.Dates_ranges.Get(id);
+            if (dateRange != null)
             {
-                Database.Destinations.Delete(id);
+                Database.Dates_ranges.Delete(id);
                 Database.Save();
             }
         }
-
     }
 }
+

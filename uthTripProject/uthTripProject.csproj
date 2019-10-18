@@ -196,6 +196,7 @@
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Util\TripModule.cs" />
     <Compile Include="Util\UserModule.cs" />
   </ItemGroup>
   <ItemGroup>

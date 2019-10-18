@@ -11,7 +11,10 @@ namespace uthTrip.BLL.DTO
         public int Date_ID { get; set; }
         public DateTime? Start_date { get; set; }
         public DateTime? End_date { get; set; }
+        public DatesRangeDTO()
+        {
 
+        }
         public DatesRangeDTO(int date_ID, DateTime? start_date, DateTime? end_date)
         {
             Date_ID = date_ID;

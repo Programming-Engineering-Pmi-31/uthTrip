@@ -39,7 +39,7 @@ namespace uthTrip.BLL.Services
                 Destination_ID=tripDto.Destination_ID,
                 Creator_ID =tripDto.Creator_ID
             };
-            Database.Trip.Create(trip);
+            Database.Trips.Create(trip);
             Database.Save();
         }
         //public int Authenticate(string username, string password)
