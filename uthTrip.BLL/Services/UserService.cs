@@ -92,19 +92,26 @@ namespace uthTrip.BLL.Services
 
         public UserDTO GetByUsernamePassword(string username, string password)
         {
-            var user= Database.Users.GetbyPass(username, password);
-            return new UserDTO
+            try
             {
-                User_ID = user.User_ID,
-                First_Name = user.First_Name,
-                Last_Name = user.Last_Name,
-                Email = user.Email,
-                Username = user.Username,
-                Password = user.Password,
-                Info = user.Info,
-                Birthday = user.Birthday,
-                Photo_Url = user.Photo_Url
-            };
+                var user = Database.Users.GetbyPass(username, password);
+                return new UserDTO
+                {
+                    User_ID = user.User_ID,
+                    First_Name = user.First_Name,
+                    Last_Name = user.Last_Name,
+                    Email = user.Email,
+                    Username = user.Username,
+                    Password = user.Password,
+                    Info = user.Info,
+                    Birthday = user.Birthday,
+                    Photo_Url = user.Photo_Url
+                };
+            }
+            catch (System.NullReferenceException)
+            {
+                return null;
+            }
         }
     }
 }

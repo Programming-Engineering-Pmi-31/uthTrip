@@ -22,11 +22,15 @@ namespace uthTripProject
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            // внедрение зависимостей
             NinjectModule userModule = new UserModule();
             NinjectModule serviceModule = new ServiceModule("DefaultConnection");
             var kernel = new StandardKernel(userModule, serviceModule);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+
+            //NinjectModule tripModule = new TripModule();
+            //NinjectModule serviceModuletrip = new ServiceModule("DefaultConnection");
+            //var kernelTrip = new StandardKernel(tripModule, serviceModuletrip);
+            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelTrip));
         }
     }
 }

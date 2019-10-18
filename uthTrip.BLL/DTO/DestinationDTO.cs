@@ -12,7 +12,10 @@ namespace uthTrip.BLL.DTO
         public bool Is_Abroad { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
+        public DestinationDTO()
+        {
 
+        }
         public DestinationDTO(int destination_ID, bool is_Abroad, string country, string city)
         {
             Destination_ID = destination_ID;

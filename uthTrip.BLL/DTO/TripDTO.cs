@@ -16,7 +16,10 @@ namespace uthTrip.BLL.DTO
         public int Number_Of_People { get; set; }
         public int Destination_ID { get; set; }
         public int Creator_ID { get; set; }
-
+        public TripDTO()
+        {
+                
+        }
         public TripDTO(int trip_ID, string trip_Title, string description, double price, int date_ID, int number_Of_People, int destination_ID, int creator_ID)
         {
             Trip_ID = trip_ID;
