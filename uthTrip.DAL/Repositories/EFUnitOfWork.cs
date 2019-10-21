@@ -123,5 +123,18 @@ namespace uthTrip.DAL.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        public EFUnitOfWork(uthtripContext db)
+        {
+            this.db = db;
+            userRepository = new UserRepository(db);
+            tripRepository = new TripRepository(db);
+            reviewRepository = new ReviewRepository(db);
+            blockedUserRepository = new BlockedUserRepository(db);
+            dateRangeRepository = new DateRangeRepository(db);
+            destinationRepository = new DestinationRepository(db);
+            roleRepository = new RoleRepository(db);
+            rightRepository = new RightRepository(db);
+
+        }
     }
 }

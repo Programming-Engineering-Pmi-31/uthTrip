@@ -12,7 +12,7 @@ namespace uthTrip.BLL.Services
 {
     public class UserService : IUserService
     {
-        IUnitOfWork Database { get; set; }
+        public IUnitOfWork Database { get; set; }
         public int FindMaxId()
         {
             int max = Database.Users.MaxId();
