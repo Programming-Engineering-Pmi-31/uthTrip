@@ -15,7 +15,14 @@ namespace uthTrip.DAL.Repositories
         private uthtripContext db;
         public int MaxId()
         {
-            return 0;
+            int max;
+            try
+            {
+                max = db.Roles.Max(a => a.Role_ID);
+            }
+            catch (System.InvalidOperationException)
+            { max = -1; }
+            return max;
         }
         public RoleRepository(uthtripContext context)
         {

@@ -15,7 +15,13 @@ namespace uthTrip.DAL.Repositories
         private uthtripContext db;
         public int MaxId()
         {
-            int max = db.Dates_ranges.Max(a => a.Date_ID);
+            int max = 0;
+            try
+            {
+                 max = db.Dates_ranges.Max(a => a.Date_ID);
+            }
+            catch (System.InvalidOperationException)
+            { max = -1; }
             return max;
         }
         public DateRangeRepository(uthtripContext context)
