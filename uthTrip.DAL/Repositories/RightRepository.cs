@@ -15,7 +15,14 @@ namespace uthTrip.DAL.Repositories
         private uthtripContext db;
         public int MaxId()
         {
-            return 0;
+            int max;
+            try
+            {
+                max = db.Rights.Max(a => a.Rights_ID);
+            }
+            catch (System.InvalidOperationException)
+            { max = -1; }
+            return max;
         }
         public RightRepository(uthtripContext context)
         {
