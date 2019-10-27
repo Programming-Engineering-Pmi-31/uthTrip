@@ -16,6 +16,8 @@ namespace uthTrip.BLL.Interfaces
         IEnumerable<TripDTO> GetAll();
         void Dispose(int id);
         int FindMaxId();
+        int FindMaxIdDestination();
+        int FindMaxIdDateRange();
         //int Authenticate(string username, string password);
         // void Update(User user, string password = null);
         //void Create(string username, string password);

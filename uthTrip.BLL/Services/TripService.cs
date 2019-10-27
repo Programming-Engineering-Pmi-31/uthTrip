@@ -119,5 +119,16 @@ namespace uthTrip.BLL.Services
             }
         }
 
+        public int FindMaxIdDestination()
+        {
+            int max = Database.Destinations.MaxId();
+            return max;
+        }
+
+        public int FindMaxIdDateRange()
+        {
+            int max = Database.Dates_ranges.MaxId();
+            return max;
+        }
     }
 }

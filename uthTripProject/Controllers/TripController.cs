@@ -48,8 +48,8 @@ namespace uthTripProject.Controllers
             {
                 //TO DO: increment destin_id and date_id
                 tripModel.Trip_ID = tripService.FindMaxId() + 1;
-                tripModel.Destination_ID =  4;
-                tripModel.Date_ID =  4;
+                tripModel.Destination_ID =  tripService.FindMaxIdDestination()+1;
+                tripModel.Date_ID =  tripService.FindMaxIdDateRange()+1;
                 tripModel.Creator_ID = 37;
 
                 var tripDto = new TripDTO(tripModel.Trip_ID, tripModel.Trip_Title, tripModel.Description, tripModel.Price, tripModel.Date_ID, tripModel.Number_Of_People, tripModel.Destination_ID, tripModel.Creator_ID);
