@@ -9,6 +9,7 @@ using System.Data.Entity.Infrastructure;
 using System.Reflection;
 using AutoMapper;
 using uthTrip.BLL.Interfaces;
+using uthTrip.BLL.Services;
 using uthTrip.BLL.DTO;
 using uthTrip.BLL.Infrastructure;
 
@@ -19,6 +20,7 @@ namespace uthTripProject.Controllers
         ITripService tripService;
         IDestinationService destinationService;
         IDateRangeService dateRangeService;
+
         public TripController(ITripService iserv)
         {
             tripService = iserv;
@@ -44,17 +46,18 @@ namespace uthTripProject.Controllers
         {
             try
             {
+                //TO DO: increment destin_id and date_id
                 tripModel.Trip_ID = tripService.FindMaxId() + 1;
-                tripModel.Destination_ID = destinationService.FindMaxId() + 1;
-                tripModel.Date_ID = dateRangeService.FindMaxId() + 1;
-                tripModel.Creator_ID = 0;
+                tripModel.Destination_ID =  4;
+                tripModel.Date_ID =  4;
+                tripModel.Creator_ID = 37;
 
                 var tripDto = new TripDTO(tripModel.Trip_ID, tripModel.Trip_Title, tripModel.Description, tripModel.Price, tripModel.Date_ID, tripModel.Number_Of_People, tripModel.Destination_ID, tripModel.Creator_ID);
-                tripService.CreateTrip(tripDto);
                 var destinationDto = new DestinationDTO(tripModel.Destination_ID, tripModel.Is_Abroad, tripModel.Country, tripModel.City);
-                destinationService.CreateDestination(destinationDto);
+                //destinationService.CreateDestination(destinationDto);
                 var dateDto = new DatesRangeDTO(tripModel.Date_ID, tripModel.Start_date, tripModel.End_date);
-                dateRangeService.CreateDateRange(dateDto);
+                //dateRangeService.CreateDateRange(dateDto);
+                tripService.CreateTrip(tripDto,destinationDto,dateDto);
 
                 ViewBag.SuccessMessage = "Successfull creation of trip.";
             }

@@ -11,7 +11,7 @@ namespace uthTrip.BLL.Interfaces
 {
     public interface ITripService
     {
-        void CreateTrip(TripDTO tripDto);
+        void CreateTrip(TripDTO tripDto, DestinationDTO destinationDTO, DatesRangeDTO datesRangeDTO);
         TripDTO GetById(int? id);
         IEnumerable<TripDTO> GetAll();
         void Dispose(int id);
