@@ -15,7 +15,6 @@ namespace uthTrip.BLL.Services
 {
     public class TripService : ITripService
     {
-
         IUnitOfWork Database { get; set; }
         public int FindMaxId()
         {
@@ -26,7 +25,7 @@ namespace uthTrip.BLL.Services
         {
             Database = uow;
         }
-        public void CreateTrip(TripDTO tripDto)
+        public void CreateTrip(TripDTO tripDto, DestinationDTO destinationDTO, DatesRangeDTO datesRangeDTO)
         {
             Trip trip = new Trip
             {
@@ -39,8 +38,26 @@ namespace uthTrip.BLL.Services
                 Destination_ID=tripDto.Destination_ID,
                 Creator_ID =tripDto.Creator_ID
             };
+            Destination destination = new Destination
+            {
+                Destination_ID = destinationDTO.Destination_ID,
+                Is_Abroad = destinationDTO.Is_Abroad,
+                Country = destinationDTO.Country,
+                City = destinationDTO.City
+            };
+            Dates_ranges dates_Ranges = new Dates_ranges
+            {
+                Date_ID = datesRangeDTO.Date_ID,
+                Start_date = datesRangeDTO.Start_date,
+                End_date = datesRangeDTO.End_date
+            };
+            Database.Destinations.Create(destination);
+            Database.Save();
+            Database.Dates_ranges.Create(dates_Ranges);
+            Database.Save();
             Database.Trips.Create(trip);
             Database.Save();
+            
         }
         //public int Authenticate(string username, string password)
         //{
