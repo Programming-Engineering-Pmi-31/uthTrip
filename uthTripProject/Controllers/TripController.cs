@@ -18,14 +18,11 @@ namespace uthTripProject.Controllers
     public class TripController : Controller
     {
         ITripService tripService;
-        IDestinationService destinationService;
-        IDateRangeService dateRangeService;
 
         public TripController(ITripService iserv)
         {
             tripService = iserv;
-            //destinationService = idest;
-            //dateRangeService = idate;
+
         }
         public ActionResult Index()
         {
@@ -46,7 +43,6 @@ namespace uthTripProject.Controllers
         {
             try
             {
-                //TO DO: increment destin_id and date_id
                 tripModel.Trip_ID = tripService.FindMaxId() + 1;
                 tripModel.Destination_ID =  tripService.FindMaxIdDestination()+1;
                 tripModel.Date_ID =  tripService.FindMaxIdDateRange()+1;
@@ -54,9 +50,7 @@ namespace uthTripProject.Controllers
 
                 var tripDto = new TripDTO(tripModel.Trip_ID, tripModel.Trip_Title, tripModel.Description, tripModel.Price, tripModel.Date_ID, tripModel.Number_Of_People, tripModel.Destination_ID, tripModel.Creator_ID);
                 var destinationDto = new DestinationDTO(tripModel.Destination_ID, tripModel.Is_Abroad, tripModel.Country, tripModel.City);
-                //destinationService.CreateDestination(destinationDto);
                 var dateDto = new DatesRangeDTO(tripModel.Date_ID, tripModel.Start_date, tripModel.End_date);
-                //dateRangeService.CreateDateRange(dateDto);
                 tripService.CreateTrip(tripDto,destinationDto,dateDto);
 
                 ViewBag.SuccessMessage = "Successfull creation of trip.";
@@ -72,5 +66,6 @@ namespace uthTripProject.Controllers
             ModelState.Clear();
             return View("Create", new TripViewModel());
         }
+
     }
 }

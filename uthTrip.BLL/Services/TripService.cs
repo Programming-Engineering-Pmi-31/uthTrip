@@ -21,6 +21,10 @@ namespace uthTrip.BLL.Services
             int max = Database.Trips.MaxId();
             return max;
         }
+        public TripService()
+        {
+
+        }
         public TripService(IUnitOfWork uow)
         {
             Database = uow;

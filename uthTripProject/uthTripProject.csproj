@@ -266,6 +266,8 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
+    <Content Include="Views\Trip\MainPage.cshtml" />
+    <Content Include="Views\Home\StartPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
