@@ -65,6 +65,8 @@ namespace uthTripProject.Controllers
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
+
+
             //if (ModelState.IsValid)
             //{
             ModelState.Clear();
