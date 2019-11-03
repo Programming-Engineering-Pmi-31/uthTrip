@@ -14,6 +14,9 @@ namespace uthTrip.BLL.Interfaces
         void CreateTrip(TripDTO tripDto, DestinationDTO destinationDTO, DatesRangeDTO datesRangeDTO);
         TripDTO GetById(int? id);
         IEnumerable<TripDTO> GetAll();
+        IEnumerable<DestinationDTO> GetAllDist();
+        IEnumerable<DatesRangeDTO> GetAllDateRanges();
+
         void Dispose(int id);
         int FindMaxId();
         int FindMaxIdDestination();
