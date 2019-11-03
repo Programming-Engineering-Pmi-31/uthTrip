@@ -9,21 +9,25 @@ namespace uthTripProject.Models
 {
     public class TripViewModel
     {
+        public TripViewModel()
+        {
+
+        }
         public TripViewModel(TripDTO trip, DestinationDTO destination, DatesRangeDTO datesRange)
         {
             Trip_ID = trip.Trip_ID;
-            Trip_Title = trip_Title;
-            Description = description;
-            Price = price;
-            Date_ID = date_ID;
-            Start_date = start_date;
-            End_date = end_date;
-            Number_Of_People = number_Of_People;
-            Destination_ID = destination_ID;
-            Is_Abroad = is_Abroad;
-            Country = country;
-            City = city;
-            Creator_ID = creator_ID;
+            Trip_Title = trip.Trip_Title;
+            Description = trip.Description;
+            Price = trip.Price;
+            Date_ID = trip.Date_ID;
+            Number_Of_People = trip.Number_Of_People;
+            Creator_ID = trip.Creator_ID;
+            Start_date = datesRange.Start_date;
+            End_date = datesRange.End_date;
+            Destination_ID = trip.Destination_ID;
+            Is_Abroad = destination.Is_Abroad;
+            Country = destination.Country;
+            City = destination.City;
         }
 
         public int Trip_ID { get; set; }
