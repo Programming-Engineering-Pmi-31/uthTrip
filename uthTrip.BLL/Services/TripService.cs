@@ -134,5 +134,17 @@ namespace uthTrip.BLL.Services
             int max = Database.Dates_ranges.MaxId();
             return max;
         }
+
+        public IEnumerable<DestinationDTO> GetAllDist()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Destination, DestinationDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Destination>, List<DestinationDTO>>(Database.Destinations.GetAll());
+        }
+
+        public IEnumerable<DatesRangeDTO> GetAllDateRanges()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Dates_ranges, DatesRangeDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Dates_ranges>, List<DatesRangeDTO>>(Database.Dates_ranges.GetAll());
+        }
     }
 }

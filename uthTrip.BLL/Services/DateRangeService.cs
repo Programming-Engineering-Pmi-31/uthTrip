@@ -81,7 +81,6 @@ namespace uthTrip.BLL.Services
         
         public IEnumerable<DatesRangeDTO> GetAll()
         {
-            // применяем автомаппер для проекции одной коллекции на другую
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Dates_ranges, DatesRangeDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Dates_ranges>, List<DatesRangeDTO>>(Database.Dates_ranges.GetAll());
         }

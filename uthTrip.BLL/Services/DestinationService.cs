@@ -80,7 +80,6 @@ namespace uthTrip.BLL.Services
         }
         public IEnumerable<DestinationDTO> GetAll()
         {
-            // применяем автомаппер для проекции одной коллекции на другую
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Destination, DestinationDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Destination>, List<DestinationDTO>>(Database.Destinations.GetAll());
         }

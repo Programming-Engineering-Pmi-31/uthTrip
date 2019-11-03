@@ -25,6 +25,10 @@ namespace uthTripProject.Controllers
         }
         public ActionResult StartPage()
         {
+            IEnumerable<TripDTO> trips = tripService.GetAll();
+            IEnumerable<DestinationDTO> destinations = tripService.GetAllDist();
+            IEnumerable<DatesRangeDTO> dates = tripService.GetAllDateRanges();
+            TripViewModel tripViewModel = new TripViewModel();
 
             return View(tripService.GetAll());
         }
