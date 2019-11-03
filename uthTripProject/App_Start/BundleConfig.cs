@@ -25,6 +25,12 @@ namespace uthTripProject
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/background").Include(
+                      "~/Scripts/background.js"));
+
+
         }
     }
 }

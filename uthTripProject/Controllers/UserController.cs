@@ -95,6 +95,6 @@ namespace uthTripProject.Controllers
                 ViewBag.DuplicateMessage = "Incorrect username or password.";
                 return View("Login");
             }
-        }
+        } 
     }
 }

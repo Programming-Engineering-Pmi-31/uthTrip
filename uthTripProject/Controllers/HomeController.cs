@@ -80,6 +80,12 @@ namespace uthTripProject.Controllers
             IEnumerable<TripViewModel> viewModels = tripViewModels_list;
             return View(viewModels);
         }
+        public ActionResult HomeA()
+        {
+
+            return View("Login");
+        }
+
 
         //public ActionResult About()
         //{
