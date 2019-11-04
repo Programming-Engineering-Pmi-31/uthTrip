@@ -1,0 +1,32 @@
+﻿@model IEnumerable<uthTripProject.Models.TripViewModel>
+@{
+    ViewBag.Title = "HelloPage";
+}
+
+
+@using (Html.BeginForm())
+{
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    <body class="body-hello">
+        <div class="body-wraper">
+            <div class="body">
+                <canvas class="background"></canvas>
+                <div class="btext">
+                    <h1 id="main-text"> Любиш подорожувати?</h1>
+                    <a onclick="window.location='@Url.Action("Login", "User")'" class="btn" id="hello-btn"> Тоді почнемо!</a>
+
+                </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+        </div>
+
+    </body>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/background");
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/style.css");
+    @Styles.Render("~/Content/css");
+}
