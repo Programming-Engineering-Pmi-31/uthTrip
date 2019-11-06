@@ -46,7 +46,7 @@ namespace uthTripProject.Controllers
                 tripModel.Trip_ID = tripService.FindMaxId() + 1;
                 tripModel.Destination_ID =  tripService.FindMaxIdDestination()+1;
                 tripModel.Date_ID =  tripService.FindMaxIdDateRange()+1;
-                tripModel.Creator_ID = 1;
+                tripModel.Creator_ID = 37;
 
                 var tripDto = new TripDTO(tripModel.Trip_ID, tripModel.Trip_Title, tripModel.Description, tripModel.Price, tripModel.Date_ID, tripModel.Number_Of_People, tripModel.Destination_ID, tripModel.Creator_ID);
                 var destinationDto = new DestinationDTO(tripModel.Destination_ID, tripModel.Is_Abroad, tripModel.Country, tripModel.City);
