@@ -200,6 +200,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TripController.cs" />
+    <Compile Include="Controllers\TripDetailController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,6 +281,7 @@
     <Content Include="Views\Trip\MainPage.cshtml" />
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Hello\HelloPage.cshtml" />
+    <Content Include="Views\TripDetail\TripDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
