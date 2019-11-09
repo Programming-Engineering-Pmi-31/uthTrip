@@ -1,0 +1,26 @@
+﻿@model uthTripProject.Models.TripViewModel
+@*@model uthTrip.BLL.DTO.TripDTO*@
+@{
+    ViewBag.Title = "TripDetail";
+}
+
+<h2>TripDetail</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            @Html.DisplayFor(modelItem =>modelItem.Trip_Title)
+        </div>
+        <div class="col-md-5">
+            @Html.DisplayFor(modelItem => modelItem.Description)
+        </div>
+        <div class="col-md-2">
+            <h2>@Html.DisplayFor(modelItem => modelItem.Price) ₴ </h2>
+        </div>
+        <div class="col-md-1">
+            @Html.DisplayFor(modelItem => modelItem.Start_date)
+            <br>
+            @Html.DisplayFor(modelItem => modelItem.End_date)
+        </div>
+    </div>
+</div>

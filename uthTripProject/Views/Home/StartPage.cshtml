@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<uthTripProject.Models.TripViewModel>
-
 @{
-                /**/
-
                 ViewBag.Title = "uthTrip";
 }
 
@@ -67,7 +64,8 @@
                 <div class="col-md-1">
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Обрати" class="btn btn-default btn-success" />
+                            @*<input type="submit" value="Обрати" class="btn btn-default btn-success" />*@
+                            @Html.ActionLink("Обрати", "../TripDetail/TripDetail", new { id=item.Trip_ID})
                         </div>
                     </div>
                 </div>

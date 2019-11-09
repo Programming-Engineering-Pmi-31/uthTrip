@@ -35,14 +35,8 @@ namespace uthTripProject
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelTrip));
 
             AreaRegistration.RegisterAllAreas();
-
-            //NinjectModule destinationModule = new DestinationModule();
-            //var kernelDestin = new StandardKernel(destinationModule, serviceModule);
-            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelDestin));
-
-            //NinjectModule daterangeModule = new DateRangesModule();
-            //var kernelDateRange = new StandardKernel(daterangeModule, serviceModule);
-            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelDateRange));
+            
+          
         }
     }
 }
