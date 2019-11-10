@@ -21,11 +21,16 @@ namespace uthTripProject.Controllers
         {
             userService = serv;
         }
+      
         public ActionResult Index()
         {
             IEnumerable<UserDTO> userDtos = userService.GetAll();
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<UserDTO, UserViewModel>()).CreateMapper();
             var users = mapper.Map<IEnumerable<UserDTO>, List<UserViewModel>>(userDtos);
+            //var model = repo.GetComputerList();
+            if (users.Count > 0)
+                ViewBag.Message = String.Format("В базі даних {0} об'єкт", users.Count);
+           
             return View(users);
         }
         [HttpGet]
@@ -61,7 +66,25 @@ namespace uthTripProject.Controllers
         {
             return View();
         }
+        public ActionResult Account(int id)
+        {
+            var userAccount = userService.Get(id);
 
+            var viewModel = new UserViewModel
+            {
+                User_ID = userAccount.User_ID,
+            First_Name = userAccount.First_Name,
+                Last_Name = userAccount.Last_Name,
+                Username = userAccount.Username,
+                Email = userAccount.Email,
+                Password = userAccount.Password,
+                Birthday = userAccount.Birthday,
+                Photo_Url = userAccount.Photo_Url,
+                Info = userAccount.Info
+            };
+
+            return View(viewModel);
+        }
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
