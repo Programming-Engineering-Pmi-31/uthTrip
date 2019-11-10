@@ -6,6 +6,7 @@ using uthTrip.DAL.Interfaces;
 using uthTrip.BLL.Infrastructure;
 using uthTrip.BLL.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 
 namespace uthTrip.BLL.Services
@@ -39,6 +40,23 @@ namespace uthTrip.BLL.Services
             Database.Users.Create(user);
             Database.Save();
         }
+        
+        public string GetFirstName(int userAccountId)
+        {
+            var result = GetAllUsers()
+                .Where(x => x.User_ID == userAccountId)
+                .Select(x => x.First_Name)
+                .FirstOrDefault();
+
+            return result;
+        }
+        public UserDTO Get(int userAccountId)
+        {
+            var userAccount = GetAllUsers()
+                .FirstOrDefault(x => x.User_ID == userAccountId);
+
+            return userAccount;
+        }
         //public int Authenticate(string username, string password)
         //{
         //    if (string.IsNullOrEmpty(username))
@@ -62,7 +80,7 @@ namespace uthTrip.BLL.Services
 
         //    return user.Id;
         //}
-        
+
 
         public UserDTO GetById(int? id)
         {
@@ -113,5 +131,41 @@ namespace uthTrip.BLL.Services
                 return null;
             }
         }
+            private List<UserDTO> GetAllUsers()
+            {
+            DateTime somedate = new DateTime(2000, 07, 21);
+            return new List<UserDTO>()
+            {
+                    
+
+            
+            new UserDTO
+                {
+                    User_ID = 123,
+                    First_Name = "Simon",
+                    Last_Name = "Gilbert",
+                    Username = "simongilbert",
+                    Email= "simongilbert@com",
+                    Password = "1111",
+                    Birthday = somedate,
+                    Photo_Url = "www",
+                    Info = "some boy"
+
+                },
+                new UserDTO
+                {
+                    User_ID = 456,
+                    First_Name = "Alexander",
+                    Last_Name = "Hill",
+                    Username = "alexhill",
+                    Email= "alexhill@com",
+                    Password = "1111",
+                    Birthday = somedate,
+                    Photo_Url = "www",
+                    Info = "anpther boy"
+                },
+            };
+            }
+        }
     }
-}
+
