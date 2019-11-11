@@ -1,15 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTripProject", "uthTripProject\uthTripProject.csproj", "{32E72533-0BDC-440A-9540-AF7783555306}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.DAL", "uthTrip.DAL\uthTrip.DAL.csproj", "{F78C2CCB-0AA4-48F9-8DC1-9F65A5135E05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.BLL", "uthTrip.BLL\uthTrip.BLL.csproj", "{EDEC0E39-CC42-426B-8773-F9356BA20DF9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.Tests", "uthTrip.Tests\uthTrip.Tests.csproj", "{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +26,6 @@ Global
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
