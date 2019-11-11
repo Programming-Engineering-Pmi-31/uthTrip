@@ -8,11 +8,13 @@ using uthTrip.BLL.Interfaces;
 
 namespace uthTripProject.Util
 {
-    public class TripModule : NinjectModule
+    public class uthTripModule : NinjectModule
     {
         public override void Load()
         {
             Bind<ITripService>().To<TripService>();
+            Bind<IUserService>().To<UserService>();
+
         }
     }
 }
