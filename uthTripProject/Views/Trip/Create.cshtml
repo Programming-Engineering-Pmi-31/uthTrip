@@ -5,132 +5,153 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create a trip</h2>
+@*<h2>Create a trip</h2>*@
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <head>
+        <meta charset="utf-8">
+        <title>site</title>
+        <link rel="stylesheet" href="css\createTrip.css">
 
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Trip_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Trip_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Trip_ID, "", new { @class = "text-danger" })
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+
+        <section id="nav-bar">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#">
+                    <i class="fa fa-user" aria-hidden="true" ></i>
+                    <img src="~/Views/photoes/logo.jfif" width="30" height="30" alt="">
+                </a>
+               
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Home/StartPage">MAIN PAGE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">MY TRIPS</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="">NEW TRIP</a>
+                            <span class="sr-only">(current)</span>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+        <div class="container ">
+            <canvas class="background"></canvas>
+
+            <div class="card bg-light ">
+                <article class="card-body mx-auto" style="max-width: 600px;">
+                    <h4 class="card-title mt-3 text-center">Create trip</h4>
+                    <form>
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.Trip_Title, htmlAttributes: new { @class = " input-group" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.Trip_Title, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                @Html.ValidationMessageFor(model => model.Trip_Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = " input-group" })
+                            <div class="input-group-prepend">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" , @type = "textarea"} })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "1" } })
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                               </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Start_date, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.Start_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                @Html.ValidationMessageFor(model => model.Start_date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.End_date, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.End_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                @Html.ValidationMessageFor(model => model.End_date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group">
+                            @Html.LabelFor(model => model.Number_Of_People, htmlAttributes: new { @class = "input-group", @type = "number", @min = "0", @step = "1" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.Number_Of_People, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Number_Of_People, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group">
+                            @Html.LabelFor(model => model.Is_Abroad, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.Is_Abroad, new { htmlAttributes = new { @class = "form-control", @type = "checkbox"} })
+                                @Html.ValidationMessageFor(model => model.Is_Abroad, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group input-group">
+                            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" , @type = "text"} })
+                                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend">
+                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Create </button>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label class="label-success">@ViewBag.SuccessMessage</label>
+                            </div>
+                        </div>
+                      @*  <p class="text-center">@Html.ActionLink("Come back to all trips ", "../Home/StartPage")</p>*@
+                    </form>
+                </article>
             </div>
-        </div>*@
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Trip_Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Trip_Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Trip_Title, "", new { @class = "text-danger" })
         </div>
-    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Date_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.Start_date, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Start_date, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Start_date, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.End_date, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.End_date, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.End_date, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Number_Of_People, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Number_Of_People, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Number_Of_People, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Destination_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Destination_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Destination_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.Is_Abroad, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Is_Abroad, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Is_Abroad, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Creator_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Creator_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Creator_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-2">
-            <label class="label-success">@ViewBag.SuccessMessage</label>
-        </div>
-    </div>
-</div>
+      
+</body>
 }
-<div>
-    @Html.ActionLink("Return to all trips", "../Home/StartPage")
-</div>
 
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+           @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/background")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Styles.Render("~/Content/createTrip.css")
+        @Styles.Render("~/Content/css")
+        }
