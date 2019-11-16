@@ -71,5 +71,7 @@ namespace uthTripProject.Models
         public string City { get; set; }
         public int Creator_ID { get; set; }
 
+        
+       
     }
 }

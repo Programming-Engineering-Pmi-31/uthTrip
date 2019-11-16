@@ -22,26 +22,15 @@ namespace uthTripProject
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            NinjectModule userModule = new UserModule();
             NinjectModule serviceModule = new ServiceModule("DefaultConnection");
-            var kernel = new StandardKernel(userModule, serviceModule);
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
 
-            //comment next 3 lines to make 'AddOrEdit' work
-
-            //NinjectModule tripModule = new TripModule();
-            //var kernelTrip = new StandardKernel(tripModule, serviceModule);
-            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelTrip));
+            NinjectModule tripModule = new uthTripModule();
+            var kernelTrip = new StandardKernel(tripModule, serviceModule);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelTrip));
 
             AreaRegistration.RegisterAllAreas();
-
-            //NinjectModule destinationModule = new DestinationModule();
-            //var kernelDestin = new StandardKernel(destinationModule, serviceModule);
-            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelDestin));
-
-            //NinjectModule daterangeModule = new DateRangesModule();
-            //var kernelDateRange = new StandardKernel(daterangeModule, serviceModule);
-            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelDateRange));
+            
+          
         }
     }
 }

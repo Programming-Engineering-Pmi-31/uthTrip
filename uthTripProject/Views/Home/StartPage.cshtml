@@ -1,116 +1,58 @@
 ﻿@model IEnumerable<uthTripProject.Models.TripViewModel>
-
 @{
-    ViewBag.Title = "StartPage";
+                ViewBag.Title = "uthTrip";
 }
 
-<h2>Main Page</h2>
-
-@using (Html.BeginForm("Index", "GenerateInvoice", FormMethod.Get))
+<h2>Доступні подорожі</h2>
+<div>
+    @Html.ActionLink("Створити нову подорож", "../Trip/Create")
+</div>
+<hr>
+@using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
 {
-    @Html.AntiForgeryToken()
-
-    @Html.DropDownList("City", (SelectList)ViewBag.City, "Select City", new { @class = "form-control" })
-    <input type="submit" value="Search" class="btn btn-primary" />
-}
-
-@if (Model != null && Model.Any())
-{
-    foreach (var item in Model)
-    {
-        @Html.DisplayFor(model => item)
-    }
-}
-@*@using (Html.BeginForm("Filterable", "Products", FormMethod.Get))
-    {
-    <fieldset class="filtering">
-        <legend>Filter Product Results</legend>
-        <div>
-            <b>Show Products In:</b>
-            @Html.DropDownListFor(model => model.Country, Model.Country, "-- All Categories --")
-
-            @*<b>Minimum Price:</b>
-            @Html.TextBoxFor(model => model.MinPrice, new { size = 8 })
-
-            <b>Omit Discontinued?</b>
-            @Html.CheckBoxFor(model => model.OmitDiscontinued)*@
-
-@*<input type="submit" value="Filter Results" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DropDownList("Country", "Країна")
+            </div>
+            <div class="col-md-2">
+                @Html.DropDownList("City", "Місто")
+            </div>
+            <div class="col-md-2">
+                @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.TextBox("maxPeople", "макс. к-ть осіб..", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Фільтрувати" class="btn-sm btn-info" />
+            </div>
         </div>
-    </fieldset>
-}*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Trip_Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Date_ID)
-            </th>
-        *@
-        <th>
-            <p>Date</p>
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.End_date)
-            </th>*@
-        @*<th>
-                @Html.DisplayNameFor(model => model.Number_Of_People)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Destination_ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Is_Abroad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Creator_ID)
-            </th>*@
-        <th></th>
-    </tr>
+    </div>
+        }
+    <hr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trip_Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <h2>@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
-
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Date_ID)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Start_date)
-                <p></p>
-                @Html.DisplayFor(modelItem => item.End_date)
-            </td>
-            @*
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.Trip_Title)
+                </div>
+                <div class="col-md-5">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </div>
+                <div class="col-md-2">
+                    <h2>@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
+                </div>
+                <div class="col-md-1">
+                    @Html.DisplayFor(modelItem => item.Start_date)
+                    <br>
+                    @Html.DisplayFor(modelItem => item.End_date)
+                </div>
+                @*
                 <td>
                     @Html.DisplayFor(modelItem => item.Number_Of_People)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Destination_ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Is_Abroad)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Country)
@@ -118,18 +60,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.City)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Creator_ID)
-                </td>*@
-            <td>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Select" class="btn btn-default btn-success" />
+                *@
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @*<input type="submit" value="Обрати" class="btn btn-default btn-success" />*@
+                            @Html.ActionLink("Обрати", "../TripDetail/TripDetail", new { id=item.Trip_ID})
+                        </div>
                     </div>
                 </div>
+            </div>
+        }
 
-            </td>
-        </tr>
-    }
+    </div>
 
-</table>
