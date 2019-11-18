@@ -24,13 +24,7 @@ namespace uthTripProject
 
             NinjectModule serviceModule = new ServiceModule("DefaultConnection");
 
-            //NinjectModule userModule = new UserModule();
-            //var kernel = new StandardKernel(userModule, serviceModule);
-            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
-
-            //comment next 3 lines to make 'AddOrEdit' work
-
-            NinjectModule tripModule = new TripModule();
+            NinjectModule tripModule = new uthTripModule();
             var kernelTrip = new StandardKernel(tripModule, serviceModule);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelTrip));
 

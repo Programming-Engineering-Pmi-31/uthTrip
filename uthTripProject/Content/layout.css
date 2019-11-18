@@ -2,14 +2,9 @@
 
     padding-top: 0 !important;
 }
-<<<<<<< Updated upstream
-.footer{
-    padding-left: 20px;
-    font-size: 14px;
-    color: #fff !important;
 
-}
-=======
+
+
 
 .footer {
     bottom: 0;
@@ -21,4 +16,3 @@
     position: absolute !important;
     bottom: 0 !important;
 }
->>>>>>> Stashed changes
