@@ -48,13 +48,9 @@
 
         <div class="card bg-light ">
             <article class="card-body mx-auto" style="max-width: 600px;">
-                <h4 class="card-title mt-3 text-center">TripDetail</h4>
-
+                <h4 class="card-title mt-3 text-center">@Html.DisplayFor(modelItem => modelItem.Trip_Title)</h4>
 
                 <div class="row">
-                    <div class="col-md-8">
-                        @Html.DisplayFor(modelItem => modelItem.Trip_Title)
-                    </div>
                     <div class="col-md-8">
                         @Html.DisplayFor(modelItem => modelItem.Description)
                     </div>
