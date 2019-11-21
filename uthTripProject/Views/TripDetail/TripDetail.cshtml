@@ -17,18 +17,12 @@
     <section id="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">
-
-
                 <img src="~/Views/photoes/logo2.png" width="30" height="30" alt="">
-
             </a>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-
                         <i class="fa fa-user" aria-hidden="true"></i>
-
                         <a class="nav-link" href="/Home/StartPage">MAIN PAGE</a>
                     </li>
                     <li class="nav-item">
@@ -54,6 +48,7 @@
                     <div class="col-md-8">
                         @Html.DisplayFor(modelItem => modelItem.Description)
                     </div>
+                    <img src="C:\Users\Andriy\Documents\uthTrip\uthTripProject\Views\photoes\logo2.jfif" width="30" height="30" alt="">
                     <div class="col-md-8">
                         <h2>@Html.DisplayFor(modelItem => modelItem.Price) ₴ </h2>
                     </div>
@@ -61,6 +56,12 @@
                         @Html.DisplayFor(modelItem => modelItem.Start_date)
                         <br>
                         @Html.DisplayFor(modelItem => modelItem.End_date)
+                    </div>
+                    <div class="col-md-8">
+                        <h2>@Html.DisplayFor(modelItem => modelItem.Country) </h2>
+                    </div>
+                    <div class="col-md-8">
+                        <h2>@Html.DisplayFor(modelItem => modelItem.City) </h2>
                     </div>
                 </div>
                 </article>
