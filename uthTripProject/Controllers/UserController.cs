@@ -34,31 +34,31 @@ namespace uthTripProject.Controllers
             return View(users);
         }
         [HttpGet]
-        public ActionResult AddOrEdit(int id = 0)
+        public ActionResult Register(int id = 0)
         {
             UserViewModel userModel = new UserViewModel();
             return View(userModel);
         }
         [HttpPost]
-        public ActionResult AddOrEdit(UserViewModel userModel)
+        public ActionResult Register(UserViewModel userModel)
         {
             try
             {
                 userModel.User_ID = userService.FindMaxId() + 1;
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 userService.CreateUser(userDto);
-                ViewBag.SuccessMessage = "Registration Successful.";
-
+                //ViewBag.SuccessMessage = "Registration Successful.";
+                return RedirectToAction("StartPage", "Home");
             }
             catch (ValidationException ex)
             {
                 ModelState.AddModelError(ex.Property, ex.Message);
                 ModelState.Clear();
                 ViewBag.DuplicateMessage = "Username already exists.";
-                return View("AddOrEdit", userModel);
+                return View("Register", userModel);
             }
             ModelState.Clear();
-            return View("AddOrEdit", new UserViewModel());
+            return View("Register", new UserViewModel());
         }
 
         [HttpGet]
