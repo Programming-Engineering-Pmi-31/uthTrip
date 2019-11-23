@@ -253,7 +253,6 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\registration.css" />
     <Content Include="Content\tripDetail.css" />
-
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -308,7 +307,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\AddOrEdit.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\UserHome.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
