@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uthTrip.BLL.DTO
+namespace UthTrip.BLL.DTO
 {
     public class DatesRangeDTO
     {

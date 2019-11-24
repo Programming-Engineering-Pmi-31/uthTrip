@@ -1,14 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using uthTrip.DAL.Entities;
-using uthTrip.DAL.EF;
-using uthTrip.DAL.Interfaces;
-using System.Data.Entity;
+using UthTrip.DAL.Entities;
+using UthTrip.DAL.EF;
+using UthTrip.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace uthTrip.DAL.Repositories
+
+namespace UthTrip.DAL.Repositories
 {
     public class UserRepository : IRepository<User>
     {
@@ -55,17 +57,17 @@ namespace uthTrip.DAL.Repositories
             int max = 0;
             try
             {
-                 max = db.Users.Max(a => a.User_ID);
+                max = db.Users.Max(a => a.User_ID);
             }
-            catch(System.InvalidOperationException)
-            {  max= -1; }
+            catch (System.InvalidOperationException)
+            { max = -1; }
             return max;
 
         }
 
         public User GetbyPass(string username, string password)
         {
-            return db.Users.Where(a => a.Username == username && a.Password==password).ToList().FirstOrDefault();
+            return db.Users.Where(a => a.Username == username && a.Password == password).ToList().FirstOrDefault();
         }
     }
 }

@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System;
-using Moq;
-using uthTripProject.Controllers;
-using uthTripProject.Models;
-using uthTrip.BLL.Services;
-using uthTrip.BLL.Interfaces;
-using uthTrip.BLL.DTO;
-using System.Web.Mvc;
-using Xunit;
-
 namespace uthTripProject.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Moq;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.BLL.Services;
+    using uthTripProject.Controllers;
+    using uthTripProject.Models;
+    using Xunit;
     public class HomeControllerTests
     {
         DateTime somedate = new DateTime(2000, 07, 21);
@@ -25,7 +24,7 @@ namespace uthTripProject.Tests
             var mockUserAccountService = new Mock<IUserService>();
 
             mockUserAccountService.Setup(x => x.GetAll())
-                .Returns(GetTestUserAccounts());
+                .Returns(this.GetTestUserAccounts());
 
             // Inject
             var homeController = new UserController(mockUserAccountService.Object);
@@ -51,7 +50,7 @@ namespace uthTripProject.Tests
             var mockUserAccountService = new Mock<IUserService>();
 
             mockUserAccountService.Setup(x => x.Get(expectedUserAccountId))
-                .Returns(GetTestUserAccountOne());
+                .Returns(this.GetTestUserAccountOne());
 
             // Inject
             var homeController = new UserController(mockUserAccountService.Object);
@@ -77,7 +76,7 @@ namespace uthTripProject.Tests
             var mockUserAccountService = new Mock<IUserService>();
 
             mockUserAccountService.Setup(x => x.Get(expectedUserAccountId))
-                .Returns(GetTestUserAccountTwo());
+                .Returns(this.GetTestUserAccountTwo());
             
             // Inject
             var homeController = new UserController(mockUserAccountService.Object);
@@ -94,34 +93,35 @@ namespace uthTripProject.Tests
             Assert.Equal(expectedUserAccountId, viewModel.User_ID);
         }
 
-        //[Fact]
-        //public void Get_First_Name_Result()
-        //{
-        //    // Setup
-        //    var userAccountId = 123;
-        //    var userAccountFirstName = "Simon";
+        /*[Fact]
+        public void Get_First_Name_Result()
+        {
+            // Setup
+            var userAccountId = 123;
+            var userAccountFirstName = "Simon";
 
-        //    var mockUserAccountService = new Mock<IUserService>();
+            var mockUserAccountService = new Mock<IUserService>();
 
-        //    mockUserAccountService.Setup(x => x.GetFirstName(userAccountId))
-        //        .Returns(userAccountFirstName);
+            mockUserAccountService.Setup(x => x.GetFirstName(userAccountId))
+                .Returns(userAccountFirstName);
 
-        //    // Inject
-        //    var homeController = new UserController(mockUserAccountService.Object);
+            // Inject
+            var homeController = new UserController(mockUserAccountService.Object);
 
-        //    // Act
-        //    var result = homeController.ActionInvoker
+            // Act
+            var result = homeController.ActionInvoker
 
-        //    // Assert
-        //    Assert.Equal(userAccountFirstName, result);
-        //}
-        
+            // Assert
+            Assert.Equal(userAccountFirstName, result);
+        }
+        */
+
         private List<UserDTO> GetTestUserAccounts()
         {
             return new List<UserDTO>()
             {
-                GetTestUserAccountOne(),
-                GetTestUserAccountTwo(),
+                this.GetTestUserAccountOne(),
+                this.GetTestUserAccountTwo(),
             };
         }
 
@@ -136,7 +136,7 @@ namespace uthTripProject.Tests
                 Username = "simongilbert",
                 Email = "simongilbert@com",
                 Password = "1111",
-                Birthday = somedate,
+                Birthday = this.somedate,
                 Photo_Url = "www",
                 Info = "some boy"
             };
@@ -152,7 +152,7 @@ namespace uthTripProject.Tests
                 Username = "alexhill",
                 Email = "alexhill@com",
                 Password = "1111",
-                Birthday = somedate,
+                Birthday = this.somedate,
                 Photo_Url = "www",
                 Info = "anpther boy"
             };

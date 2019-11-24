@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-using Ninject;
-using Ninject.Modules;
-using Ninject.Web.Mvc;
-using uthTrip.BLL.Infrastructure;
-using uthTripProject.Util;
-
-namespace uthTripProject
+﻿namespace uthTripProject
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+    using Ninject;
+    using Ninject.Modules;
+    using Ninject.Web.Mvc;
+    using UthTrip.BLL.Infrastructure;
+    using uthTripProject.Util;
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -24,7 +23,7 @@ namespace uthTripProject
 
             NinjectModule serviceModule = new ServiceModule("DefaultConnection");
 
-            NinjectModule tripModule = new uthTripModule();
+            NinjectModule tripModule = new UthTripModule();
             var kernelTrip = new StandardKernel(tripModule, serviceModule);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelTrip));
 
