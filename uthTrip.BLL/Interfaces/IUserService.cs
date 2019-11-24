@@ -13,10 +13,16 @@ namespace uthTrip.BLL.Interfaces
         void CreateUser(UserDTO userDto);
         UserDTO GetById(int? id);
 <<<<<<< HEAD
+<<<<<<< HEAD
          UserDTO GetByUsernamePassword(string username, string password);
 =======
         UserDTO GetByUsernamePassword(string username, string password);
 >>>>>>> parent of 3e60396... added unit tests to userservice
+=======
+        UserDTO Get(int userAccountId);
+        string GetFirstName(int userAccountId);
+        UserDTO GetByUsernamePassword(string username, string password);
+>>>>>>> parent of aa645ae... added unit tests for userservice
         IEnumerable<UserDTO> GetAll();
         void Dispose(int id);
         int FindMaxId();

@@ -62,11 +62,16 @@ namespace uthTripProject.Controllers
             return View();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         //public ActionResult Account(int id)
         //{
         //    var userAccount = userService.Get(id);
+=======
+        public ActionResult Account(int id)
+        {
+            var userAccount = userService.Get(id);
+>>>>>>> parent of aa645ae... added unit tests for userservice
 
-<<<<<<< Updated upstream
             var viewModel = new UserViewModel
             {
                 User_ID = userAccount.User_ID,
@@ -79,26 +84,17 @@ namespace uthTripProject.Controllers
                 Photo_Url = userAccount.Photo_Url,
                 Info = userAccount.Info
             };
-=======
-        //    var viewModel = new UserViewModel
-        //    {
-        //        User_ID = userAccount.User_ID,
-        //        First_Name = userAccount.First_Name,
-        //        Last_Name = userAccount.Last_Name,
-        //        Username = userAccount.Username,
-        //        Email = userAccount.Email,
-        //        Password = userAccount.Password,
-        //        Birthday = userAccount.Birthday,
-        //        Photo_Url = userAccount.Photo_Url,
-        //        Info = userAccount.Info
-        //    };
->>>>>>> Stashed changes
 
+<<<<<<< HEAD
         //    return View(viewModel);
         //}
 =======
 
 >>>>>>> parent of 3e60396... added unit tests to userservice
+=======
+            return View(viewModel);
+        }
+>>>>>>> parent of aa645ae... added unit tests for userservice
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
