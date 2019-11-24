@@ -48,6 +48,7 @@ namespace uthTrip.BLL.Services
         }
         
 
+
         public UserDTO GetById(int? id)
         {
             if (id == null)
@@ -97,7 +98,7 @@ namespace uthTrip.BLL.Services
                 return null;
             }
         }
-            
+
         }
     }
 

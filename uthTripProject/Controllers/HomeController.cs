@@ -18,48 +18,6 @@ namespace uthTripProject.Controllers
     public class HomeController : Controller
     {
         ITripService tripService;
-        //public ViewResult Index()
-        //{
-        //    IEnumerable<DestinationDTO> destinations = tripService.GetAllDist();
-        //    var countries = new SelectList((from i in destinations
-        //                                    select i.Country).Distinct().ToList());
-
-        //    ViewBag.Countries = countries;
-        //    return View();
-        //}
-        //public ActionResult Index(string City)
-        //{
-
-        //    IEnumerable<TripDTO> trips = tripService.GetAll();
-        //    IEnumerable<DestinationDTO> destinations = tripService.GetAllDist();
-        //    IEnumerable<DatesRangeDTO> dates = tripService.GetAllDateRanges();
-        //    List<TripViewModel> tripViewModels_list = new List<TripViewModel>();
-        //    foreach (var trip in trips)
-        //    {
-        //        foreach (var destination in destinations)
-        //        {
-        //            if (trip.Destination_ID == destination.Destination_ID)
-        //            {
-        //                foreach (var date in dates)
-        //                {
-        //                    if (trip.Destination_ID == destination.Destination_ID && trip.Date_ID == date.Date_ID)
-        //                    {
-        //                        tripViewModels_list.Add(new TripViewModel(trip, destination, date));
-        //                        break;
-        //                    }
-        //                }
-        //                break;
-        //            }
-
-        //        }
-        //    }
-        //    IEnumerable<TripViewModel> viewModels = tripViewModels_list;
-        //    if (!String.IsNullOrEmpty(City))
-        //    {
-        //        viewModels = viewModels.Where(x => x.City == City);
-        //    }
-        //    return View(viewModels);
-        //}
         public HomeController(ITripService iserv)
         {
             tripService = iserv;
@@ -127,6 +85,17 @@ namespace uthTripProject.Controllers
             return View(viewModels);
 
         }
+        //public ActionResult TripDetail()
+        //{
+        //    //if (id == null)
+        //    //{
+        //    //    //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    //}
+        //    //TripDTO trip = tripService.GetById(id);
+
+        //    //return View(trip);
+        //    return View();
+        //}
         public ActionResult HomeA()
         {
 
