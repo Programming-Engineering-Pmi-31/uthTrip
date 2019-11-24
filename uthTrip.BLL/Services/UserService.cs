@@ -99,41 +99,6 @@ namespace uthTrip.BLL.Services
             }
         }
 
-            private List<UserDTO> GetAllUsers()
-            {
-            DateTime somedate = new DateTime(2000, 07, 21);
-            return new List<UserDTO>()
-            {
-                    
-
-            
-            new UserDTO
-                {
-                    User_ID = 123,
-                    First_Name = "Simon",
-                    Last_Name = "Gilbert",
-                    Username = "simongilbert",
-                    Email= "simongilbert@com",
-                    Password = "1111",
-                    Birthday = somedate,
-                    Photo_Url = "www",
-                    Info = "some boy"
-
-                },
-                new UserDTO
-                {
-                    User_ID = 456,
-                    First_Name = "Alexander",
-                    Last_Name = "Hill",
-                    Username = "alexhill",
-                    Email= "alexhill@com",
-                    Password = "1111",
-                    Birthday = somedate,
-                    Photo_Url = "www",
-                    Info = "anpther boy"
-                },
-            };
-            }
         }
     }
 

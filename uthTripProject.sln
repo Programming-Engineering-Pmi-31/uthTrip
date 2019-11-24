@@ -1,5 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 
 
 
@@ -13,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.DAL", "uthTrip.DAL\uthTrip.DAL.csproj", "{F78C2CCB-0AA4-48F9-8DC1-9F65A5135E05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.BLL", "uthTrip.BLL\uthTrip.BLL.csproj", "{EDEC0E39-CC42-426B-8773-F9356BA20DF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{8B8D5CC4-86F5-4793-89EB-296325CA02F9}"
 EndProject
 
 Global
