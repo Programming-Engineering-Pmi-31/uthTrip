@@ -1,36 +1,36 @@
-﻿using Microsoft.AspNet.Identity.Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using uthTripProject.Models;
-using System.Data.Entity.Infrastructure;
-using System.Reflection;
-using AutoMapper;
-using uthTrip.BLL.Interfaces;
-using uthTrip.BLL.Services;
-using uthTrip.BLL.DTO;
-using uthTrip.BLL.Infrastructure;
-namespace uthTripProject.Controllers
+﻿namespace uthTripProject.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using Microsoft.AspNet.Identity.Owin;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.BLL.Services;
+    using uthTripProject.Models;
+
     public class TripDetailController : Controller
     {
         // GET: TripDetail
         ITripService tripService;
         public TripDetailController(ITripService iserv)
         {
-            tripService = iserv;
+            this.tripService = iserv;
         }
-        public ActionResult TripDetail(int ? id)
+        public ActionResult TripDetail(int? id)
         {
             ////if (id == null)
             ////{
             ////    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             ////}
-            IEnumerable < TripDTO > trips = tripService.GetAll();
-            IEnumerable<DestinationDTO> destinations = tripService.GetAllDist();
-            IEnumerable<DatesRangeDTO> dates = tripService.GetAllDateRanges();
+            IEnumerable<TripDTO> trips = this.tripService.GetAll();
+            IEnumerable<DestinationDTO> destinations = this.tripService.GetAllDist();
+            IEnumerable<DatesRangeDTO> dates = this.tripService.GetAllDateRanges();
             List<TripViewModel> tripViewModels_list = new List<TripViewModel>();
             foreach (var t in trips)
             {
@@ -52,10 +52,10 @@ namespace uthTripProject.Controllers
             }
 
             IEnumerable<TripViewModel> viewModels = tripViewModels_list;
-            viewModels = viewModels.Where(x=>x.Trip_ID==id);
+            viewModels = viewModels.Where(x => x.Trip_ID == id);
             TripViewModel tripViewModel = viewModels.First();
-            //TripDTO trip = tripService.GetById(id);
-            return View(tripViewModel);
+            ////TripDTO trip = tripService.GetById(id);
+            return this.View(tripViewModel);
         }
     }
 }

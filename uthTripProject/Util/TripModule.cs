@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Ninject.Modules;
-using uthTrip.BLL.Services;
-using uthTrip.BLL.Interfaces;
-
-namespace uthTripProject.Util
+﻿namespace uthTripProject.Util
 {
-    public class uthTripModule : NinjectModule
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using Ninject.Modules;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.BLL.Services;
+    public class UthTripModule : NinjectModule
     {
         public override void Load()
         {

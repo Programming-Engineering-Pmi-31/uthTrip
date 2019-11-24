@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using uthTrip.BLL.DTO;
-
 namespace uthTripProject.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using UthTrip.BLL.DTO;
     public class TripViewModel
     {
         public TripViewModel()
@@ -15,19 +14,19 @@ namespace uthTripProject.Models
         }
         public TripViewModel(TripDTO trip, DestinationDTO destination, DatesRangeDTO datesRange)
         {
-            Trip_ID = trip.Trip_ID;
-            Trip_Title = trip.Trip_Title;
-            Description = trip.Description;
-            Price = trip.Price;
-            Date_ID = trip.Date_ID;
-            Number_Of_People = trip.Number_Of_People;
-            Creator_ID = trip.Creator_ID;
-            Start_date = datesRange.Start_date;
-            End_date = datesRange.End_date;
-            Destination_ID = trip.Destination_ID;
-            Is_Abroad = destination.Is_Abroad;
-            Country = destination.Country;
-            City = destination.City;
+            this.Trip_ID = trip.Trip_ID;
+            this.Trip_Title = trip.Trip_Title;
+            this.Description = trip.Description;
+            this.Price = trip.Price;
+            this.Date_ID = trip.Date_ID;
+            this.Number_Of_People = trip.Number_Of_People;
+            this.Creator_ID = trip.Creator_ID;
+            this.Start_date = datesRange.Start_date;
+            this.End_date = datesRange.End_date;
+            this.Destination_ID = trip.Destination_ID;
+            this.Is_Abroad = destination.Is_Abroad;
+            this.Country = destination.Country;
+            this.City = destination.City;
         }
 
         public int Trip_ID { get; set; }

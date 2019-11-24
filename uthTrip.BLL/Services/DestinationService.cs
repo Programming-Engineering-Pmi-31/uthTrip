@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using uthTrip.BLL.DTO;
-using uthTrip.DAL.Entities;
-//using uthTrip.BLL.BusinessModels;
-using uthTrip.DAL.Interfaces;
-using uthTrip.BLL.Infrastructure;
-using uthTrip.BLL.Interfaces;
+using UthTrip.BLL.DTO;
+using UthTrip.DAL.Entities;
+////using UthTrip.BLL.BusinessModels;
+using UthTrip.DAL.Interfaces;
+using UthTrip.BLL.Infrastructure;
+using UthTrip.BLL.Interfaces;
 using AutoMapper;
 
-namespace uthTrip.BLL.Services
+namespace UthTrip.BLL.Services
 {
-    public class DestinationService:IDestinationService
+    public class DestinationService : IDestinationService
     {
         IUnitOfWork Database { get; set; }
         public int FindMaxId()
@@ -29,37 +29,37 @@ namespace uthTrip.BLL.Services
         {
             Destination destination = new Destination
             {
-                Destination_ID= destinationDto.Destination_ID,
-                Is_Abroad=destinationDto.Is_Abroad,
-                Country=destinationDto.Country,
-                City=destinationDto.City
+                Destination_ID = destinationDto.Destination_ID,
+                Is_Abroad = destinationDto.Is_Abroad,
+                Country = destinationDto.Country,
+                City = destinationDto.City
             };
             Database.Destinations.Create(destination);
             Database.Save();
         }
-        //public int Authenticate(string username, string password)
-        //{
-        //    if (string.IsNullOrEmpty(username))
-        //    {
-        //        throw new Exception("Username is empty.");
-        //    }
-        //    else if (string.IsNullOrEmpty(password))
-        //    {
-        //        throw new Exception("Password is empty.");
-        //    }
+        ////public int Authenticate(string username, string password)
+        ////{
+        ////    if (string.IsNullOrEmpty(username))
+        ////    {
+        ////        throw new Exception("Username is empty.");
+        ////    }
+        ////    else if (string.IsNullOrEmpty(password))
+        ////    {
+        ////        throw new Exception("Password is empty.");
+        ////    }
 
-        //    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
-        //    if (user == null)
-        //    {
-        //        throw new Exception("User with current name does not exist.");
-        //    }
-        //    else if (!VerifyHash(password, user.Hash))
-        //    {
-        //        throw new Exception("Invalid password.");
-        //    }
+        ////    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
+        ////    if (user == null)
+        ////    {
+        ////        throw new Exception("User with current name does not exist.");
+        ////    }
+        ////    else if (!VerifyHash(password, user.Hash))
+        ////    {
+        ////        throw new Exception("Invalid password.");
+        ////    }
 
-        //    return user.Id;
-        //}
+        ////    return user.Id;
+        ////}
 
 
         public DestinationDTO GetById(int? id)

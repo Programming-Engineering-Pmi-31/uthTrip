@@ -1,15 +1,15 @@
 ﻿using System;
-using uthTrip.BLL.DTO;
-using uthTrip.DAL.Entities;
-//using uthTrip.BLL.BusinessModels;
-using uthTrip.DAL.Interfaces;
-using uthTrip.BLL.Infrastructure;
-using uthTrip.BLL.Interfaces;
+using UthTrip.BLL.DTO;
+using UthTrip.DAL.Entities;
+//using UthTrip.BLL.BusinessModels;
+using UthTrip.DAL.Interfaces;
+using UthTrip.BLL.Infrastructure;
+using UthTrip.BLL.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 
-namespace uthTrip.BLL.Services
+namespace UthTrip.BLL.Services
 {
     public class UserService : IUserService
     {
