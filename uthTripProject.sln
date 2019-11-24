@@ -18,6 +18,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.BLL", "uthTrip.BLL\
 EndProject
 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{8B8D5CC4-86F5-4793-89EB-296325CA02F9}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.Tests", "uthTrip.Tests\uthTrip.Tests.csproj", "{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}"
+EndProject
+=======
+=======
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{8B8D5CC4-86F5-4793-89EB-296325CA02F9}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.Tests", "uthTrip.Tests\uthTrip.Tests.csproj", "{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}"
 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{8B8D5CC4-86F5-4793-89EB-296325CA02F9}"
