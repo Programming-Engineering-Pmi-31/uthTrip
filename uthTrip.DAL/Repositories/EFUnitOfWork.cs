@@ -26,6 +26,7 @@ namespace uthTrip.DAL.Repositories
         {
             db = new uthtripContext(connectionString);
         }
+        
         public IRepository<User> Users
         {
             get
