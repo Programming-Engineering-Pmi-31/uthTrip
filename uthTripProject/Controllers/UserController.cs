@@ -66,10 +66,11 @@ namespace uthTripProject.Controllers
         {
             return View();
         }
-        public ActionResult Account(int id)
-        {
-            var userAccount = userService.Get(id);
+        //public ActionResult Account(int id)
+        //{
+        //    var userAccount = userService.Get(id);
 
+<<<<<<< Updated upstream
             var viewModel = new UserViewModel
             {
                 User_ID = userAccount.User_ID,
@@ -82,9 +83,23 @@ namespace uthTripProject.Controllers
                 Photo_Url = userAccount.Photo_Url,
                 Info = userAccount.Info
             };
+=======
+        //    var viewModel = new UserViewModel
+        //    {
+        //        User_ID = userAccount.User_ID,
+        //        First_Name = userAccount.First_Name,
+        //        Last_Name = userAccount.Last_Name,
+        //        Username = userAccount.Username,
+        //        Email = userAccount.Email,
+        //        Password = userAccount.Password,
+        //        Birthday = userAccount.Birthday,
+        //        Photo_Url = userAccount.Photo_Url,
+        //        Info = userAccount.Info
+        //    };
+>>>>>>> Stashed changes
 
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {

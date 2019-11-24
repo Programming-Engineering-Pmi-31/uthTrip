@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using uthTrip.DAL.Entities;
 using uthTrip.DAL.EF;
 using uthTrip.DAL.Interfaces;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+//using System.Data.Entity;
 
 namespace uthTrip.DAL.Repositories
 {

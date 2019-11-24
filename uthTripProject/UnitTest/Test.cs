@@ -43,56 +43,56 @@ namespace uthTripProject.Tests
         }
 
         [Fact]
-        public void Account_View_Result_One()
-        {
-            // Setup
-            var expectedUserAccountId = 123;
+        //public void Account_View_Result_One()
+        //{
+        //    // Setup
+        //    var expectedUserAccountId = 123;
 
-            var mockUserAccountService = new Mock<IUserService>();
+        //    var mockUserAccountService = new Mock<IUserService>();
 
-            mockUserAccountService.Setup(x => x.Get(expectedUserAccountId))
-                .Returns(GetTestUserAccountOne());
+        //    mockUserAccountService.Setup(x => x.Get(expectedUserAccountId))
+        //        .Returns(GetTestUserAccountOne());
 
-            // Inject
-            var homeController = new UserController(mockUserAccountService.Object);
+        //    // Inject
+        //    var homeController = new UserController(mockUserAccountService.Object);
 
-            // Act
-            var result = homeController.Account(expectedUserAccountId);
+        //    // Act
+        //    var result = homeController.Account(expectedUserAccountId);
 
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
+        //    // Assert
+        //    var viewResult = Assert.IsType<ViewResult>(result);
 
-            var viewModel = Assert.IsAssignableFrom<UserViewModel>(
-                viewResult.ViewData.Model);
+        //    var viewModel = Assert.IsAssignableFrom<UserViewModel>(
+        //        viewResult.ViewData.Model);
 
-            Assert.Equal(expectedUserAccountId, viewModel.User_ID);
-        }
+        //    Assert.Equal(expectedUserAccountId, viewModel.User_ID);
+        //}
 
-        [Fact]
-        public void Account_View_Result_Two()
-        {
-            // Setup
-            var expectedUserAccountId = 456;
+        //[Fact]
+        //public void Account_View_Result_Two()
+        //{
+        //    // Setup
+        //    var expectedUserAccountId = 456;
 
-            var mockUserAccountService = new Mock<IUserService>();
+        //    var mockUserAccountService = new Mock<IUserService>();
 
-            mockUserAccountService.Setup(x => x.Get(expectedUserAccountId))
-                .Returns(GetTestUserAccountTwo());
+        //    mockUserAccountService.Setup(x => x.Get(expectedUserAccountId))
+        //        .Returns(GetTestUserAccountTwo());
             
-            // Inject
-            var homeController = new UserController(mockUserAccountService.Object);
+        //    // Inject
+        //    var homeController = new UserController(mockUserAccountService.Object);
 
-            // Act
-            var result = homeController.Account(expectedUserAccountId);
+        //    // Act
+        //    var result = homeController.Account(expectedUserAccountId);
 
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
+        //    // Assert
+        //    var viewResult = Assert.IsType<ViewResult>(result);
 
-            var viewModel = Assert.IsAssignableFrom<UserViewModel>(
-                viewResult.ViewData.Model);
+        //    var viewModel = Assert.IsAssignableFrom<UserViewModel>(
+        //        viewResult.ViewData.Model);
 
-            Assert.Equal(expectedUserAccountId, viewModel.User_ID);
-        }
+        //    Assert.Equal(expectedUserAccountId, viewModel.User_ID);
+        //}
 
         //[Fact]
         //public void Get_First_Name_Result()
