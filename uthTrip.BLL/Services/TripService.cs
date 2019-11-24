@@ -56,12 +56,11 @@ namespace uthTrip.BLL.Services
                 End_date = datesRangeDTO.End_date
             };
             Database.Destinations.Create(destination);
-            Database.Save();
             Database.Dates_ranges.Create(dates_Ranges);
-            Database.Save();
             Database.Trips.Create(trip);
             Database.Save();
-            
+            Database.Save();
+            Database.Save();
         }
         //public int Authenticate(string username, string password)
         //{

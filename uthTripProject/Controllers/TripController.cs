@@ -46,20 +46,17 @@ namespace uthTripProject.Controllers
                 tripModel.Trip_ID = tripService.FindMaxId() + 1;
                 tripModel.Destination_ID =  tripService.FindMaxIdDestination()+1;
                 tripModel.Date_ID =  tripService.FindMaxIdDateRange()+1;
-                //for now
-                tripModel.Creator_ID = 41;
+                var sessionUserId = int.Parse(Session["User_ID"].ToString());
+                tripModel.Creator_ID = sessionUserId;
 
                 var tripDto = new TripDTO(tripModel.Trip_ID, tripModel.Trip_Title, tripModel.Description, tripModel.Price, tripModel.Date_ID, tripModel.Number_Of_People, tripModel.Destination_ID, tripModel.Creator_ID);
                 var destinationDto = new DestinationDTO(tripModel.Destination_ID, tripModel.Is_Abroad, tripModel.Country, tripModel.City);
                 var dateDto = new DatesRangeDTO(tripModel.Date_ID, tripModel.Start_date, tripModel.End_date);
                 tripService.CreateTrip(tripDto,destinationDto,dateDto);
-
                 return RedirectToAction("TripDetail", "TripDetail", new { id = tripModel.Trip_ID });
-                //ViewBag.SuccessMessage = "Successfull creation of trip.";
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
-                //ModelState.AddModelError(ex.Property, ex.Message);
                 ModelState.Clear();
                 ViewBag.DuplicateMessage = "Trip with this name already exists.";
                 return View("Create", tripModel);
