@@ -1,4 +1,4 @@
-namespace UthTrip.BLL.Services
+namespace uthTrip.BLL.Services
 {
     using System;
     using System.Collections.Generic;
@@ -6,12 +6,12 @@ namespace UthTrip.BLL.Services
     using System.Text;
     using System.Threading.Tasks;
     using AutoMapper;
-    ////using UthTrip.BLL.BusinessModels;
-    using UthTrip.BLL.DTO;
-    using UthTrip.BLL.Infrastructure;
-    using UthTrip.BLL.Interfaces;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
+    ////using uthTrip.BLL.BusinessModels;
+    using uthTrip.BLL.DTO;
+    using uthTrip.BLL.Infrastructure;
+    using uthTrip.BLL.Interfaces;
+    using uthTrip.DAL.Entities;
+    using uthTrip.DAL.Interfaces;
     public class TripService : ITripService
     {
         public TripService()

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UthTrip.BLL.DTO
+namespace uthTrip.BLL.DTO
 {
     public class DestinationDTO
     {

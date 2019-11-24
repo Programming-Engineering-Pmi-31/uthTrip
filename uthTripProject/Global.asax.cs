@@ -10,7 +10,7 @@
     using Ninject;
     using Ninject.Modules;
     using Ninject.Web.Mvc;
-    using UthTrip.BLL.Infrastructure;
+    using uthTrip.BLL.Infrastructure;
     using uthTripProject.Util;
     public class MvcApplication : System.Web.HttpApplication
     {

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UthTrip.BLL.DTO;
-using UthTrip.DAL.Entities;
-////using UthTrip.BLL.BusinessModels;
-using UthTrip.DAL.Interfaces;
-using UthTrip.BLL.Infrastructure;
-using UthTrip.BLL.Interfaces;
+using uthTrip.BLL.DTO;
+using uthTrip.DAL.Entities;
+////using uthTrip.BLL.BusinessModels;
+using uthTrip.DAL.Interfaces;
+using uthTrip.BLL.Infrastructure;
+using uthTrip.BLL.Interfaces;
 using AutoMapper;
 
-namespace UthTrip.BLL.Services
+namespace uthTrip.BLL.Services
 {
     public class DateRangeService : IDateRangeService
     {

@@ -5,8 +5,8 @@
     using System.Linq;
     using System.Web;
     using Ninject.Modules;
-    using UthTrip.BLL.Interfaces;
-    using UthTrip.BLL.Services;
+    using uthTrip.BLL.Interfaces;
+    using uthTrip.BLL.Services;
 
     public class UserModule : NinjectModule
     {
