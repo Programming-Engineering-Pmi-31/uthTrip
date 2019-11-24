@@ -21,16 +21,11 @@ namespace uthTripProject.Controllers
         {
             userService = serv;
         }
-      
         public ActionResult Index()
         {
             IEnumerable<UserDTO> userDtos = userService.GetAll();
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<UserDTO, UserViewModel>()).CreateMapper();
             var users = mapper.Map<IEnumerable<UserDTO>, List<UserViewModel>>(userDtos);
-            //var model = repo.GetComputerList();
-            if (users.Count > 0)
-                ViewBag.Message = String.Format("В базі даних {0} об'єкт", users.Count);
-           
             return View(users);
         }
         [HttpGet]
@@ -66,6 +61,7 @@ namespace uthTripProject.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
         //public ActionResult Account(int id)
         //{
         //    var userAccount = userService.Get(id);
@@ -100,6 +96,9 @@ namespace uthTripProject.Controllers
 
         //    return View(viewModel);
         //}
+=======
+
+>>>>>>> parent of 3e60396... added unit tests to userservice
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
