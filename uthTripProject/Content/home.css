@@ -13,7 +13,7 @@
 }
 
 .background {
-    position: absolute;
+
     top: 0;
     bottom: 0;
     left: 0;
@@ -37,50 +37,151 @@
         border: gray 1px solid;
     }
 
-   .row {
-       text-align:center;
-   }
+.row {
+    text-align: center;
+ 
+}
 
-#maxPeople, #maxPrice, #City, #Country {
+#row {
+    background: rgba(211,211,211, 0.6);
+    margin: 15px;
+}
+
+#maxPeople, #maxPrice {
     height: 55px;
     background: none;
     color: white;
     border: 1px solid black;
 }
 
-#City, #Country {
+#Country {
+    width: 100px;
+    height: 55px;
+    background: none;
+    color: white;
+    border: 1px solid black;
+}
+
+    #Country option {
+        background: none;
+        color: black;
+        border: 1px solid black;
+    }
+
+#City {
+    height: 55px;
+    background: none;
+    color: white;
+    border: 1px solid black;
+
     width: 86px;
     text-align: center;
     padding: 9px;
 }
-#Country {
-    width: 100px;
 
-}
+
+    #City option {
+        background: none;
+        color: black;
+        border: 1px solid black;
+    }
 
 .alow-trips {
     color: white;
     font-weight: bold;
     font-size: 40px;
-    position: absolute;
+
     left: 0;
     top: 0;
-    padding: 70px;
+
+    text-align: center;
 }
 
-#link-to-add-trip {
+.buton-wrapper {
     font-size: 27px;
     font-weight: bold;
-    position: absolute;
-    left: 0;
-    padding:70px;
-    top: 65px;
+    
+    text-align: center;
 }
 
-.body-content {
+#button-trip {
+
+}
+#link-to-add-trip {
+    background: rgba(0,0,0,0.35);
+    padding: 10px;
+}
+. /*body-content {
     margin-top:100px;
-}
-
+}*/
 .toptop {
     padding: 20px;
+}
+
+#tripText, #tripTextDate {
+    color: white;
+    font-size: 25px;
+    height: 100%;
+
+    align-items: center;
+    margin-top: 29px;
+}
+
+#price {
+    margin: 0 auto;
+}
+
+/*#row-wrapper {
+    background: rgba(211,211,211, 0.6);
+    margin: 15px;
+}*/
+
+#tripTextDate {
+    margin-top: 15px;
+}
+
+#tripTextButton {
+    font-size: 20px;
+    height: 100%;
+    align-items: center;
+    margin-top: 29px;
+}
+
+.button-a {
+    border: 1px solid black;
+    border-radius: 20px;
+    pading: 10px;
+    padding: 5px;
+    margin-left: 22px;
+}
+
+#nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+.navbar {
+    /* padding: 10 !important;*/
+    background-color: #FFFFFE;
+}
+
+.navbar-nav li {
+    padding: 0 10px;
+}
+
+    .navbar-nav li a {
+        float: right;
+        text-align: left;
+        color: #5B5B5B;
+        /*font-weight:  600;*/
+    }
+
+.fa-bars {
+    color: #5B5B5B;
+    font-size: 30px !important;
+}
+
+.navbar-toggler {
+    outline: none !important;
 }
