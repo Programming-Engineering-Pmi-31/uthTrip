@@ -6,59 +6,70 @@ using System.Threading.Tasks;
 using uthTrip.DAL.Entities;
 using uthTrip.DAL.EF;
 using uthTrip.DAL.Interfaces;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace uthTrip.DAL.Repositories
+
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
+
     public class RoleRepository : IRepository<Role>
     {
         private uthtripContext db;
+        public RoleRepository(uthtripContext context)
+        {
+            this.db = context;
+        }
         public int MaxId()
         {
             int max;
             try
             {
-                max = db.Roles.Max(a => a.Role_ID);
+                max = this.db.Roles.Max(a => a.Role_ID);
             }
             catch (System.InvalidOperationException)
             { max = -1; }
             return max;
-        }
-        public RoleRepository(uthtripContext context)
-        {
-            this.db = context;
-        }
+        }     
 
         public IEnumerable<Role> GetAll()
         {
-            return db.Roles;
+            return this.db.Roles;
         }
 
         public Role Get(int id)
         {
-            return db.Roles.Find(id);
+            return this.db.Roles.Find(id);
         }
 
         public void Create(Role role)
         {
-            db.Roles.Add(role);
+            this.db.Roles.Add(role);
         }
 
         public void Update(Role role)
         {
-            db.Entry(role).State = EntityState.Modified;
+            this.db.Entry(role).State = EntityState.Modified;
         }
 
-        public IEnumerable<Role> Find(Func<Role, Boolean> predicate)
+        public IEnumerable<Role> Find(Func<Role, bool> predicate)
         {
-            return db.Roles.Where(predicate).ToList();
+            return this.db.Roles.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            Role role = db.Roles.Find(id);
+            Role role = this.db.Roles.Find(id);
             if (role != null)
-                db.Roles.Remove(role);
+                this.db.Roles.Remove(role);
         }
 
         public Role GetbyPass(string username, string password)

@@ -3,31 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using uthTrip.BLL.Interfaces;
-using uthTrip.BLL.DTO;
+using UthTrip.BLL.Interfaces;
+using UthTrip.BLL.DTO;
 
-namespace uthTrip.BLL.Interfaces
+namespace UthTrip.BLL.Interfaces
 {
     public interface IUserService
     {
         void CreateUser(UserDTO userDto);
         UserDTO GetById(int? id);
-<<<<<<< HEAD
-<<<<<<< HEAD
-         UserDTO GetByUsernamePassword(string username, string password);
-=======
-        UserDTO GetByUsernamePassword(string username, string password);
->>>>>>> parent of 3e60396... added unit tests to userservice
-=======
         UserDTO Get(int userAccountId);
-        string GetFirstName(int userAccountId);
         UserDTO GetByUsernamePassword(string username, string password);
->>>>>>> parent of aa645ae... added unit tests for userservice
+        string GetFirstName(int userAccountId);
         IEnumerable<UserDTO> GetAll();
         void Dispose(int id);
         int FindMaxId();
-        //int Authenticate(string username, string password);
-        // void Update(User user, string password = null);
-        //void Create(string username, string password);
+       
     }
 }

@@ -34,14 +34,16 @@
 
 
     </div>
-    <footer>
+    <footer class="bottom">
         <hr />
-        <p>&copy; @DateTime.Now.Year - uthTrip</p>
+        <a class="footer">&copy; @DateTime.Now.Year - uthTrip</a>
     </footer>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</body>
+    @Styles.Render("~/Content/layout.css")
+    @Styles.Render("~/Content/css")
+   </body>
+
 
 </html>

@@ -6,19 +6,22 @@ using uthTrip.DAL.Interfaces;
 using uthTrip.BLL.Infrastructure;
 using uthTrip.BLL.Interfaces;
 using System.Collections.Generic;
-<<<<<<< HEAD
+
+
+
 using System.Linq;
-<<<<<<< HEAD
 using uthTrip.DAL.EF;
 
-=======
->>>>>>> parent of 3e60396... added unit tests to userservice
-=======
->>>>>>> parent of aa645ae... added unit tests for userservice
 using AutoMapper;
 
-namespace uthTrip.BLL.Services
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
+
+namespace UthTrip.BLL.Services
+
 {
+
     public class UserService : IUserService
     {
         public IUnitOfWork Database { get; set; }
@@ -31,6 +34,7 @@ namespace uthTrip.BLL.Services
         {
             Database = uow;
         }
+        
         public void CreateUser(UserDTO userDto)
         {
             User user = new User
@@ -48,8 +52,7 @@ namespace uthTrip.BLL.Services
             Database.Users.Create(user);
             Database.Save();
         }
-<<<<<<< HEAD
-=======
+
         //public int Authenticate(string username, string password)
         //{
         //    if (string.IsNullOrEmpty(username))
@@ -73,7 +76,6 @@ namespace uthTrip.BLL.Services
 
         //    return user.Id;
         //}
->>>>>>> parent of 3e60396... added unit tests to userservice
         
         public string GetFirstName(int userAccountId)
         {
@@ -114,6 +116,7 @@ namespace uthTrip.BLL.Services
 
         //    return user.Id;
         //}
+
 
 
         public UserDTO GetById(int? id)
@@ -165,9 +168,7 @@ namespace uthTrip.BLL.Services
                 return null;
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
             private List<UserDTO> GetAllUsers()
             {
             DateTime somedate = new DateTime(2000, 07, 21);
@@ -175,7 +176,6 @@ namespace uthTrip.BLL.Services
             {
                     
 
->>>>>>> parent of aa645ae... added unit tests for userservice
             
             new UserDTO
                 {
@@ -205,7 +205,12 @@ namespace uthTrip.BLL.Services
             };
             }
         }
-=======
->>>>>>> parent of 3e60396... added unit tests to userservice
+
+
+            
+        }
+
+
+
     }
-}
+

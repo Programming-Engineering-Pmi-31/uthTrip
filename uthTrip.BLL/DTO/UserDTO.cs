@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace uthTrip.BLL.DTO
+﻿namespace UthTrip.BLL.DTO
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Text;
     public class UserDTO
     {
         public int User_ID { get; set; }
@@ -23,15 +22,15 @@ namespace uthTrip.BLL.DTO
         }
         public UserDTO(int user_ID, string first_Name, string last_Name, string email, string username, string password, DateTime birthday, string photo_Url, string info)
         {
-            User_ID = user_ID;
-            First_Name = first_Name;
-            Last_Name = last_Name;
-            Email = email;
-            Username = username;
-            Password = password;
-            Birthday = birthday;
-            Photo_Url = photo_Url;
-            Info = info;
+            this.User_ID = user_ID;
+            this.First_Name = first_Name;
+            this.Last_Name = last_Name;
+            this.Email = email;
+            this.Username = username;
+            this.Password = password;
+            this.Birthday = birthday;
+            this.Photo_Url = photo_Url;
+            this.Info = info;
         }
     }
 }

@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<uthTripProject.Models.TripViewModel>
-
 @{
-                /**/
-
-                ViewBag.Title = "uthTrip";
+    ViewBag.Title = "uthTrip";
 }
 
-<h2>Доступні подорожі</h2>
+<div class="toptop">
+<h2 class="alow-trips">Доступні подорожі</h2>
 <div>
-    @Html.ActionLink("Створити нову подорож", "../Trip/Create")
+    @Html.ActionLink("Створити нову подорож", "../Trip/Create", null, new { id = "link-to-add-trip" })
 </div>
+ </div>
 <hr>
 @using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
 {
+    <link rel="stylesheet" href="~/Content/style.css">
     <div class="container">
         <div class="row">
             <div class="col-md-2">
@@ -24,36 +24,43 @@
             <div class="col-md-2">
                 @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
             </div>
-            <div class="col-md-2">
-                @Html.TextBox("maxPeople", "макс. к-ть осіб..", new { @class = "form-control" })
+            <div class="col-md-2" id="input">
+                @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
             </div>
-            <div class="col-md-2">
-                <input type="submit" value="Фільтрувати" class="btn-sm btn-info" />
+            @*<div class="col-md-2">
+                    <input type="submit" value="Фільтрувати" class="btn-sm btn-info" id="button" />
+                </div>*@
+            <div class="col-md-2" id="btext">
+
+                <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
             </div>
+
+
         </div>
     </div>
-        }
-    <hr>
+}
+<hr>
 
-    <div class="container">
-        @foreach (var item in Model)
-        {
-            <div class="row">
-                <div class="col-md-2">
-                    @Html.DisplayFor(modelItem => item.Trip_Title)
-                </div>
-                <div class="col-md-5">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </div>
-                <div class="col-md-2">
-                    <h2>@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
-                </div>
-                <div class="col-md-1">
-                    @Html.DisplayFor(modelItem => item.Start_date)
-                    <br>
-                    @Html.DisplayFor(modelItem => item.End_date)
-                </div>
-                @*
+<div class="container">
+    <canvas class="background"></canvas>
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Trip_Title)
+            </div>
+            <div class="col-md-5">
+                @Html.DisplayFor(modelItem => item.Description)
+            </div>
+            <div class="col-md-2">
+                <h2>@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayFor(modelItem => item.Start_date)
+                <br>
+                @Html.DisplayFor(modelItem => item.End_date)
+            </div>
+            @*
                 <td>
                     @Html.DisplayFor(modelItem => item.Number_Of_People)
                 </td>
@@ -63,16 +70,26 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.City)
                 </td>
-                *@
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Обрати" class="btn btn-default btn-success" />
-                        </div>
+            *@
+            <div class="col-md-1">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @*<input type="submit" value="Обрати" class="btn btn-default btn-success" />*@
+                        @Html.ActionLink("Більше", "../TripDetail/TripDetail", new { id = item.Trip_ID })
                     </div>
                 </div>
             </div>
-        }
+        </div>
+    }
 
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+</div>
 
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/background")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/home.css")
+    @Styles.Render("~/Content/css")
+}
