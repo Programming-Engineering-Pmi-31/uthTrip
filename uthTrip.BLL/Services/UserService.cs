@@ -1,21 +1,7 @@
-﻿using System;
-using uthTrip.BLL.DTO;
-using uthTrip.DAL.Entities;
-//using uthTrip.BLL.BusinessModels;
-using uthTrip.DAL.Interfaces;
-using uthTrip.BLL.Infrastructure;
-using uthTrip.BLL.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-using uthTrip.DAL.EF;
-
-using AutoMapper;
-
+namespace UthTrip.BLL.Services
+{
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
-namespace uthTrip.BLL.Services
-{
     public class UserService : IUserService
     {
         public IUnitOfWork Database { get; set; }

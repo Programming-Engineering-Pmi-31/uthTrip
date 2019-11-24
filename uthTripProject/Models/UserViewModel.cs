@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace uthTripProject.Models
+﻿namespace uthTripProject.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     public class UserViewModel
     {
         public int User_ID { get; set; }
@@ -39,19 +38,19 @@ namespace uthTripProject.Models
 
         [DisplayName("Birthday date")]
         [DataType(DataType.Date)]
-        //[Required(ErrorMessage = "This field is required.")]
+        ////[Required(ErrorMessage = "This field is required.")]
         public System.DateTime Birthday { get; set; }
 
 
-        //[StringLength(30, MinimumLength = 5, ErrorMessage = "Photo URL must have at least 5 char.")]
+        ////[StringLength(30, MinimumLength = 5, ErrorMessage = "Photo URL must have at least 5 char.")]
         [DisplayName("Your photo URL")]
-        //[Required(ErrorMessage = "This field is required.")]
+        ////[Required(ErrorMessage = "This field is required.")]
         public string Photo_Url { get; set; }
 
-        //[StringLength(30, MinimumLength = 10, ErrorMessage = "Info must have at least 3 char.")]
+        ////[StringLength(30, MinimumLength = 10, ErrorMessage = "Info must have at least 3 char.")]
         [DisplayName("Some information about you")]
         [DataType(DataType.MultilineText)]
-        //[Required(ErrorMessage = "This field is required.")]
+        ////[Required(ErrorMessage = "This field is required.")]
         public string Info { get; set; }
     }
 

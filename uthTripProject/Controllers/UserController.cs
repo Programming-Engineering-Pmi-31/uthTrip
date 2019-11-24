@@ -1,67 +1,66 @@
-﻿using Microsoft.AspNet.Identity.Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using uthTripProject.Models;
-using System.Data.Entity.Infrastructure;
-using System.Reflection;
-using AutoMapper;
-using uthTrip.BLL.Interfaces;
-using uthTrip.BLL.DTO;
-using uthTrip.BLL.Infrastructure;
-
-namespace uthTripProject.Controllers
+﻿namespace uthTripProject.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using Microsoft.AspNet.Identity.Owin;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Infrastructure;
+    using UthTrip.BLL.Interfaces;
+    using uthTripProject.Models;
     public class UserController : Controller
     {
         IUserService userService;
         public UserController(IUserService serv)
         {
-            userService = serv;
+            this.userService = serv;
         }
 
         public ActionResult Index()
         {
-            IEnumerable<UserDTO> userDtos = userService.GetAll();
+            IEnumerable<UserDTO> userDtos = this.userService.GetAll();
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<UserDTO, UserViewModel>()).CreateMapper();
             var users = mapper.Map<IEnumerable<UserDTO>, List<UserViewModel>>(userDtos);
-            //var model = repo.GetComputerList();
+            ////var model = repo.GetComputerList();
             if (users.Count > 0)
-                ViewBag.Message = String.Format("В базі даних {0} об'єкт", users.Count);
+                ViewBag.Message = string.Format("В базі даних {0} об'єкт", users.Count);
 
-            return View(users);
+            return this.View(users);
         }
         [HttpGet]
         public ActionResult Register(int id = 0)
         {
             UserViewModel userModel = new UserViewModel();
-            return View(userModel);
+            return this.View(userModel);
         }
         [HttpPost]
         public ActionResult Register(UserViewModel userModel)
         {
             try
             {
-                userModel.User_ID = userService.FindMaxId() + 1;
+                userModel.User_ID = this.userService.FindMaxId() + 1;
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
-                userService.CreateUser(userDto);
-                return RedirectToAction("StartPage", "Home");
+                this.userService.CreateUser(userDto);
+                return this.RedirectToAction("StartPage", "Home");
             }
             catch (ValidationException ex)
             {
                 ModelState.AddModelError(ex.Property, ex.Message);
                 ModelState.Clear();
                 ViewBag.DuplicateMessage = "Username already exists.";
-                return View("Register", userModel);
+                return this.View("Register", userModel);
             }
         }
 
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            return this.View();
         }
         //public ActionResult Account(int id)
         ////{
@@ -86,7 +85,7 @@ namespace uthTripProject.Controllers
         public ActionResult Login(UserViewModel userModel)
         public ActionResult Account(int id)
         {
-            var userAccount = userService.Get(id);
+            var userAccount = this.userService.Get(id);
 
             var viewModel = new UserViewModel
             {
@@ -101,24 +100,24 @@ namespace uthTripProject.Controllers
                 Info = userAccount.Info
             };
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
             ModelState.Clear();
-            var obj = userService.GetByUsernamePassword(userModel.Username, userModel.Password);
+            var obj = this.userService.GetByUsernamePassword(userModel.Username, userModel.Password);
             if (obj != null)
             {
-                Session["User_ID"] = obj.User_ID.ToString();
-                Session["Username"] = obj.Username.ToString();
-                Session["Password"] = obj.Password.ToString();
-                return RedirectToAction("StartPage", "Home");
+                this.Session["User_ID"] = obj.User_ID.ToString();
+                this.Session["Username"] = obj.Username.ToString();
+                this.Session["Password"] = obj.Password.ToString();
+                return this.RedirectToAction("StartPage", "Home");
             }
             else
             {
                 ViewBag.DuplicateMessage = "Incorrect username or password.";
-                return View("Login");
+                return this.View("Login");
             }
         }
     }

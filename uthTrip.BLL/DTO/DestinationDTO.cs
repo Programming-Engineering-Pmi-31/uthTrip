@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uthTrip.BLL.DTO
+namespace UthTrip.BLL.DTO
 {
     public class DestinationDTO
     {
@@ -18,10 +18,10 @@ namespace uthTrip.BLL.DTO
         }
         public DestinationDTO(int destination_ID, bool is_Abroad, string country, string city)
         {
-            Destination_ID = destination_ID;
-            Is_Abroad = is_Abroad;
-            Country = country;
-            City = city;
+            this.Destination_ID = destination_ID;
+            this.Is_Abroad = is_Abroad;
+            this.Country = country;
+            this.City = city;
         }
     }
 }
