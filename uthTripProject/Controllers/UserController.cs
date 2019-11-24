@@ -47,7 +47,6 @@ namespace uthTripProject.Controllers
                 userModel.User_ID = userService.FindMaxId() + 1;
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 userService.CreateUser(userDto);
-                //ViewBag.SuccessMessage = "Registration Successful.";
                 return RedirectToAction("StartPage", "Home");
             }
             catch (ValidationException ex)
@@ -57,8 +56,6 @@ namespace uthTripProject.Controllers
                 ViewBag.DuplicateMessage = "Username already exists.";
                 return View("Register", userModel);
             }
-            ModelState.Clear();
-            return View("Register", new UserViewModel());
         }
 
         [HttpGet]
@@ -88,8 +85,6 @@ namespace uthTripProject.Controllers
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
-            //if (ModelState.IsValid)
-            //{
             ModelState.Clear();
             var obj = userService.GetByUsernamePassword(userModel.Username, userModel.Password);
             if (obj != null)
@@ -104,22 +99,6 @@ namespace uthTripProject.Controllers
                 ViewBag.DuplicateMessage = "Incorrect username or password.";
                 return View("Login");
             }
-            //}
-
-            //return View(userModel);
         }
-
-        //public ActionResult UserDashBoard()
-        //{
-        //    if (Session["User_ID"] != null)
-        //    {
-        //        return View("../Trip/Create");
-        //    }
-        //    else
-        //    {
-        //        ViewBag.DuplicateMessage = "Incorrect username or password.";
-        //        return View("Login");
-        //    }
-        //} 
     }
 }
