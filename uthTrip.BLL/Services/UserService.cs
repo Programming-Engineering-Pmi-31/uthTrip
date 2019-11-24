@@ -6,19 +6,19 @@ using uthTrip.DAL.Interfaces;
 using uthTrip.BLL.Infrastructure;
 using uthTrip.BLL.Interfaces;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Linq;
 using uthTrip.DAL.EF;
 
-=======
->>>>>>> parent of 3e60396... added unit tests to userservice
 using AutoMapper;
 
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace uthTrip.BLL.Services
+
+namespace UthTrip.BLL.Services
+
 {
+
     public class UserService : IUserService
     {
         public IUnitOfWork Database { get; set; }
@@ -49,33 +49,8 @@ namespace uthTrip.BLL.Services
             Database.Users.Create(user);
             Database.Save();
         }
-<<<<<<< HEAD
-=======
-        //public int Authenticate(string username, string password)
-        //{
-        //    if (string.IsNullOrEmpty(username))
-        //    {
-        //        throw new Exception("Username is empty.");
-        //    }
-        //    else if (string.IsNullOrEmpty(password))
-        //    {
-        //        throw new Exception("Password is empty.");
-        //    }
 
-        //    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
-        //    if (user == null)
-        //    {
-        //        throw new Exception("User with current name does not exist.");
-        //    }
-        //    else if (!VerifyHash(password, user.Hash))
-        //    {
-        //        throw new Exception("Invalid password.");
-        //    }
 
-        //    return user.Id;
-        //}
->>>>>>> parent of 3e60396... added unit tests to userservice
-        
 
         public UserDTO GetById(int? id)
         {
@@ -126,10 +101,11 @@ namespace uthTrip.BLL.Services
                 return null;
             }
         }
-<<<<<<< HEAD
+
             
         }
-=======
->>>>>>> parent of 3e60396... added unit tests to userservice
+
+
+
     }
-}
+

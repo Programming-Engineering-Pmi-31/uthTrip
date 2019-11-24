@@ -1,4 +1,4 @@
-namespace uthTrip.DAL.Entities
+namespace UthTrip.DAL.Entities
 {
     using System;
     using System.Collections.Generic;

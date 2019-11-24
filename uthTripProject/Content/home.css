@@ -1,0 +1,86 @@
+﻿body {
+    padding-top: 8px;
+    padding-bottom: 5px;
+    background: url('https://images.1plus1.video/news-1/29456/1020x565.jpg') bottom no-repeat transparent;
+    background-repeat: no-repeat center center fixed;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%;
+    height: 100%;
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#hello-btn {
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 25px;
+    line-height: 2em;
+    font-weight: bold;
+    font-size: 21px;
+    background: none;
+}
+
+    #hello-btn:hover {
+        color: #b19295;
+        border: gray 1px solid;
+    }
+
+   .row {
+       text-align:center;
+   }
+
+#maxPeople, #maxPrice, #City, #Country {
+    height: 55px;
+    background: none;
+    color: white;
+    border: 1px solid black;
+}
+
+#City, #Country {
+    width: 86px;
+    text-align: center;
+    padding: 9px;
+}
+#Country {
+    width: 100px;
+
+}
+
+.alow-trips {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 70px;
+}
+
+#link-to-add-trip {
+    font-size: 27px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    padding:70px;
+    top: 65px;
+}
+
+.body-content {
+    margin-top:100px;
+}
+
+.toptop {
+    padding: 20px;
+}
