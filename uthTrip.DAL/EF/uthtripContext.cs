@@ -4,8 +4,10 @@ namespace UthTrip.DAL.EF
     //using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+
     using UthTrip.DAL.Entities;
     using Microsoft.EntityFrameworkCore;
+
 
     public partial class uthtripContext : DbContext
     {

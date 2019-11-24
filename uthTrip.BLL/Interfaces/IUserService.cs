@@ -13,15 +13,16 @@ namespace UthTrip.BLL.Interfaces
         void CreateUser(UserDTO userDto);
         UserDTO GetById(int? id);
 
+         UserDTO GetByUsernamePassword(string username, string password);
+
 
         UserDTO Get(int userAccountId);
         string GetFirstName(int userAccountId);
+
         UserDTO GetByUsernamePassword(string username, string password);
         IEnumerable<UserDTO> GetAll();
         void Dispose(int id);
         int FindMaxId();
-        ////int Authenticate(string username, string password);
-        //// void Update(User user, string password = null);
-        ////void Create(string username, string password);
+       
     }
 }

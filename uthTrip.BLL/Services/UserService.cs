@@ -1,7 +1,24 @@
-namespace UthTrip.BLL.Services
-{
+﻿using System;
+using uthTrip.BLL.DTO;
+using uthTrip.DAL.Entities;
+//using uthTrip.BLL.BusinessModels;
+using uthTrip.DAL.Interfaces;
+using uthTrip.BLL.Infrastructure;
+using uthTrip.BLL.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
+using uthTrip.DAL.EF;
+
+using AutoMapper;
+
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+
+
+namespace UthTrip.BLL.Services
+
+{
+
     public class UserService : IUserService
     {
         public IUnitOfWork Database { get; set; }
@@ -32,7 +49,7 @@ using Microsoft.EntityFrameworkCore;
             Database.Users.Create(user);
             Database.Save();
         }
-        
+
 
 
         public UserDTO GetById(int? id)
@@ -85,6 +102,10 @@ using Microsoft.EntityFrameworkCore;
             }
         }
 
+            
         }
+
+
+
     }
 

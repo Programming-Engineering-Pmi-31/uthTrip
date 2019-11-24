@@ -4,9 +4,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UthTrip.DAL.Entities;
-using UthTrip.DAL.EF;
-using UthTrip.DAL.Interfaces;
+using uthTrip.DAL.Entities;
+using uthTrip.DAL.EF;
+using uthTrip.DAL.Interfaces;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace UthTrip.DAL.Repositories

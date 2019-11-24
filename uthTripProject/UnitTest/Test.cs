@@ -1,16 +1,18 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System;
+using Moq;
+using uthTripProject.Controllers;
+using uthTripProject.Models;
+using uthTrip.BLL.Services;
+using uthTrip.BLL.Interfaces;
+using uthTrip.BLL.DTO;
+using System.Web.Mvc;
+using Xunit;
+
 namespace uthTripProject.Tests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web.Mvc;
-    using Moq;
-    using UthTrip.BLL.DTO;
-    using UthTrip.BLL.Interfaces;
-    using UthTrip.BLL.Services;
-    using uthTripProject.Controllers;
-    using uthTripProject.Models;
-    using Xunit;
+
     public class HomeControllerTests
     {
         DateTime somedate = new DateTime(2000, 07, 21);
@@ -24,7 +26,9 @@ namespace uthTripProject.Tests
             var mockUserAccountService = new Mock<IUserService>();
 
             mockUserAccountService.Setup(x => x.GetAll())
-                .Returns(this.GetTestUserAccounts());
+
+                .Returns(GetTestUserAccounts());
+
 
             // Inject
             var homeController = new UserController(mockUserAccountService.Object);
@@ -41,7 +45,6 @@ namespace uthTripProject.Tests
             Assert.Equal(expectedUserAccountCount, model.Count());
         }
 
-        [Fact]
         public void Account_View_Result_One()
         {
             // Setup
@@ -93,35 +96,17 @@ namespace uthTripProject.Tests
             Assert.Equal(expectedUserAccountId, viewModel.User_ID);
         }
 
-        /*[Fact]
-        public void Get_First_Name_Result()
-        {
-            // Setup
-            var userAccountId = 123;
-            var userAccountFirstName = "Simon";
+      
 
-            var mockUserAccountService = new Mock<IUserService>();
-
-            mockUserAccountService.Setup(x => x.GetFirstName(userAccountId))
-                .Returns(userAccountFirstName);
-
-            // Inject
-            var homeController = new UserController(mockUserAccountService.Object);
-
-            // Act
-            var result = homeController.ActionInvoker
-
-            // Assert
-            Assert.Equal(userAccountFirstName, result);
-        }
-        */
 
         private List<UserDTO> GetTestUserAccounts()
         {
             return new List<UserDTO>()
             {
-                this.GetTestUserAccountOne(),
-                this.GetTestUserAccountTwo(),
+
+                GetTestUserAccountOne(),
+                GetTestUserAccountTwo(),
+=
             };
         }
 
@@ -136,7 +121,8 @@ namespace uthTripProject.Tests
                 Username = "simongilbert",
                 Email = "simongilbert@com",
                 Password = "1111",
-                Birthday = this.somedate,
+                Birthday = somedate,
+
                 Photo_Url = "www",
                 Info = "some boy"
             };
@@ -152,7 +138,8 @@ namespace uthTripProject.Tests
                 Username = "alexhill",
                 Email = "alexhill@com",
                 Password = "1111",
-                Birthday = this.somedate,
+                Birthday = somedate,
+
                 Photo_Url = "www",
                 Info = "anpther boy"
             };
