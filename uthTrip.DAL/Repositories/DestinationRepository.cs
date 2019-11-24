@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.DAL.Entities;
-using uthTrip.DAL.EF;
-using uthTrip.DAL.Interfaces;
-//using System.Data.Entity;
-using Microsoft.EntityFrameworkCore;
-
-namespace uthTrip.DAL.Repositories
-
+﻿namespace uthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -18,9 +6,9 @@ namespace uthTrip.DAL.Repositories
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
+    using uthTrip.DAL.EF;
+    using uthTrip.DAL.Entities;
+    using uthTrip.DAL.Interfaces;
 
     public class DestinationRepository : IRepository<Destination>
     {
@@ -59,7 +47,7 @@ namespace uthTrip.DAL.Repositories
 
         public void Update(Destination destination)
         {
-            this.db.Entry(destination).State = EntityState.Modified;
+            //this.db.Entry(destination).State = EntityState.Modified;
         }
 
         public IEnumerable<Destination> Find(Func<Destination, bool> predicate)

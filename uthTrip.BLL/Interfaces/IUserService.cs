@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UthTrip.BLL.Interfaces;
-using UthTrip.BLL.DTO;
+using uthTrip.BLL.Interfaces;
+using uthTrip.BLL.DTO;
 
-namespace UthTrip.BLL.Interfaces
+namespace uthTrip.BLL.Interfaces
 {
     public interface IUserService
     {

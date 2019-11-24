@@ -8,9 +8,9 @@ using uthTrip.DAL.Entities;
 using uthTrip.DAL.EF;
 using uthTrip.DAL.Interfaces;
 
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 
-namespace UthTrip.DAL.Repositories
+namespace uthTrip.DAL.Repositories
 {
     public class TripRepository : IRepository<Trip>
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UthTrip.BLL.Infrastructure
+namespace uthTrip.BLL.Infrastructure
 {
     public class ValidationException : Exception
     {

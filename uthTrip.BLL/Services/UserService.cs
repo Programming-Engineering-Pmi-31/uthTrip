@@ -6,22 +6,15 @@ using uthTrip.DAL.Interfaces;
 using uthTrip.BLL.Infrastructure;
 using uthTrip.BLL.Interfaces;
 using System.Collections.Generic;
-
-
-
 using System.Linq;
 using uthTrip.DAL.EF;
-
 using AutoMapper;
-
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 
 
-namespace UthTrip.BLL.Services
-
+namespace uthTrip.BLL.Services
 {
-
     public class UserService : IUserService
     {
         public IUnitOfWork Database { get; set; }
@@ -34,20 +27,20 @@ namespace UthTrip.BLL.Services
         {
             Database = uow;
         }
-        
+
         public void CreateUser(UserDTO userDto)
         {
             User user = new User
             {
-                User_ID=userDto.User_ID,
+                User_ID = userDto.User_ID,
                 First_Name = userDto.First_Name,
-                Last_Name=userDto.Last_Name,
-                Email=userDto.Email,
-                Username=userDto.Username,
-                Password=userDto.Password,
-                Birthday=userDto.Birthday,
-                Photo_Url=userDto.Photo_Url,
-                Info=userDto.Info
+                Last_Name = userDto.Last_Name,
+                Email = userDto.Email,
+                Username = userDto.Username,
+                Password = userDto.Password,
+                Birthday = userDto.Birthday,
+                Photo_Url = userDto.Photo_Url,
+                Info = userDto.Info
             };
             Database.Users.Create(user);
             Database.Save();
@@ -76,7 +69,7 @@ namespace UthTrip.BLL.Services
 
         //    return user.Id;
         //}
-        
+
         public string GetFirstName(int userAccountId)
         {
             var result = GetAllUsers()
@@ -127,8 +120,18 @@ namespace UthTrip.BLL.Services
             if (user == null)
                 throw new ValidationException("User with this ID was not found", "");
 
-            return new UserDTO { User_ID=user.User_ID, First_Name = user.First_Name,Last_Name=user.Last_Name,
-            Email=user.Email, Username=user.Username, Password=user.Password,Info=user.Info, Birthday=user.Birthday, Photo_Url=user.Photo_Url};
+            return new UserDTO
+            {
+                User_ID = user.User_ID,
+                First_Name = user.First_Name,
+                Last_Name = user.Last_Name,
+                Email = user.Email,
+                Username = user.Username,
+                Password = user.Password,
+                Info = user.Info,
+                Birthday = user.Birthday,
+                Photo_Url = user.Photo_Url
+            };
         }
         public IEnumerable<UserDTO> GetAll()
         {
@@ -169,14 +172,14 @@ namespace UthTrip.BLL.Services
             }
         }
 
-            private List<UserDTO> GetAllUsers()
-            {
+        private List<UserDTO> GetAllUsers()
+        {
             DateTime somedate = new DateTime(2000, 07, 21);
             return new List<UserDTO>()
             {
-                    
 
-            
+
+
             new UserDTO
                 {
                     User_ID = 123,
@@ -203,14 +206,6 @@ namespace UthTrip.BLL.Services
                     Info = "anpther boy"
                 },
             };
-            }
         }
-
-
-            
-        }
-
-
-
     }
-
+}

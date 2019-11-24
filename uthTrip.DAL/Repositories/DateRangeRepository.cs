@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using uthTrip.DAL.Entities;
 using uthTrip.DAL.EF;
 using uthTrip.DAL.Interfaces;
-using Microsoft.EntityFrameworkCore;
-//using System.Data.Entity;
+//using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 
 namespace uthTrip.DAL.Repositories
 
@@ -18,9 +18,9 @@ namespace uthTrip.DAL.Repositories
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
+    using uthTrip.DAL.EF;
+    using uthTrip.DAL.Entities;
+    using uthTrip.DAL.Interfaces;
     public class DateRangeRepository : IRepository<Dates_ranges>
     {
         private uthtripContext db;
@@ -58,7 +58,7 @@ namespace uthTrip.DAL.Repositories
 
         public void Update(Dates_ranges dates_range)
         {
-            this.db.Entry(dates_range).State = EntityState.Modified;
+            //this.db.Entry(dates_range).State = EntityState.Modified;
         }
 
         public IEnumerable<Dates_ranges> Find(Func<Dates_ranges, bool> predicate)

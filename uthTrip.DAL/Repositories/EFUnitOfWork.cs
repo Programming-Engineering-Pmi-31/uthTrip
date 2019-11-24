@@ -1,15 +1,15 @@
 ﻿
-namespace UthTrip.DAL.Repositories
+namespace uthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using UthTrip;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
+    using uthTrip;
+    using uthTrip.DAL.EF;
+    using uthTrip.DAL.Entities;
+    using uthTrip.DAL.Interfaces;
 
     public class EFUnitOfWork : IUnitOfWork
     {
