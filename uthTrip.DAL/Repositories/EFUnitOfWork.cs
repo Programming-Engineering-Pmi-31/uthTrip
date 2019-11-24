@@ -41,6 +41,7 @@ namespace UthTrip.DAL.Repositories
             this.rightRepository = new RightRepository(db);
 
         }
+        
         public IRepository<User> Users
         {
             get

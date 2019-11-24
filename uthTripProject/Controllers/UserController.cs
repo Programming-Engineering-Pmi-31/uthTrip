@@ -62,6 +62,27 @@
         {
             return this.View();
         }
+        //public ActionResult Account(int id)
+        ////{
+        //   var userAccount = userService.Get(id);
+
+
+            var viewModel = new UserViewModel
+            {
+                User_ID = userAccount.User_ID,
+            First_Name = userAccount.First_Name,
+                Last_Name = userAccount.Last_Name,
+                Username = userAccount.Username,
+                Email = userAccount.Email,
+                Password = userAccount.Password,
+                Birthday = userAccount.Birthday,
+                Photo_Url = userAccount.Photo_Url,
+                Info = userAccount.Info
+            };
+
+        
+        [HttpPost]
+        public ActionResult Login(UserViewModel userModel)
         public ActionResult Account(int id)
         {
             var userAccount = this.userService.Get(id);

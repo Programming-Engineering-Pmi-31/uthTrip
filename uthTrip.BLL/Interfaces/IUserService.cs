@@ -12,6 +12,8 @@ namespace UthTrip.BLL.Interfaces
     {
         void CreateUser(UserDTO userDto);
         UserDTO GetById(int? id);
+
+
         UserDTO Get(int userAccountId);
         string GetFirstName(int userAccountId);
         UserDTO GetByUsernamePassword(string username, string password);

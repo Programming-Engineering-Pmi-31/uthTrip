@@ -1,4 +1,4 @@
-﻿namespace UthTrip.DAL.Repositories
+namespace UthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;

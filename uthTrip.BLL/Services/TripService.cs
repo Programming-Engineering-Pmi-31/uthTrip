@@ -1,4 +1,4 @@
-﻿namespace UthTrip.BLL.Services
+namespace UthTrip.BLL.Services
 {
     using System;
     using System.Collections.Generic;

@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UthTrip.DAL.Entities;
 using UthTrip.DAL.EF;
 using UthTrip.DAL.Interfaces;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace UthTrip.DAL.Repositories
 {

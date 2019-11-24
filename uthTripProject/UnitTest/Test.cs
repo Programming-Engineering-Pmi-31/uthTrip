@@ -1,4 +1,4 @@
-﻿namespace uthTripProject.Tests
+namespace uthTripProject.Tests
 {
     using System;
     using System.Collections.Generic;
