@@ -27,7 +27,9 @@
                 max = this.db.Rights.Max(a => a.Rights_ID);
             }
             catch (System.InvalidOperationException)
-            { max = -1; }
+            {
+                max = -1;
+            }
             return max;
         }
 

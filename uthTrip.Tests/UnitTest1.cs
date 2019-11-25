@@ -114,8 +114,8 @@ namespace UthTrip.Tests
     //        //    var userService = CreateUserService();
 
     //        //    DateTime somedate = new DateTime(2000, 07, 21);
-
-    //        //    UserDTO usermodel = new UserDTO();
+ 
+    ////    UserDTO usermodel = new UserDTO();
     //        //    usermodel.User_ID = 2;
     //        //    usermodel.First_Name = "Nadia";
     //        //    usermodel.Last_Name = "Padalka";
