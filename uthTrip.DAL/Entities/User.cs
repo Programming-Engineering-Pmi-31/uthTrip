@@ -8,17 +8,17 @@ namespace UthTrip.DAL.Entities
 
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Reviewed.")]
         public User()
         {
-            Blocked_Users = new HashSet<Blocked_Users>();
-            Reviews = new HashSet<Review>();
-            Rights = new HashSet<Right>();
-            Trips = new HashSet<Trip>();
+            this.Blocked_Users = new HashSet<Blocked_Users>();
+            this.Reviews = new HashSet<Review>();
+            this.Rights = new HashSet<Right>();
+            this.Trips = new HashSet<Trip>();
         }
 
         [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        ////[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int User_ID { get; set; }
 
         [Required]
@@ -52,16 +52,16 @@ namespace UthTrip.DAL.Entities
         [StringLength(30)]
         public string Info { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Blocked_Users> Blocked_Users { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Review> Reviews { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Right> Rights { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Trip> Trips { get; set; }
     }
 }

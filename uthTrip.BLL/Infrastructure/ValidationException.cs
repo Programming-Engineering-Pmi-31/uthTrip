@@ -8,10 +8,12 @@
 
     public class ValidationException : Exception
     {
-        public string Property { get; protected set; }
-        public ValidationException(string message, string prop) : base(message)
+        public ValidationException(string message, string prop)
+            : base(message)
         {
             this.Property = prop;
         }
-    }   
+
+        public string Property { get; protected set; }
+    }
 }

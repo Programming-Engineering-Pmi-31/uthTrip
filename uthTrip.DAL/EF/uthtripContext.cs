@@ -5,7 +5,7 @@ namespace UthTrip.DAL.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using UthTrip.DAL.Entities;
-    //using Microsoft.EntityFrameworkCore;
+    //// /using Microsoft.EntityFrameworkCore;
     public partial class UthTripContext : DbContext
     {
         private string connectionString;
@@ -14,18 +14,26 @@ namespace UthTrip.DAL.EF
         {
             connectionString = conString;
         }
+
         public UthTripContext()
             : base("name=UthTripContext")
         {
         }
 
         public virtual DbSet<Blocked_Users> Blocked_Users { get; set; }
+
         public virtual DbSet<Dates_ranges> Dates_ranges { get; set; }
+
         public virtual DbSet<Destination> Destinations { get; set; }
+
         public virtual DbSet<Review> Reviews { get; set; }
+
         public virtual DbSet<Right> Rights { get; set; }
+
         public virtual DbSet<Role> Roles { get; set; }
+
         public virtual DbSet<Trip> Trips { get; set; }
+
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

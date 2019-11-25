@@ -17,11 +17,13 @@
     public class TripDetailController : Controller
     {
         // GET: TripDetail
-        ITripService tripService;
+        private ITripService tripService;
+
         public TripDetailController(ITripService iserv)
         {
             this.tripService = iserv;
         }
+
         public ActionResult TripDetail(int? id)
         {
             ////if (id == null)
@@ -46,6 +48,7 @@
                                 break;
                             }
                         }
+
                         break;
                     }
                 }

@@ -15,17 +15,19 @@
 
     public class DestinationService : IDestinationService
     {
-        IUnitOfWork Database { get; set; }
         public DestinationService(IUnitOfWork uow)
         {
             this.Database = uow;
         }
+
+        private IUnitOfWork Database { get; set; }
+
         public int FindMaxId()
         {
             int max = this.Database.Destinations.MaxId();
             return max;
         }
-       
+
         public void CreateDestination(DestinationDTO destinationDto)
         {
             Destination destination = new Destination
@@ -62,14 +64,18 @@
         ////    return user.Id;
         ////}
 
-
         public DestinationDTO GetById(int? id)
         {
             if (id == null)
+            {
                 throw new ValidationException("ID not set.", string.Empty);
+            }
+
             var destination = this.Database.Destinations.Get(id.Value);
             if (destination == null)
+            {
                 throw new ValidationException("Destination with this ID was not found", string.Empty);
+            }
 
             return new DestinationDTO
             {
@@ -79,11 +85,13 @@
                 City = destination.City,
             };
         }
+
         public IEnumerable<DestinationDTO> GetAll()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Destination, DestinationDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Destination>, List<DestinationDTO>>(this.Database.Destinations.GetAll());
         }
+
         public void Dispose(int id)
         {
             var trip = this.Database.Destinations.Get(id);

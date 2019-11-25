@@ -34,7 +34,6 @@
             return max;
         }
 
-
         public IEnumerable<Dates_ranges> GetAll()
         {
             return this.db.Dates_ranges;

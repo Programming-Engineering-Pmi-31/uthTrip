@@ -11,14 +11,21 @@
     public interface ITripService
     {
         void CreateTrip(TripDTO tripDto, DestinationDTO destinationDTO, DatesRangeDTO datesRangeDTO);
+
         TripDTO GetById(int? id);
+
         IEnumerable<TripDTO> GetAll();
+
         IEnumerable<DestinationDTO> GetAllDist();
+
         IEnumerable<DatesRangeDTO> GetAllDateRanges();
 
         void Dispose(int id);
+
         int FindMaxId();
+
         int FindMaxIdDestination();
+
         int FindMaxIdDateRange();
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);

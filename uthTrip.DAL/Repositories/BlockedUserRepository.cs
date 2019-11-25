@@ -9,18 +9,20 @@
     using UthTrip.DAL.EF;
     using UthTrip.DAL.Entities;
     using UthTrip.DAL.Interfaces;
+
     public class BlockedUserRepository : IRepository<Blocked_Users>
     {
         private UthTripContext db;
+
         public BlockedUserRepository(UthTripContext context)
         {
             this.db = context;
         }
+
         public int MaxId()
         {
             return 0;
         }
-        
 
         public IEnumerable<Blocked_Users> GetAll()
         {

@@ -13,15 +13,16 @@
     public class ReviewRepository : IRepository<Review>
     {
         private UthTripContext db;
+
         public ReviewRepository(UthTripContext context)
         {
             this.db = context;
         }
+
         public int MaxId()
         {
             return 0;
         }
-       
 
         public IEnumerable<Review> GetAll()
         {
@@ -52,7 +53,9 @@
         {
             Review review = this.db.Reviews.Find(id);
             if (review != null)
+            {
                 this.db.Reviews.Remove(review);
+            }
         }
 
         public Review GetbyPass(string username, string password)

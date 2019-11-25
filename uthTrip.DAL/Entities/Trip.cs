@@ -8,11 +8,11 @@ namespace UthTrip.DAL.Entities
 
     public partial class Trip
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Reviewed.")]
         public Trip()
         {
-            Reviews = new HashSet<Review>();
-            Rights = new HashSet<Right>();
+            this.Reviews = new HashSet<Review>();
+            this.Rights = new HashSet<Right>();
         }
 
         [Key]
@@ -39,10 +39,10 @@ namespace UthTrip.DAL.Entities
 
         public virtual Destination Destination { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Review> Reviews { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Right> Rights { get; set; }
 
         public virtual User User { get; set; }

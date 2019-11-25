@@ -15,10 +15,12 @@ namespace UthTrip.DAL.Repositories
     public class TripRepository : IRepository<Trip>
     {
         private UthTripContext db;
+
         public TripRepository(UthTripContext context)
         {
             this.db = context;
         }
+
         public int MaxId()
         {
             int max;
@@ -30,7 +32,6 @@ namespace UthTrip.DAL.Repositories
             { max = -1; }
             return max;
         }
-      
 
         public IEnumerable<Trip> GetAll()
         {
@@ -61,7 +62,9 @@ namespace UthTrip.DAL.Repositories
         {
             Trip trip = this.db.Trips.Find(id);
             if (trip != null)
+            {
                 this.db.Trips.Remove(trip);
+            }
         }
 
         public Trip GetbyPass(string username, string password)

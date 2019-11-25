@@ -1,5 +1,4 @@
-﻿
-namespace UthTrip.DAL.Repositories
+﻿namespace UthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -28,6 +27,7 @@ namespace UthTrip.DAL.Repositories
         {
             this.db = new UthTripContext(connectionString);
         }
+
         public EFUnitOfWork(UthTripContext db)
         {
             this.db = db;
@@ -40,13 +40,16 @@ namespace UthTrip.DAL.Repositories
             this.roleRepository = new RoleRepository(db);
             this.rightRepository = new RightRepository(db);
         }
-        
+
         public IRepository<User> Users
         {
             get
             {
                 if (this.userRepository == null)
+                {
                     this.userRepository = new UserRepository(this.db);
+                }
+
                 return this.userRepository;
             }
         }
@@ -56,69 +59,96 @@ namespace UthTrip.DAL.Repositories
             get
             {
                 if (this.tripRepository == null)
+                {
                     this.tripRepository = new TripRepository(this.db);
+                }
+
                 return this.tripRepository;
             }
         }
+
         public IRepository<Review> Reviews
         {
             get
             {
                 if (this.reviewRepository == null)
+                {
                     this.reviewRepository = new ReviewRepository(this.db);
+                }
+
                 return this.reviewRepository;
             }
         }
+
         public IRepository<Blocked_Users> Blocked_Users
         {
             get
             {
                 if (this.blockedUserRepository == null)
+                {
                     this.blockedUserRepository = new BlockedUserRepository(this.db);
+                }
+
                 return this.blockedUserRepository;
             }
         }
+
         public IRepository<Dates_ranges> Dates_ranges
         {
             get
             {
                 if (this.dateRangeRepository == null)
+                {
                     this.dateRangeRepository = new DateRangeRepository(this.db);
+                }
+
                 return this.dateRangeRepository;
             }
         }
+
         public IRepository<Destination> Destinations
         {
             get
             {
                 if (this.destinationRepository == null)
+                {
                     this.destinationRepository = new DestinationRepository(this.db);
+                }
+
                 return this.destinationRepository;
             }
         }
+
         public IRepository<Role> Roles
         {
             get
             {
                 if (this.roleRepository == null)
+                {
                     this.roleRepository = new RoleRepository(this.db);
+                }
+
                 return this.roleRepository;
             }
         }
+
         public IRepository<Right> Rights
         {
             get
             {
                 if (this.rightRepository == null)
+                {
                     this.rightRepository = new RightRepository(this.db);
+                }
+
                 return this.rightRepository;
             }
         }
+
         public void Save()
         {
             this.db.SaveChanges();
         }
-
 
         public virtual void Dispose(bool disposing)
         {
@@ -128,6 +158,7 @@ namespace UthTrip.DAL.Repositories
                 {
                     this.db.Dispose();
                 }
+
                 this.disposed = true;
             }
         }

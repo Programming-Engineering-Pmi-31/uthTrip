@@ -67,9 +67,8 @@
                 this.db.Destinations.Remove(destination);
             }
         }
-    
 
-     public Destination GetbyPass(string username, string password)
+        public Destination GetbyPass(string username, string password)
         {
             throw new NotImplementedException();
         }

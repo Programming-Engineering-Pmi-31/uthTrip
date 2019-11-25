@@ -17,11 +17,13 @@
 
     public class HomeController : Controller
     {
-        ITripService tripService;
+        private ITripService tripService;
+
         public HomeController(ITripService iserv)
         {
             this.tripService = iserv;
         }
+
         public ActionResult StartPage(string Country, string City, string maxPrice, string maxPeople)
         {
             IEnumerable<TripDTO> trips = this.tripService.GetAll();
@@ -42,6 +44,7 @@
                                 break;
                             }
                         }
+
                         break;
                     }
                 }
@@ -52,12 +55,12 @@
             var countries = new SelectList((from i in destinations
                                             orderby i.Country
                                             select i.Country).Distinct().ToList());
-            ViewBag.Country = countries;
+            this.ViewBag.Country = countries;
 
             var cities = new SelectList((from i in destinations
                                          orderby i.City
                                          select i.City).Distinct().ToList());
-            ViewBag.City = cities;
+            this.ViewBag.City = cities;
 
             if (!string.IsNullOrEmpty(Country) && !string.IsNullOrEmpty(City))
             {
@@ -71,6 +74,7 @@
             {
                 viewModels = viewModels.Where(x => x.City == City);
             }
+
             double price;
             if (double.TryParse(maxPrice, out price))
             {
@@ -82,8 +86,10 @@
             {
                 viewModels = viewModels.Where(x => x.Number_Of_People <= persons);
             }
+
             return this.View(viewModels);
         }
+
         public ActionResult HomeA()
         {
             return this.View("Login");
