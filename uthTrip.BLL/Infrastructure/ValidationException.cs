@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UthTrip.BLL.Infrastructure
+namespace uthTrip.BLL.Infrastructure
 {
     public class ValidationException : Exception
     {
         public string Property { get; protected set; }
         public ValidationException(string message, string prop) : base(message)
         {
-            Property = prop;
+            this.Property = prop;
         }
     }   
 }

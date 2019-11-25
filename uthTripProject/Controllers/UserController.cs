@@ -9,9 +9,9 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
-    using UthTrip.BLL.DTO;
-    using UthTrip.BLL.Infrastructure;
-    using UthTrip.BLL.Interfaces;
+    using uthTrip.BLL.DTO;
+    using uthTrip.BLL.Infrastructure;
+    using uthTrip.BLL.Interfaces;
     using uthTripProject.Models;
     public class UserController : Controller
     {
@@ -62,73 +62,7 @@
         {
             return this.View();
         }
-     public ActionResult Account(int id)
-        {
-            var userAccount = userService.Get(id);
 
-            var viewModel = new UserViewModel
-            {
-                User_ID = userAccount.User_ID,
-            First_Name = userAccount.First_Name,
-                Last_Name = userAccount.Last_Name,
-                Username = userAccount.Username,
-                Email = userAccount.Email,
-                Password = userAccount.Password,
-                Birthday = userAccount.Birthday,
-                Photo_Url = userAccount.Photo_Url,
-                Info = userAccount.Info
-            };
-            return View(viewModel);
-        }
-            var viewModel = new UserViewModel
-            {
-                User_ID = userAccount.User_ID,
-            First_Name = userAccount.First_Name,
-                Last_Name = userAccount.Last_Name,
-                Username = userAccount.Username,
-                Email = userAccount.Email,
-                Password = userAccount.Password,
-                Birthday = userAccount.Birthday,
-                Photo_Url = userAccount.Photo_Url,
-                Info = userAccount.Info
-            };
-
-        //    var viewModel = new UserViewModel
-        //    {
-        //        User_ID = userAccount.User_ID,
-        //        First_Name = userAccount.First_Name,
-        //        Last_Name = userAccount.Last_Name,
-        //        Username = userAccount.Username,
-        //        Email = userAccount.Email,
-        //        Password = userAccount.Password,
-        //        Birthday = userAccount.Birthday,
-        //        Photo_Url = userAccount.Photo_Url,
-        //        Info = userAccount.Info
-        //    };
-
-
-
-        //public ActionResult Account(int id)
-        ////{
-        //   var userAccount = userService.Get(id);
-
-
-            var viewModel = new UserViewModel
-            {
-                User_ID = userAccount.User_ID,
-            First_Name = userAccount.First_Name,
-                Last_Name = userAccount.Last_Name,
-                Username = userAccount.Username,
-                Email = userAccount.Email,
-                Password = userAccount.Password,
-                Birthday = userAccount.Birthday,
-                Photo_Url = userAccount.Photo_Url,
-                Info = userAccount.Info
-            };
-
-        
-        [HttpPost]
-        public ActionResult Login(UserViewModel userModel)
         public ActionResult Account(int id)
         {
             var userAccount = this.userService.Get(id);

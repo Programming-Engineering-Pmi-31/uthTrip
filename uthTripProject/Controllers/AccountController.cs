@@ -12,8 +12,7 @@
     using Microsoft.Owin.Security;
     using uthTripProject.Models;
 
-    /*
-       [Authorize]
+    /* [Authorize]
        public class AccountController : Controller
        {
            private ApplicationSignInManager _signInManager;

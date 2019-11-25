@@ -9,9 +9,9 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
-    using UthTrip.BLL.DTO;
-    using UthTrip.BLL.Interfaces;
-    using UthTrip.BLL.Services;
+    using uthTrip.BLL.DTO;
+    using uthTrip.BLL.Interfaces;
+    using uthTrip.BLL.Services;
     using uthTripProject.Models;
 
     public class TripDetailController : Controller

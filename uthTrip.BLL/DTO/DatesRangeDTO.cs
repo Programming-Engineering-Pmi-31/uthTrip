@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UthTrip.BLL.DTO
+namespace uthTrip.BLL.DTO
 {
     public class DatesRangeDTO
     {
@@ -17,9 +17,9 @@ namespace UthTrip.BLL.DTO
         }
         public DatesRangeDTO(int date_ID, DateTime? start_date, DateTime? end_date)
         {
-            Date_ID = date_ID;
-            Start_date = start_date;
-            End_date = end_date;
+            this.Date_ID = date_ID;
+            this.Start_date = start_date;
+            this.End_date = end_date;
         }
     }
 }

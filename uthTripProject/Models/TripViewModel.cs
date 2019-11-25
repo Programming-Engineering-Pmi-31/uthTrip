@@ -5,7 +5,7 @@ namespace uthTripProject.Models
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using UthTrip.BLL.DTO;
+    using uthTrip.BLL.DTO;
     public class TripViewModel
     {
         public TripViewModel()

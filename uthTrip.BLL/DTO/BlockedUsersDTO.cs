@@ -1,4 +1,4 @@
-﻿namespace UthTrip.BLL.DTO
+﻿namespace uthTrip.BLL.DTO
 {
     using System;
     using System.Collections.Generic;

@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.DAL.Entities;
-using uthTrip.DAL.EF;
-using uthTrip.DAL.Interfaces;
-using Microsoft.EntityFrameworkCore;
-
-namespace uthTrip.DAL.Repositories
-
+﻿namespace uthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -17,9 +6,9 @@ namespace uthTrip.DAL.Repositories
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
+    using uthTrip.DAL.EF;
+    using uthTrip.DAL.Entities;
+    using uthTrip.DAL.Interfaces;
 
     public class ReviewRepository : IRepository<Review>
     {
@@ -51,7 +40,7 @@ namespace uthTrip.DAL.Repositories
 
         public void Update(Review review)
         {
-            this.db.Entry(review).State = EntityState.Modified;
+            ////this.db.Entry(review).State = EntityState.Modified;
         }
 
         public IEnumerable<Review> Find(Func<Review, bool> predicate)
