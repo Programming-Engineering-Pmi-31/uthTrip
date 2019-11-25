@@ -49,8 +49,11 @@ namespace UthTrip.DAL.Repositories
         {
             User user = this.db.Users.Find(id);
             if (user != null)
+            {
                 this.db.Users.Remove(user);
+            }
         }
+
         public int MaxId()
         {
             int max = 0;

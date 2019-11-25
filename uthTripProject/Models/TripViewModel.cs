@@ -6,11 +6,13 @@ namespace UthTripProject.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using UthTrip.BLL.DTO;
+
     public class TripViewModel
     {
         public TripViewModel()
         {
         }
+
         public TripViewModel(TripDTO trip, DestinationDTO destination, DatesRangeDTO datesRange)
         {
             this.Trip_ID = trip.Trip_ID;
@@ -39,9 +41,9 @@ namespace UthTripProject.Models
         [DisplayName("Description")]
         [Required(ErrorMessage = "This field is required.")]
         public string Description { get; set; }
-      
+
         public double Price { get; set; }
-        
+
         public int Date_ID { get; set; }
 
         [DisplayName("Start date")]
@@ -65,8 +67,11 @@ namespace UthTripProject.Models
         [DisplayName("Is it Abroad ?")]
         [Required(ErrorMessage = "This field is required.")]
         public bool Is_Abroad { get; set; }
+
         public string Country { get; set; }
+
         public string City { get; set; }
+
         public int Creator_ID { get; set; }
     }
 }

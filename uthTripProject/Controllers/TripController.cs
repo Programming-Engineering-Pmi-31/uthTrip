@@ -14,14 +14,16 @@
     using UthTrip.BLL.Interfaces;
     using UthTrip.BLL.Services;
     using UthTripProject.Models;
+
     public class TripController : Controller
     {
-        ITripService tripService;
+        private ITripService tripService;
 
         public TripController(ITripService iserv)
         {
             this.tripService = iserv;
         }
+
         public ActionResult Index()
         {
             IEnumerable<TripDTO> tripDtos = this.tripService.GetAll();
@@ -29,6 +31,7 @@
             var trips = mapper.Map<IEnumerable<TripDTO>, List<UserViewModel>>(tripDtos);
             return this.View(trips);
         }
+
         [HttpGet]
         public ActionResult Create(int id = 0)
         {
@@ -44,7 +47,7 @@
                 tripModel.Trip_ID = this.tripService.FindMaxId() + 1;
                 tripModel.Destination_ID = this.tripService.FindMaxIdDestination() + 1;
                 tripModel.Date_ID = this.tripService.FindMaxIdDateRange() + 1;
-                var sessionUserId = int.Parse(Session["User_ID"].ToString());
+                var sessionUserId = int.Parse(this.Session["User_ID"].ToString());
                 tripModel.Creator_ID = sessionUserId;
 
                 var tripDto = new TripDTO(tripModel.Trip_ID, tripModel.Trip_Title, tripModel.Description, tripModel.Price, tripModel.Date_ID, tripModel.Number_Of_People, tripModel.Destination_ID, tripModel.Creator_ID);
@@ -55,8 +58,8 @@
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException)
             {
-                ModelState.Clear();
-                ViewBag.DuplicateMessage = "Trip with this name already exists.";
+                this.ModelState.Clear();
+                this.ViewBag.DuplicateMessage = "Trip with this name already exists.";
                 return this.View("Create", tripModel);
             }
         }

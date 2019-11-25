@@ -1,5 +1,4 @@
 ﻿namespace UthTrip.DAL.Repositories
-
 {
     using System;
     using System.Collections.Generic;
@@ -14,10 +13,12 @@
     public class RoleRepository : IRepository<Role>
     {
         private UthTripContext db;
+
         public RoleRepository(UthTripContext context)
         {
             this.db = context;
         }
+
         public int MaxId()
         {
             int max;
@@ -28,7 +29,7 @@
             catch (System.InvalidOperationException)
             { max = -1; }
             return max;
-        }     
+        }
 
         public IEnumerable<Role> GetAll()
         {
@@ -59,7 +60,9 @@
         {
             Role role = this.db.Roles.Find(id);
             if (role != null)
+            {
                 this.db.Roles.Remove(role);
+            }
         }
 
         public Role GetbyPass(string username, string password)

@@ -5,6 +5,7 @@
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     public class UserViewModel
     {
         public int User_ID { get; set; }
@@ -40,7 +41,6 @@
         [DataType(DataType.Date)]
         ////[Required(ErrorMessage = "This field is required.")]
         public System.DateTime Birthday { get; set; }
-
 
         ////[StringLength(30, MinimumLength = 5, ErrorMessage = "Photo URL must have at least 5 char.")]
         [DisplayName("Your photo URL")]

@@ -11,9 +11,13 @@
     public interface IDestinationService
     {
         void CreateDestination(DestinationDTO destinationDto);
+
         DestinationDTO GetById(int? id);
+
         IEnumerable<DestinationDTO> GetAll();
+
         void Dispose(int id);
+
         int FindMaxId();
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);

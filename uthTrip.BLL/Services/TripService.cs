@@ -12,23 +12,26 @@ namespace UthTrip.BLL.Services
     using UthTrip.BLL.Interfaces;
     using UthTrip.DAL.Entities;
     using UthTrip.DAL.Interfaces;
+
     public class TripService : ITripService
     {
         public TripService()
         {
         }
+
         public TripService(IUnitOfWork uow)
         {
             this.Database = uow;
         }
-        IUnitOfWork Database { get; set; }
-        
+
+        private IUnitOfWork Database { get; set; }
+
         public int FindMaxId()
         {
             int max = this.Database.Trips.MaxId();
             return max;
         }
-        
+
         public void CreateTrip(TripDTO tripDto, DestinationDTO destinationDTO, DatesRangeDTO datesRangeDTO)
         {
             Trip trip = new Trip
@@ -86,14 +89,18 @@ namespace UthTrip.BLL.Services
         ////    return user.Id;
         ////}
 
-
         public TripDTO GetById(int? id)
         {
             if (id == null)
+            {
                 throw new ValidationException("ID not set.", string.Empty);
+            }
+
             var trip = this.Database.Trips.Get(id.Value);
             if (trip == null)
+            {
                 throw new ValidationException("Trip with this ID was not found", string.Empty);
+            }
 
             return new TripDTO
             {
@@ -107,11 +114,13 @@ namespace UthTrip.BLL.Services
                 Creator_ID = trip.Creator_ID,
             };
         }
+
         public IEnumerable<TripDTO> GetAll()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Trip, TripDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Trip>, List<TripDTO>>(this.Database.Trips.GetAll());
         }
+
         public void Dispose(int id)
         {
             var trip = this.Database.Trips.Get(id);

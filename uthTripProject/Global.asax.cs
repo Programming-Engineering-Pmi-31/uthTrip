@@ -12,6 +12,7 @@
     using Ninject.Web.Mvc;
     using UthTrip.BLL.Infrastructure;
     using UthTripProject.Util;
+
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()

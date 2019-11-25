@@ -7,11 +7,12 @@
     using Ninject.Modules;
     using UthTrip.BLL.Interfaces;
     using UthTrip.BLL.Services;
+
     public class DestinationModule : NinjectModule
     {
         public override void Load()
         {
-            Bind<IDestinationService>().To<DestinationService>();
+            this.Bind<IDestinationService>().To<DestinationService>();
         }
     }
 }

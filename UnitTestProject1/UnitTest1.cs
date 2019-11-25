@@ -25,14 +25,15 @@
             context.Users.RemoveRange(context.Users);
             context.SaveChanges();
         }
+
         [Fact]
         public void TestCreateUserMethod()
         {
             var options = new DbContextOptionsBuilder<UthTripContext>()
                              .UseInMemoryDatabase(databaseName: "UserDatabase").Options;
-            var userService = CreateUserService();
-            
-                userService.CreateUser(new UserDTO
+            var userService = this.CreateUserService();
+
+            userService.CreateUser(new UserDTO
                 {
                     User_ID = 132,
                     First_Name = "Yaroslav",
@@ -44,7 +45,7 @@
                     Photo_Url = "www",
                     Info = "another boy",
                 });
-                userService.CreateUser(new UserDTO
+            userService.CreateUser(new UserDTO
                 {
                     User_ID = 123,
                     First_Name = "Simon",
@@ -59,16 +60,17 @@
             // Use a clean instance of the context to run the test
             int res = userService.GetAll().Count();
 
-                Assert.Equal(2, res);
+            Assert.Equal(2, res);
         }
-                [Fact]
+
+        [Fact]
         public void TestDeleteUserMethod()
         {
             var options = new DbContextOptionsBuilder<UthTripContext>()
                               .UseInMemoryDatabase(databaseName: "UsersDatabase").Options;
             ////var userService = new UserService(unitOfWork.Object);
-            var userService = CreateUserService();
-            
+            var userService = this.CreateUserService();
+
             userService.CreateUser(new UserDTO
                 {
                     User_ID = 132,
@@ -81,7 +83,7 @@
                     Photo_Url = "www",
                     Info = "another boy",
                 });
-                userService.CreateUser(new UserDTO
+            userService.CreateUser(new UserDTO
                 {
                     User_ID = 123,
                     First_Name = "Simon",
@@ -93,16 +95,17 @@
                     Photo_Url = "www",
                     Info = "some boy",
                 });
-                userService.Dispose(123);
+            userService.Dispose(123);
             int res = userService.GetAll().Count();
 
             Assert.Equal(1, res);
         }
+
         [Fact]
         public void TestGetByID()
         {
-            var userService = CreateUserService();
-                userService.CreateUser(new UserDTO
+            var userService = this.CreateUserService();
+            userService.CreateUser(new UserDTO
                 {
                     User_ID = 132,
                     First_Name = "Yaroslav",
@@ -114,7 +117,7 @@
                     Photo_Url = "www",
                     Info = "another boy",
                 });
-                userService.CreateUser(new UserDTO
+            userService.CreateUser(new UserDTO
                 {
                     User_ID = 123,
                     First_Name = "Simon",
@@ -127,14 +130,14 @@
                     Info = "some boy",
                 });
 
-                var user = userService.GetAll().FirstOrDefault();
-                Assert.NotNull(userService.GetById(user.User_ID));
+            var user = userService.GetAll().FirstOrDefault();
+            Assert.NotNull(userService.GetById(user.User_ID));
             }
-        
+
         [Fact]
         public void TestGetUserName_Password()
         {
-            var userService = CreateUserService();
+            var userService = this.CreateUserService();
             userService.CreateUser(new UserDTO
             {
                 User_ID = 132,
@@ -161,12 +164,13 @@
             });
 
             var user = userService.GetAll().FirstOrDefault();
-            Assert.NotNull(userService.GetByUsernamePassword("simongilbert","1111"));
+            Assert.NotNull(userService.GetByUsernamePassword("simongilbert", "1111"));
         }
+
         [Fact]
         public void TestFindMax_Id()
         {
-            var userService = CreateUserService();
+            var userService = this.CreateUserService();
             userService.CreateUser(new UserDTO
             {
                 User_ID = 132,
@@ -193,10 +197,10 @@
             });
 
             var user = userService.GetAll().FirstOrDefault();
-            Assert.Equal(132,userService.FindMaxId());
+            Assert.Equal(132, userService.FindMaxId());
         }
 
-        UserService CreateUserService()
+        private UserService CreateUserService()
         {
             var options = new DbContextOptionsBuilder<UthTripContext>()
                 .UseInMemoryDatabase(databaseName: "UserDatabase").Options;
@@ -206,4 +210,3 @@
         }
     }
 }
-

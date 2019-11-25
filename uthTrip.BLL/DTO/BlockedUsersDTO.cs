@@ -5,9 +5,11 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    class BlockedUsersDTO
+
+    internal class BlockedUsersDTO
     {
         public int Blocked_ID { get; set; }
+
         public int? User_ID { get; set; }
     }
 }

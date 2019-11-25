@@ -12,7 +12,7 @@
     {
         public override void Load()
         {
-            Bind<IUserService>().To<UserService>();
+            this.Bind<IUserService>().To<UserService>();
         }
     }
 }

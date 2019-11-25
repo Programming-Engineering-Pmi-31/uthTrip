@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
+
     public class HelloController : Controller
     {
         // GET: Hello
@@ -12,7 +13,6 @@
         {
             return this.View();
         }
-
 
         [HttpGet]
         public ActionResult HelloPage()

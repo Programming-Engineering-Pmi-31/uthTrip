@@ -7,11 +7,12 @@
     using Ninject.Modules;
     using UthTrip.BLL.Interfaces;
     using UthTrip.BLL.Services;
+
     public class DateRangesModule : NinjectModule
     {
         public override void Load()
         {
-            Bind<IDateRangeService>().To<DateRangeService>();
+            this.Bind<IDateRangeService>().To<DateRangeService>();
         }
     }
 }

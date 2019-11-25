@@ -11,12 +11,19 @@
     public interface IUserService
     {
         void CreateUser(UserDTO userDto);
+
         UserDTO GetById(int? id);
+
         UserDTO Get(int userAccountId);
+
         UserDTO GetByUsernamePassword(string username, string password);
+
         string GetFirstName(int userAccountId);
+
         IEnumerable<UserDTO> GetAll();
+
         void Dispose(int id);
+
         int FindMaxId();
     }
 }

@@ -1,6 +1,4 @@
 ﻿////using Microsoft.EntityFrameworkCore;
-
-
 namespace UthTrip.BLL.Services
 {
     using System;
@@ -18,16 +16,19 @@ namespace UthTrip.BLL.Services
 
     public class UserService : IUserService
     {
-        public IUnitOfWork Database { get; set; }
         public UserService(IUnitOfWork uow)
         {
             this.Database = uow;
         }
+
+        public IUnitOfWork Database { get; set; }
+
         public int FindMaxId()
         {
             int max = this.Database.Users.MaxId();
             return max;
         }
+
         public void CreateUser(UserDTO userDto)
         {
             User user = new User
@@ -79,6 +80,7 @@ namespace UthTrip.BLL.Services
 
             return result;
         }
+
         public UserDTO Get(int userAccountId)
         {
             var userAccount = this.GetAllUsers()
@@ -110,15 +112,18 @@ namespace UthTrip.BLL.Services
         ////    return user.Id;
         ////}
 
-
-
         public UserDTO GetById(int? id)
         {
             if (id == null)
+            {
                 throw new ValidationException("ID not set.", string.Empty);
+            }
+
             var user = this.Database.Users.Get(id.Value);
             if (user == null)
+            {
                 throw new ValidationException("User with this ID was not found", string.Empty);
+            }
 
             return new UserDTO
             {
@@ -133,11 +138,13 @@ namespace UthTrip.BLL.Services
                 Photo_Url = user.Photo_Url,
             };
         }
+
         public IEnumerable<UserDTO> GetAll()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<User>, List<UserDTO>>(this.Database.Users.GetAll());
         }
+
         public void Dispose(int id)
         {
             var user = this.Database.Users.Get(id);
@@ -189,7 +196,7 @@ namespace UthTrip.BLL.Services
                     Photo_Url = "www",
                     Info = "some boy",
                 },
-                new UserDTO
+            new UserDTO
                 {
                     User_ID = 456,
                     First_Name = "Alexander",

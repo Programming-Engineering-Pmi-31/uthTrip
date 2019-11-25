@@ -11,9 +11,13 @@
     public interface IDateRangeService
     {
         void CreateDateRange(DatesRangeDTO dateRangeDto);
+
         DatesRangeDTO GetById(int? id);
+
         IEnumerable<DatesRangeDTO> GetAll();
+
         void Dispose(int id);
+
         int FindMaxId();
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);

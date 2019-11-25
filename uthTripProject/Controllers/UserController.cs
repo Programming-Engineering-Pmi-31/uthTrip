@@ -13,9 +13,11 @@
     using UthTrip.BLL.Infrastructure;
     using UthTrip.BLL.Interfaces;
     using UthTripProject.Models;
+
     public class UserController : Controller
     {
-        IUserService userService;
+        private IUserService userService;
+
         public UserController(IUserService serv)
         {
             this.userService = serv;
@@ -28,16 +30,20 @@
             var users = mapper.Map<IEnumerable<UserDTO>, List<UserViewModel>>(userDtos);
             ////var model = repo.GetComputerList();
             if (users.Count > 0)
-                ViewBag.Message = string.Format("В базі даних {0} об'єкт", users.Count);
+            {
+                this.ViewBag.Message = string.Format("В базі даних {0} об'єкт", users.Count);
+            }
 
             return this.View(users);
         }
+
         [HttpGet]
         public ActionResult Register(int id = 0)
         {
             UserViewModel userModel = new UserViewModel();
             return this.View(userModel);
         }
+
         [HttpPost]
         public ActionResult Register(UserViewModel userModel)
         {
@@ -50,9 +56,9 @@
             }
             catch (ValidationException ex)
             {
-                ModelState.AddModelError(ex.Property, ex.Message);
-                ModelState.Clear();
-                ViewBag.DuplicateMessage = "Username already exists.";
+                this.ModelState.AddModelError(ex.Property, ex.Message);
+                this.ModelState.Clear();
+                this.ViewBag.DuplicateMessage = "Username already exists.";
                 return this.View("Register", userModel);
             }
         }
@@ -82,10 +88,11 @@
 
             return this.View(viewModel);
         }
+
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
-            ModelState.Clear();
+            this.ModelState.Clear();
             var obj = this.userService.GetByUsernamePassword(userModel.Username, userModel.Password);
             if (obj != null)
             {
@@ -96,7 +103,7 @@
             }
             else
             {
-                ViewBag.DuplicateMessage = "Incorrect username or password.";
+                this.ViewBag.DuplicateMessage = "Incorrect username or password.";
                 return this.View("Login");
             }
         }

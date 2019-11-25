@@ -9,13 +9,16 @@
     using UthTrip.DAL.EF;
     using UthTrip.DAL.Entities;
     using UthTrip.DAL.Interfaces;
+
     public class RightRepository : IRepository<Right>
     {
         private UthTripContext db;
+
         public RightRepository(UthTripContext context)
         {
             this.db = context;
         }
+
         public int MaxId()
         {
             int max;
@@ -57,7 +60,9 @@
         {
             Right right = this.db.Rights.Find(id);
             if (right != null)
+            {
                 this.db.Rights.Remove(right);
+            }
         }
 
         public Right GetbyPass(string username, string password)
