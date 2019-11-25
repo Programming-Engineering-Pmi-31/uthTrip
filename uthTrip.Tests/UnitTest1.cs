@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 //using NUnit.Framework;
-using uthTrip.BLL.Services;
-using uthTrip.BLL.Interfaces;
-using uthTripProject.Models;
-using uthTrip.DAL.Interfaces;
-using uthTrip.DAL.EF;
-using uthTrip.DAL.Repositories;
-using uthTrip.BLL.DTO;
-using uthTrip.DAL.Entities;
-using uthTrip.BLL.Infrastructure;
-using uthTripProject.Controllers;
+using UthTrip.BLL.Services;
+using UthTrip.BLL.Interfaces;
+using UthTripProject.Models;
+using UthTrip.DAL.Interfaces;
+using UthTrip.DAL.EF;
+using UthTrip.DAL.Repositories;
+using UthTrip.BLL.DTO;
+using UthTrip.DAL.Entities;
+using UthTrip.BLL.Infrastructure;
+using UthTripProject.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
 
 using Moq;
 
-namespace uthTrip.Tests
+namespace UthTrip.Tests
 {
     //    [TestClass]
     //    public class UnitTest1
@@ -28,7 +28,7 @@ namespace uthTrip.Tests
     //        {
     //            return new UserService(
     //                new EFUnitOfWork(
-    //                    new uthtripContext(testConnectionString)
+    //                    new UthTripContext(testConnectionString)
     //                )
     //            );
     //        }
@@ -36,7 +36,7 @@ namespace uthTrip.Tests
     //        //[TearDown]
     //        //public void ClearDB()
     //        //{
-    //        //    var context = new uthtripContext(testConnectionString);
+    //        //    var context = new UthTripContext(testConnectionString);
     //        //    context.Users.RemoveRange(context.Users);
     //        //    context.SaveChanges();
     //        //}

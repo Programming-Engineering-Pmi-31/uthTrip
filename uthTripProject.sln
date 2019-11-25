@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-
-VisualStudioVersion = 15.0.28307.852
-
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTripProject", "uthTripProject\uthTripProject.csproj", "{32E72533-0BDC-440A-9540-AF7783555306}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UthTripProject", "uthTripProject\UthTripProject.csproj", "{32E72533-0BDC-440A-9540-AF7783555306}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.DAL", "uthTrip.DAL\uthTrip.DAL.csproj", "{F78C2CCB-0AA4-48F9-8DC1-9F65A5135E05}"
 EndProject

@@ -1,4 +1,4 @@
-﻿namespace uthTripProject.Controllers
+﻿namespace UthTripProject.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -9,11 +9,11 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
-    using uthTrip.BLL.DTO;
-    using uthTrip.BLL.Infrastructure;
-    using uthTrip.BLL.Interfaces;
-    using uthTrip.BLL.Services;
-    using uthTripProject.Models;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Infrastructure;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.BLL.Services;
+    using UthTripProject.Models;
 
     public class HomeController : Controller
     {
@@ -83,11 +83,9 @@
                 viewModels = viewModels.Where(x => x.Number_Of_People <= persons);
             }
             return this.View(viewModels);
-
         }
         public ActionResult HomeA()
         {
-
             return this.View("Login");
         }
     }

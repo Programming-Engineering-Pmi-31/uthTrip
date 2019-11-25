@@ -1,4 +1,4 @@
-namespace uthTrip.BLL.Services
+namespace UthTrip.BLL.Services
 {
     using System;
     using System.Collections.Generic;
@@ -6,17 +6,16 @@ namespace uthTrip.BLL.Services
     using System.Text;
     using System.Threading.Tasks;
     using AutoMapper;
-    ////using uthTrip.BLL.BusinessModels;
-    using uthTrip.BLL.DTO;
-    using uthTrip.BLL.Infrastructure;
-    using uthTrip.BLL.Interfaces;
-    using uthTrip.DAL.Entities;
-    using uthTrip.DAL.Interfaces;
+    ////using UthTrip.BLL.BusinessModels;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Infrastructure;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
     public class TripService : ITripService
     {
         public TripService()
         {
-
         }
         public TripService(IUnitOfWork uow)
         {
@@ -41,20 +40,20 @@ namespace uthTrip.BLL.Services
                 Date_ID = tripDto.Date_ID,
                 Number_Of_People = tripDto.Number_Of_People,
                 Destination_ID = tripDto.Destination_ID,
-                Creator_ID = tripDto.Creator_ID
+                Creator_ID = tripDto.Creator_ID,
             };
             Destination destination = new Destination
             {
                 Destination_ID = destinationDTO.Destination_ID,
                 Is_Abroad = destinationDTO.Is_Abroad,
                 Country = destinationDTO.Country,
-                City = destinationDTO.City
+                City = destinationDTO.City,
             };
             Dates_ranges dates_Ranges = new Dates_ranges
             {
                 Date_ID = datesRangeDTO.Date_ID,
                 Start_date = datesRangeDTO.Start_date,
-                End_date = datesRangeDTO.End_date
+                End_date = datesRangeDTO.End_date,
             };
             this.Database.Destinations.Create(destination);
             this.Database.Dates_ranges.Create(dates_Ranges);
@@ -105,7 +104,7 @@ namespace uthTrip.BLL.Services
                 Date_ID = trip.Date_ID,
                 Number_Of_People = trip.Number_Of_People,
                 Destination_ID = trip.Destination_ID,
-                Creator_ID = trip.Creator_ID
+                Creator_ID = trip.Creator_ID,
             };
         }
         public IEnumerable<TripDTO> GetAll()

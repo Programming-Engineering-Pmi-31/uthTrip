@@ -1,20 +1,24 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.DAL.Entities;
-using uthTrip.DAL.EF;
-using uthTrip.DAL.Interfaces;
-
 ////using Microsoft.EntityFrameworkCore;
 
-namespace uthTrip.DAL.Repositories
+namespace UthTrip.DAL.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
+
     public class TripRepository : IRepository<Trip>
     {
-        private uthtripContext db;
+        private UthTripContext db;
+        public TripRepository(UthTripContext context)
+        {
+            this.db = context;
+        }
         public int MaxId()
         {
             int max;
@@ -26,10 +30,7 @@ namespace uthTrip.DAL.Repositories
             { max = -1; }
             return max;
         }
-        public TripRepository(uthtripContext context)
-        {
-            this.db = context;
-        }
+      
 
         public IEnumerable<Trip> GetAll()
         {

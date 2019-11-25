@@ -1,4 +1,4 @@
-﻿namespace uthTripProject
+﻿namespace UthTripProject
 {
     using System;
     using Microsoft.AspNet.Identity;
@@ -7,7 +7,7 @@
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.Google;
     using Owin;
-    using uthTripProject.Models;
+    using UthTripProject.Models;
 
     public partial class Startup
     {
@@ -33,7 +33,7 @@
                     ////OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                     ////  validateInterval: TimeSpan.FromMinutes(30),
                     ////regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
-                }
+                },
             });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

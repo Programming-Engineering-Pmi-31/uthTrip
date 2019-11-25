@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace uthTrip.BLL.DTO
+﻿namespace UthTrip.BLL.DTO
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class TripDTO
     {
         public int Trip_ID { get; set; }
@@ -18,7 +18,6 @@ namespace uthTrip.BLL.DTO
         public int Creator_ID { get; set; }
         public TripDTO()
         {
-                
         }
         public TripDTO(int trip_ID, string trip_Title, string description, double price, int date_ID, int number_Of_People, int destination_ID, int creator_ID)
         {

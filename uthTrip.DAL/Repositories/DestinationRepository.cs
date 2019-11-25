@@ -1,4 +1,4 @@
-﻿namespace uthTrip.DAL.Repositories
+﻿namespace UthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -6,27 +6,31 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using uthTrip.DAL.EF;
-    using uthTrip.DAL.Entities;
-    using uthTrip.DAL.Interfaces;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
 
     public class DestinationRepository : IRepository<Destination>
     {
-        private uthtripContext db;
-        public DestinationRepository(uthtripContext context)
+        private UthTripContext db;
+
+        public DestinationRepository(UthTripContext context)
         {
             this.db = context;
         }
+
         public int MaxId()
         {
             int max;
             try
             {
-                 max = this.db.Destinations.Max(a => a.Destination_ID);
-
+                max = this.db.Destinations.Max(a => a.Destination_ID);
             }
             catch (System.InvalidOperationException)
-            { max = -1; }
+            {
+                max = -1;
+            }
+
             return max;
         }
 
@@ -59,10 +63,13 @@
         {
             Destination destination = this.db.Destinations.Find(id);
             if (destination != null)
+            {
                 this.db.Destinations.Remove(destination);
+            }
         }
+    
 
-        public Destination GetbyPass(string username, string password)
+     public Destination GetbyPass(string username, string password)
         {
             throw new NotImplementedException();
         }

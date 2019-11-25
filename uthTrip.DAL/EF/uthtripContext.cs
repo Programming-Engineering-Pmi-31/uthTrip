@@ -1,21 +1,21 @@
-namespace uthTrip.DAL.EF
+namespace UthTrip.DAL.EF
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using uthTrip.DAL.Entities;
+    using UthTrip.DAL.Entities;
     //using Microsoft.EntityFrameworkCore;
-    public partial class uthtripContext : DbContext
+    public partial class UthTripContext : DbContext
     {
         private string connectionString;
 
-        public uthtripContext(string conString)
+        public UthTripContext(string conString)
         {
             connectionString = conString;
         }
-        public uthtripContext()
-            : base("name=uthtripContext")
+        public UthTripContext()
+            : base("name=UthTripContext")
         {
         }
 

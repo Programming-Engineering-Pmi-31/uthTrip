@@ -1,4 +1,4 @@
-﻿namespace uthTripProject
+﻿namespace UthTripProject
 {
     using System.Web;
     using System.Web.Optimization;
@@ -28,8 +28,6 @@
 
             bundles.Add(new ScriptBundle("~/bundles/background").Include(
                       "~/Scripts/background.js"));
-
-
         }
     }
 }

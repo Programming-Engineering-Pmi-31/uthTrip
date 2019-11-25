@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-namespace uthTripProject.Controllers
+namespace UthTripProject.Controllers
 {
     public class FaqController : Controller
     {

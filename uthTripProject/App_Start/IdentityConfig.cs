@@ -1,4 +1,4 @@
-﻿namespace uthTripProject
+﻿namespace UthTripProject
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
     using Microsoft.Owin.Security;
-    using uthTripProject.Models;
+    using UthTripProject.Models;
     /*
     public class EmailService : IIdentityMessageService
     {

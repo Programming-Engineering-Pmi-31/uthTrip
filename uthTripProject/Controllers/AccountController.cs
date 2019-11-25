@@ -1,4 +1,4 @@
-﻿namespace uthTripProject.Controllers
+﻿namespace UthTripProject.Controllers
 {
     using System;
     using System.Globalization;
@@ -10,7 +10,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using uthTripProject.Models;
+    using UthTripProject.Models;
 
     /* [Authorize]
        public class AccountController : Controller

@@ -1,4 +1,4 @@
-﻿namespace uthTripProject.Controllers
+﻿namespace UthTripProject.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -9,10 +9,10 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
-    using uthTrip.BLL.DTO;
-    using uthTrip.BLL.Interfaces;
-    using uthTrip.BLL.Services;
-    using uthTripProject.Models;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.BLL.Services;
+    using UthTripProject.Models;
 
     public class TripDetailController : Controller
     {

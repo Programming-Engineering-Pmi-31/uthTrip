@@ -1,30 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.BLL.DTO;
-using uthTrip.DAL.Entities;
-////using uthTrip.BLL.BusinessModels;
-using uthTrip.DAL.Interfaces;
-using uthTrip.BLL.Infrastructure;
-using uthTrip.BLL.Interfaces;
-using AutoMapper;
-
-namespace uthTrip.BLL.Services
+﻿namespace UthTrip.BLL.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Infrastructure;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.DAL.Entities;
+    ////using UthTrip.BLL.BusinessModels;
+    using UthTrip.DAL.Interfaces;
+
     public class DateRangeService : IDateRangeService
     {
         IUnitOfWork Database { get; set; }
+        public DateRangeService(IUnitOfWork uow)
+        {
+            this.Database = uow;
+        }
         public int FindMaxId()
         {
             int max = this.Database.Dates_ranges.MaxId();
             return max;
         }
-        public DateRangeService(IUnitOfWork uow)
-        {
-            this.Database = uow;
-        }
+       
 
         public void CreateDateRange(DatesRangeDTO dateRangeDto)
         {
@@ -32,7 +33,7 @@ namespace uthTrip.BLL.Services
             {
                 Date_ID = dateRangeDto.Date_ID,
                 Start_date = dateRangeDto.Start_date,
-                End_date = dateRangeDto.End_date
+                End_date = dateRangeDto.End_date,
             };
             this.Database.Dates_ranges.Create(dateRange);
             this.Database.Save();
@@ -75,7 +76,7 @@ namespace uthTrip.BLL.Services
             {
                 Date_ID = dateRange.Date_ID,
                 Start_date = dateRange.Start_date,
-                End_date = dateRange.End_date
+                End_date = dateRange.End_date,
             };
         }
         

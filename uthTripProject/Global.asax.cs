@@ -1,4 +1,4 @@
-﻿namespace uthTripProject
+﻿namespace UthTripProject
 {
     using System;
     using System.Collections.Generic;
@@ -10,8 +10,8 @@
     using Ninject;
     using Ninject.Modules;
     using Ninject.Web.Mvc;
-    using uthTrip.BLL.Infrastructure;
-    using uthTripProject.Util;
+    using UthTrip.BLL.Infrastructure;
+    using UthTripProject.Util;
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -28,8 +28,6 @@
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernelTrip));
 
             AreaRegistration.RegisterAllAreas();
-            
-          
         }
     }
 }

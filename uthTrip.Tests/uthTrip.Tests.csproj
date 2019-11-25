@@ -109,9 +109,9 @@
       <Project>{f78c2ccb-0aa4-48f9-8dc1-9f65a5135e05}</Project>
       <Name>uthTrip.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\uthTripProject\uthTripProject.csproj">
+    <ProjectReference Include="..\uthTripProject\UthTripProject.csproj">
       <Project>{32e72533-0bdc-440a-9540-af7783555306}</Project>
-      <Name>uthTripProject</Name>
+      <Name>UthTripProject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

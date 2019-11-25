@@ -1,4 +1,4 @@
-﻿namespace uthTrip.DAL.Repositories
+﻿namespace UthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -6,13 +6,13 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using uthTrip.DAL.EF;
-    using uthTrip.DAL.Entities;
-    using uthTrip.DAL.Interfaces;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
     public class BlockedUserRepository : IRepository<Blocked_Users>
     {
-        private uthtripContext db;
-        public BlockedUserRepository(uthtripContext context)
+        private UthTripContext db;
+        public BlockedUserRepository(UthTripContext context)
         {
             this.db = context;
         }
@@ -51,7 +51,9 @@
         {
             Blocked_Users user = this.db.Blocked_Users.Find(id);
             if (user != null)
+            {
                 this.db.Blocked_Users.Remove(user);
+            }
         }
 
         public Blocked_Users GetbyPass(string username, string password)

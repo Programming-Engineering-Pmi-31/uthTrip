@@ -1,19 +1,19 @@
 ﻿
-namespace uthTrip.DAL.Repositories
+namespace UthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using uthTrip;
-    using uthTrip.DAL.EF;
-    using uthTrip.DAL.Entities;
-    using uthTrip.DAL.Interfaces;
+    using UthTrip;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
 
     public class EFUnitOfWork : IUnitOfWork
     {
-        private uthtripContext db;
+        private UthTripContext db;
         private UserRepository userRepository;
         private TripRepository tripRepository;
         private ReviewRepository reviewRepository;
@@ -26,9 +26,9 @@ namespace uthTrip.DAL.Repositories
 
         public EFUnitOfWork(string connectionString)
         {
-            this.db = new uthtripContext(connectionString);
+            this.db = new UthTripContext(connectionString);
         }
-        public EFUnitOfWork(uthtripContext db)
+        public EFUnitOfWork(UthTripContext db)
         {
             this.db = db;
             this.userRepository = new UserRepository(db);
@@ -39,7 +39,6 @@ namespace uthTrip.DAL.Repositories
             this.destinationRepository = new DestinationRepository(db);
             this.roleRepository = new RoleRepository(db);
             this.rightRepository = new RightRepository(db);
-
         }
         
         public IRepository<User> Users
@@ -138,6 +137,5 @@ namespace uthTrip.DAL.Repositories
             this.Dispose(true);
             GC.SuppressFinalize(this);
         }
-        
     }
 }

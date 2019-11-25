@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(uthTripProject.Startup))]
-namespace uthTripProject
+[assembly: OwinStartupAttribute(typeof(UthTripProject.Startup))]
+namespace UthTripProject
 {
     public partial class Startup
     {

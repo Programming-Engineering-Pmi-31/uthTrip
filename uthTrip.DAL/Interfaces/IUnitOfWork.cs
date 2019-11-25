@@ -1,11 +1,11 @@
-﻿namespace uthTrip.DAL.Interfaces
+﻿namespace UthTrip.DAL.Interfaces
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using uthTrip.DAL.Entities;
+    using UthTrip.DAL.Entities;
 
     public interface IUnitOfWork : IDisposable
     {

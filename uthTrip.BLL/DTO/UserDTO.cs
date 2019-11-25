@@ -1,4 +1,4 @@
-﻿namespace uthTrip.BLL.DTO
+﻿namespace UthTrip.BLL.DTO
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,6 @@
         public string Info { get; set; }
         public UserDTO()
         {
-
         }
         public UserDTO(int user_ID, string first_Name, string last_Name, string email, string username, string password, DateTime birthday, string photo_Url, string info)
         {
