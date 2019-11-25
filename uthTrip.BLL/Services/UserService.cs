@@ -1,33 +1,33 @@
-﻿using System;
-using uthTrip.BLL.DTO;
-using uthTrip.DAL.Entities;
-////using uthTrip.BLL.BusinessModels;
-using uthTrip.DAL.Interfaces;
-using uthTrip.BLL.Infrastructure;
-using uthTrip.BLL.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-using uthTrip.DAL.EF;
-using AutoMapper;
-using System.Threading.Tasks;
-////using Microsoft.EntityFrameworkCore;
+﻿////using Microsoft.EntityFrameworkCore;
 
 
-namespace uthTrip.BLL.Services
+namespace UthTrip.BLL.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Infrastructure;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    ////using UthTrip.BLL.BusinessModels;
+    using UthTrip.DAL.Interfaces;
+
     public class UserService : IUserService
     {
         public IUnitOfWork Database { get; set; }
+        public UserService(IUnitOfWork uow)
+        {
+            this.Database = uow;
+        }
         public int FindMaxId()
         {
             int max = this.Database.Users.MaxId();
             return max;
         }
-        public UserService(IUnitOfWork uow)
-        {
-            this.Database = uow;
-        }
-
         public void CreateUser(UserDTO userDto)
         {
             User user = new User
@@ -40,7 +40,7 @@ namespace uthTrip.BLL.Services
                 Password = userDto.Password,
                 Birthday = userDto.Birthday,
                 Photo_Url = userDto.Photo_Url,
-                Info = userDto.Info
+                Info = userDto.Info,
             };
             this.Database.Users.Create(user);
             this.Database.Save();
@@ -130,7 +130,7 @@ namespace uthTrip.BLL.Services
                 Password = user.Password,
                 Info = user.Info,
                 Birthday = user.Birthday,
-                Photo_Url = user.Photo_Url
+                Photo_Url = user.Photo_Url,
             };
         }
         public IEnumerable<UserDTO> GetAll()
@@ -163,7 +163,7 @@ namespace uthTrip.BLL.Services
                     Password = user.Password,
                     Info = user.Info,
                     Birthday = user.Birthday,
-                    Photo_Url = user.Photo_Url
+                    Photo_Url = user.Photo_Url,
                 };
             }
             catch (System.NullReferenceException)
@@ -177,9 +177,6 @@ namespace uthTrip.BLL.Services
             DateTime somedate = new DateTime(2000, 07, 21);
             return new List<UserDTO>()
             {
-
-
-
             new UserDTO
                 {
                     User_ID = 123,
@@ -190,8 +187,7 @@ namespace uthTrip.BLL.Services
                     Password = "1111",
                     Birthday = somedate,
                     Photo_Url = "www",
-                    Info = "some boy"
-
+                    Info = "some boy",
                 },
                 new UserDTO
                 {
@@ -203,7 +199,7 @@ namespace uthTrip.BLL.Services
                     Password = "1111",
                     Birthday = somedate,
                     Photo_Url = "www",
-                    Info = "anpther boy"
+                    Info = "anpther boy",
                 },
             };
         }

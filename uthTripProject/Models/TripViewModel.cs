@@ -1,16 +1,15 @@
-namespace uthTripProject.Models
+namespace UthTripProject.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using uthTrip.BLL.DTO;
+    using UthTrip.BLL.DTO;
     public class TripViewModel
     {
         public TripViewModel()
         {
-
         }
         public TripViewModel(TripDTO trip, DestinationDTO destination, DatesRangeDTO datesRange)
         {
@@ -69,8 +68,5 @@ namespace uthTripProject.Models
         public string Country { get; set; }
         public string City { get; set; }
         public int Creator_ID { get; set; }
-
-        
-       
     }
 }

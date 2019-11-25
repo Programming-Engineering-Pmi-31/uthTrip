@@ -1,4 +1,4 @@
-﻿namespace uthTrip.DAL.Repositories
+﻿namespace UthTrip.DAL.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -6,14 +6,14 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using uthTrip.DAL.EF;
-    using uthTrip.DAL.Entities;
-    using uthTrip.DAL.Interfaces;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
 
     public class ReviewRepository : IRepository<Review>
     {
-        private uthtripContext db;
-        public ReviewRepository(uthtripContext context)
+        private UthTripContext db;
+        public ReviewRepository(UthTripContext context)
         {
             this.db = context;
         }

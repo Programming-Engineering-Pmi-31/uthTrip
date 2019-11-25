@@ -1,4 +1,4 @@
-﻿namespace uthTripProject.Controllers
+﻿namespace UthTripProject.Controllers
 {
     using System;
     using System.Collections.Generic;

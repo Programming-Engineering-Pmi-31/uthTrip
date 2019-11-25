@@ -1,22 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.DAL.Entities;
-using uthTrip.DAL.EF;
-using uthTrip.DAL.Interfaces;
 ////using Microsoft.EntityFrameworkCore;
-
-
-namespace uthTrip.DAL.Repositories
+namespace UthTrip.DAL.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using UthTrip.DAL.EF;
+    using UthTrip.DAL.Entities;
+    using UthTrip.DAL.Interfaces;
+
     public class UserRepository : IRepository<User>
     {
-        private uthtripContext db;
+        private UthTripContext db;
 
-        public UserRepository(uthtripContext context)
+        public UserRepository(UthTripContext context)
         {
             this.db = context;
         }
@@ -62,7 +61,6 @@ namespace uthTrip.DAL.Repositories
             catch (System.InvalidOperationException)
             { max = -1; }
             return max;
-
         }
 
         public User GetbyPass(string username, string password)

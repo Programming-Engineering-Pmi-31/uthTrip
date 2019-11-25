@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.BLL.Interfaces;
-using uthTrip.BLL.DTO;
-
-namespace uthTrip.BLL.Interfaces
+﻿namespace UthTrip.BLL.Interfaces
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Interfaces;
+
     public interface IUserService
     {
         void CreateUser(UserDTO userDto);
@@ -18,6 +18,5 @@ namespace uthTrip.BLL.Interfaces
         IEnumerable<UserDTO> GetAll();
         void Dispose(int id);
         int FindMaxId();
-       
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace uthTrip.DAL.Interfaces
+﻿namespace UthTrip.DAL.Interfaces
 {
     using System;
     using System.Collections.Generic;

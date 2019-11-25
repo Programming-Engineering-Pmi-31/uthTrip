@@ -1,4 +1,4 @@
-﻿namespace uthTripProject.Controllers
+﻿namespace UthTripProject.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -9,11 +9,11 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
-    using uthTrip.BLL.DTO;
-    using uthTrip.BLL.Infrastructure;
-    using uthTrip.BLL.Interfaces;
-    using uthTrip.BLL.Services;
-    using uthTripProject.Models;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Infrastructure;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.BLL.Services;
+    using UthTripProject.Models;
     public class TripController : Controller
     {
         ITripService tripService;
@@ -21,7 +21,6 @@
         public TripController(ITripService iserv)
         {
             this.tripService = iserv;
-
         }
         public ActionResult Index()
         {
@@ -59,9 +58,7 @@
                 ModelState.Clear();
                 ViewBag.DuplicateMessage = "Trip with this name already exists.";
                 return this.View("Create", tripModel);
-
             }
         }
-
     }
 }

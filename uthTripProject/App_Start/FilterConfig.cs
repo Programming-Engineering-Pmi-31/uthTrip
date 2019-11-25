@@ -1,4 +1,4 @@
-﻿namespace uthTripProject
+﻿namespace UthTripProject
 {
     using System.Web;
     using System.Web.Mvc;

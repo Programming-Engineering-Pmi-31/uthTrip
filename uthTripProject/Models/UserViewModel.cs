@@ -1,4 +1,4 @@
-﻿namespace uthTripProject.Models
+﻿namespace UthTripProject.Models
 {
     using System;
     using System.Collections.Generic;
@@ -53,5 +53,4 @@
         ////[Required(ErrorMessage = "This field is required.")]
         public string Info { get; set; }
     }
-
 }

@@ -1,30 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.BLL.DTO;
-using uthTrip.DAL.Entities;
-////using uthTrip.BLL.BusinessModels;
-using uthTrip.DAL.Interfaces;
-using uthTrip.BLL.Infrastructure;
-using uthTrip.BLL.Interfaces;
-using AutoMapper;
-
-namespace uthTrip.BLL.Services
+﻿namespace UthTrip.BLL.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using UthTrip.BLL.DTO;
+    using UthTrip.BLL.Infrastructure;
+    using UthTrip.BLL.Interfaces;
+    using UthTrip.DAL.Entities;
+    ////using UthTrip.BLL.BusinessModels;
+    using UthTrip.DAL.Interfaces;
+
     public class DestinationService : IDestinationService
     {
         IUnitOfWork Database { get; set; }
+        public DestinationService(IUnitOfWork uow)
+        {
+            this.Database = uow;
+        }
         public int FindMaxId()
         {
             int max = this.Database.Destinations.MaxId();
             return max;
         }
-        public DestinationService(IUnitOfWork uow)
-        {
-            this.Database = uow;
-        }
+       
         public void CreateDestination(DestinationDTO destinationDto)
         {
             Destination destination = new Destination
@@ -32,7 +33,7 @@ namespace uthTrip.BLL.Services
                 Destination_ID = destinationDto.Destination_ID,
                 Is_Abroad = destinationDto.Is_Abroad,
                 Country = destinationDto.Country,
-                City = destinationDto.City
+                City = destinationDto.City,
             };
             this.Database.Destinations.Create(destination);
             this.Database.Save();
@@ -75,7 +76,7 @@ namespace uthTrip.BLL.Services
                 Destination_ID = destination.Destination_ID,
                 Is_Abroad = destination.Is_Abroad,
                 Country = destination.Country,
-                City = destination.City
+                City = destination.City,
             };
         }
         public IEnumerable<DestinationDTO> GetAll()
@@ -92,6 +93,5 @@ namespace uthTrip.BLL.Services
                 this.Database.Save();
             }
         }
-
     }
 }

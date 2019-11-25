@@ -1,4 +1,4 @@
-﻿namespace uthTripProject
+﻿namespace UthTripProject
 {
     using System;
     using System.Collections.Generic;
