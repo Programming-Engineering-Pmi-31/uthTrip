@@ -62,7 +62,10 @@ namespace UthTrip.DAL.Repositories
                 max = this.db.Users.Max(a => a.User_ID);
             }
             catch (System.InvalidOperationException)
-            { max = -1; }
+            {
+                max = -1;
+            }
+
             return max;
         }
 

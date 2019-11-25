@@ -12,7 +12,7 @@ namespace UthTrip.DAL.EF
 
         public UthTripContext(string conString)
         {
-            connectionString = conString;
+            this.connectionString = conString;
         }
 
         public UthTripContext()

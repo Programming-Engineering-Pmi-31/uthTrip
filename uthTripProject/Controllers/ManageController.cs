@@ -9,7 +9,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using UthTripProject.Models;
-    // [Authorize]
+    //// [Authorize]
     /* public class ManageController : Controller
      {
          private ApplicationSignInManager _signInManager;

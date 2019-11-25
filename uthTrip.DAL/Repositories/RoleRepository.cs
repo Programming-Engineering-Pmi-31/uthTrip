@@ -27,7 +27,9 @@
                 max = this.db.Roles.Max(a => a.Role_ID);
             }
             catch (System.InvalidOperationException)
-            { max = -1; }
+            {
+                max = -1;
+            }
             return max;
         }
 
