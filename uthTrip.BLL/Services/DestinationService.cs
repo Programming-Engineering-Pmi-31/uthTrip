@@ -18,12 +18,12 @@ namespace uthTrip.BLL.Services
         IUnitOfWork Database { get; set; }
         public int FindMaxId()
         {
-            int max = Database.Destinations.MaxId();
+            int max = this.Database.Destinations.MaxId();
             return max;
         }
         public DestinationService(IUnitOfWork uow)
         {
-            Database = uow;
+            this.Database = uow;
         }
         public void CreateDestination(DestinationDTO destinationDto)
         {
@@ -34,8 +34,8 @@ namespace uthTrip.BLL.Services
                 Country = destinationDto.Country,
                 City = destinationDto.City
             };
-            Database.Destinations.Create(destination);
-            Database.Save();
+            this.Database.Destinations.Create(destination);
+            this.Database.Save();
         }
         ////public int Authenticate(string username, string password)
         ////{
@@ -65,10 +65,10 @@ namespace uthTrip.BLL.Services
         public DestinationDTO GetById(int? id)
         {
             if (id == null)
-                throw new ValidationException("ID not set.", "");
-            var destination = Database.Destinations.Get(id.Value);
+                throw new ValidationException("ID not set.", string.Empty);
+            var destination = this.Database.Destinations.Get(id.Value);
             if (destination == null)
-                throw new ValidationException("Destination with this ID was not found", "");
+                throw new ValidationException("Destination with this ID was not found", string.Empty);
 
             return new DestinationDTO
             {
@@ -81,15 +81,15 @@ namespace uthTrip.BLL.Services
         public IEnumerable<DestinationDTO> GetAll()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Destination, DestinationDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Destination>, List<DestinationDTO>>(Database.Destinations.GetAll());
+            return mapper.Map<IEnumerable<Destination>, List<DestinationDTO>>(this.Database.Destinations.GetAll());
         }
         public void Dispose(int id)
         {
-            var trip = Database.Destinations.Get(id);
+            var trip = this.Database.Destinations.Get(id);
             if (trip != null)
             {
-                Database.Destinations.Delete(id);
-                Database.Save();
+                this.Database.Destinations.Delete(id);
+                this.Database.Save();
             }
         }
 

@@ -45,7 +45,7 @@
 
         public void Update(Right right)
         {
-            //this.db.Entry(right).State = EntityState.Modified;
+            ////this.db.Entry(right).State = EntityState.Modified;
         }
 
         public IEnumerable<Right> Find(Func<Right, bool> predicate)

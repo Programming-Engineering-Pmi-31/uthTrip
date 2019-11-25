@@ -11,7 +11,7 @@ namespace uthTrip.DAL.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Dates_ranges()
         {
-            Trips = new HashSet<Trip>();
+            this.Trips = new HashSet<Trip>();
         }
 
         [Key]

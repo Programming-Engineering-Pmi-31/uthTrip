@@ -17,9 +17,9 @@ namespace uthTrip.BLL.DTO
         }
         public DatesRangeDTO(int date_ID, DateTime? start_date, DateTime? end_date)
         {
-            Date_ID = date_ID;
-            Start_date = start_date;
-            End_date = end_date;
+            this.Date_ID = date_ID;
+            this.Start_date = start_date;
+            this.End_date = end_date;
         }
     }
 }

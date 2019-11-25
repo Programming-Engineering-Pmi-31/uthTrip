@@ -39,7 +39,7 @@
 
         public void Update(Blocked_Users user)
         {
-            //this.db.Entry(user).State = EntityState.Modified;
+            ////this.db.Entry(user).State = EntityState.Modified;
         }
 
         public IEnumerable<Blocked_Users> Find(Func<Blocked_Users, bool> predicate)

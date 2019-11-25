@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using uthTrip.DAL.Entities;
 using uthTrip.DAL.EF;
 using uthTrip.DAL.Interfaces;
-//using Microsoft.EntityFrameworkCore;
+////using Microsoft.EntityFrameworkCore;
 
 
 namespace uthTrip.DAL.Repositories
@@ -23,41 +23,41 @@ namespace uthTrip.DAL.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            return db.Users;
+            return this.db.Users;
         }
 
         public User Get(int id)
         {
-            return db.Users.Find(id);
+            return this.db.Users.Find(id);
         }
 
         public void Create(User user)
         {
-            db.Users.Add(user);
+            this.db.Users.Add(user);
         }
 
         public void Update(User user)
         {
-            db.Entry(user).State = EntityState.Modified;
+            this.db.Entry(user).State = EntityState.Modified;
         }
 
-        public IEnumerable<User> Find(Func<User, Boolean> predicate)
+        public IEnumerable<User> Find(Func<User, bool> predicate)
         {
-            return db.Users.Where(predicate).ToList();
+            return this.db.Users.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            User user = db.Users.Find(id);
+            User user = this.db.Users.Find(id);
             if (user != null)
-                db.Users.Remove(user);
+                this.db.Users.Remove(user);
         }
         public int MaxId()
         {
             int max = 0;
             try
             {
-                max = db.Users.Max(a => a.User_ID);
+                max = this.db.Users.Max(a => a.User_ID);
             }
             catch (System.InvalidOperationException)
             { max = -1; }
@@ -67,7 +67,7 @@ namespace uthTrip.DAL.Repositories
 
         public User GetbyPass(string username, string password)
         {
-            return db.Users.Where(a => a.Username == username && a.Password == password).ToList().FirstOrDefault();
+            return this.db.Users.Where(a => a.Username == username && a.Password == password).ToList().FirstOrDefault();
         }
     }
 }
