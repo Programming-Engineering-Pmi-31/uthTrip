@@ -47,7 +47,7 @@
 
         public void Update(Role role)
         {
-            //this.db.Entry(role).State = EntityState.Modified;
+            ////this.db.Entry(role).State = EntityState.Modified;
         }
 
         public IEnumerable<Role> Find(Func<Role, bool> predicate)

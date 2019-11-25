@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore.InMemory;
 namespace UnitTestProject1
 {
 
-    public class UnitTest1:IDisposable
+    public class UnitTest1 : IDisposable
     {
         
         UserService CreateUserService()
@@ -23,9 +23,7 @@ namespace UnitTestProject1
                              .UseInMemoryDatabase(databaseName: "UserDatabase").Options;
             return new UserService(
                 new EFUnitOfWork(
-                    new uthtripContext(options)
-                )
-            );
+                    new uthtripContext(options)));
         }
         
         public void Dispose()
@@ -85,7 +83,7 @@ namespace UnitTestProject1
         {
             var options = new DbContextOptionsBuilder<uthtripContext>()
                               .UseInMemoryDatabase(databaseName: "UsersDatabase").Options;
-            //var userService = new UserService(unitOfWork.Object);
+            ////var userService = new UserService(unitOfWork.Object);
             var userService = CreateUserService();
 
             

@@ -1,7 +1,7 @@
 ﻿using System;
 using uthTrip.BLL.DTO;
 using uthTrip.DAL.Entities;
-//using uthTrip.BLL.BusinessModels;
+////using uthTrip.BLL.BusinessModels;
 using uthTrip.DAL.Interfaces;
 using uthTrip.BLL.Infrastructure;
 using uthTrip.BLL.Interfaces;
@@ -10,7 +10,7 @@ using System.Linq;
 using uthTrip.DAL.EF;
 using AutoMapper;
 using System.Threading.Tasks;
-//using Microsoft.EntityFrameworkCore;
+////using Microsoft.EntityFrameworkCore;
 
 
 namespace uthTrip.BLL.Services
@@ -20,12 +20,12 @@ namespace uthTrip.BLL.Services
         public IUnitOfWork Database { get; set; }
         public int FindMaxId()
         {
-            int max = Database.Users.MaxId();
+            int max = this.Database.Users.MaxId();
             return max;
         }
         public UserService(IUnitOfWork uow)
         {
-            Database = uow;
+            this.Database = uow;
         }
 
         public void CreateUser(UserDTO userDto)
@@ -42,37 +42,37 @@ namespace uthTrip.BLL.Services
                 Photo_Url = userDto.Photo_Url,
                 Info = userDto.Info
             };
-            Database.Users.Create(user);
-            Database.Save();
+            this.Database.Users.Create(user);
+            this.Database.Save();
         }
 
-        //public int Authenticate(string username, string password)
-        //{
-        //    if (string.IsNullOrEmpty(username))
-        //    {
-        //        throw new Exception("Username is empty.");
-        //    }
-        //    else if (string.IsNullOrEmpty(password))
-        //    {
-        //        throw new Exception("Password is empty.");
-        //    }
+        ////public int Authenticate(string username, string password)
+        ////{
+        ////    if (string.IsNullOrEmpty(username))
+        ////    {
+        ////        throw new Exception("Username is empty.");
+        ////    }
+        ////    else if (string.IsNullOrEmpty(password))
+        ////    {
+        ////        throw new Exception("Password is empty.");
+        ////    }
 
-        //    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
-        //    if (user == null)
-        //    {
-        //        throw new Exception("User with current name does not exist.");
-        //    }
-        //    else if (!VerifyHash(password, user.Hash))
-        //    {
-        //        throw new Exception("Invalid password.");
-        //    }
+        ////    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
+        ////    if (user == null)
+        ////    {
+        ////        throw new Exception("User with current name does not exist.");
+        ////    }
+        ////    else if (!VerifyHash(password, user.Hash))
+        ////    {
+        ////        throw new Exception("Invalid password.");
+        ////    }
 
-        //    return user.Id;
-        //}
+        ////    return user.Id;
+        ////}
 
         public string GetFirstName(int userAccountId)
         {
-            var result = GetAllUsers()
+            var result = this.GetAllUsers()
                 .Where(x => x.User_ID == userAccountId)
                 .Select(x => x.First_Name)
                 .FirstOrDefault();
@@ -81,44 +81,44 @@ namespace uthTrip.BLL.Services
         }
         public UserDTO Get(int userAccountId)
         {
-            var userAccount = GetAllUsers()
+            var userAccount = this.GetAllUsers()
                 .FirstOrDefault(x => x.User_ID == userAccountId);
 
             return userAccount;
         }
-        //public int Authenticate(string username, string password)
-        //{
-        //    if (string.IsNullOrEmpty(username))
-        //    {
-        //        throw new Exception("Username is empty.");
-        //    }
-        //    else if (string.IsNullOrEmpty(password))
-        //    {
-        //        throw new Exception("Password is empty.");
-        //    }
+        ////public int Authenticate(string username, string password)
+        ////{
+        ////    if (string.IsNullOrEmpty(username))
+        ////    {
+        ////        throw new Exception("Username is empty.");
+        ////    }
+        ////    else if (string.IsNullOrEmpty(password))
+        ////    {
+        ////        throw new Exception("Password is empty.");
+        ////    }
 
-        //    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
-        //    if (user == null)
-        //    {
-        //        throw new Exception("User with current name does not exist.");
-        //    }
-        //    else if (!VerifyHash(password, user.Hash))
-        //    {
-        //        throw new Exception("Invalid password.");
-        //    }
+        ////    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
+        ////    if (user == null)
+        ////    {
+        ////        throw new Exception("User with current name does not exist.");
+        ////    }
+        ////    else if (!VerifyHash(password, user.Hash))
+        ////    {
+        ////        throw new Exception("Invalid password.");
+        ////    }
 
-        //    return user.Id;
-        //}
+        ////    return user.Id;
+        ////}
 
 
 
         public UserDTO GetById(int? id)
         {
             if (id == null)
-                throw new ValidationException("ID not set.", "");
-            var user = Database.Users.Get(id.Value);
+                throw new ValidationException("ID not set.", string.Empty);
+            var user = this.Database.Users.Get(id.Value);
             if (user == null)
-                throw new ValidationException("User with this ID was not found", "");
+                throw new ValidationException("User with this ID was not found", string.Empty);
 
             return new UserDTO
             {
@@ -136,15 +136,15 @@ namespace uthTrip.BLL.Services
         public IEnumerable<UserDTO> GetAll()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<User>, List<UserDTO>>(Database.Users.GetAll());
+            return mapper.Map<IEnumerable<User>, List<UserDTO>>(this.Database.Users.GetAll());
         }
         public void Dispose(int id)
         {
-            var user = Database.Users.Get(id);
+            var user = this.Database.Users.Get(id);
             if (user != null)
             {
-                Database.Users.Delete(id);
-                Database.Save();
+                this.Database.Users.Delete(id);
+                this.Database.Save();
             }
         }
 
@@ -152,7 +152,7 @@ namespace uthTrip.BLL.Services
         {
             try
             {
-                var user = Database.Users.GetbyPass(username, password);
+                var user = this.Database.Users.GetbyPass(username, password);
                 return new UserDTO
                 {
                     User_ID = user.User_ID,
@@ -186,7 +186,7 @@ namespace uthTrip.BLL.Services
                     First_Name = "Simon",
                     Last_Name = "Gilbert",
                     Username = "simongilbert",
-                    Email= "simongilbert@com",
+                    Email = "simongilbert@com",
                     Password = "1111",
                     Birthday = somedate,
                     Photo_Url = "www",
@@ -199,7 +199,7 @@ namespace uthTrip.BLL.Services
                     First_Name = "Alexander",
                     Last_Name = "Hill",
                     Username = "alexhill",
-                    Email= "alexhill@com",
+                    Email = "alexhill@com",
                     Password = "1111",
                     Birthday = somedate,
                     Photo_Url = "www",
