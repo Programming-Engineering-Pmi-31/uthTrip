@@ -16,7 +16,6 @@
 
     public class TripDetailController : Controller
     {
-        // GET: TripDetail
         private ITripService tripService;
 
         public TripDetailController(ITripService iserv)
@@ -48,17 +47,16 @@
                                 break;
                             }
                         }
-
                         break;
                     }
                 }
             }
-
             IEnumerable<TripViewModel> viewModels = tripViewModels_list;
             viewModels = viewModels.Where(x => x.Trip_ID == id);
             TripViewModel tripViewModel = viewModels.First();
             ////TripDTO trip = tripService.GetById(id);
             return this.View(tripViewModel);
         }
+
     }
 }

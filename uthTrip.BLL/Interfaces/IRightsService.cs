@@ -8,26 +8,19 @@
     using UthTrip.BLL.DTO;
     using UthTrip.BLL.Interfaces;
 
-    public interface ITripService
+    public interface IRightsService
     {
-        void CreateTrip(TripDTO tripDto, DestinationDTO destinationDTO, DatesRangeDTO datesRangeDTO);
+        void CreateRights(RightDTO rightDto);
 
-        TripDTO GetById(int? id);
+        RightDTO GetById(int? id);
 
-        IEnumerable<TripDTO> GetAll();
-
-        IEnumerable<DestinationDTO> GetAllDist();
-
-        IEnumerable<DatesRangeDTO> GetAllDateRanges();
+        IEnumerable<RightDTO> GetAll();
 
         void Dispose(int id);
 
         int FindMaxId();
 
-        int FindMaxIdDestination();
-
-        int FindMaxIdDateRange();
-
+        IEnumerable<RoleDTO> GetAllRoles();
         ////int Authenticate(string username, string password);
         //// void Update(User user, string password = null);
         ////void Create(string username, string password);
