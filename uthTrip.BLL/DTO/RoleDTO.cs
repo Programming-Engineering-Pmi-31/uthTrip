@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class RoleDTO
+    public class RoleDTO
     {
         public int Role_ID { get; set; }
 

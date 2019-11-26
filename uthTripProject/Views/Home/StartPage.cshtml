@@ -75,15 +75,9 @@
                 <div class="col-md-2" id="input">
                     @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
                 </div>
-                @*<div class="col-md-2">
-                        <input type="submit" value="Фільтрувати" class="btn-sm btn-info" id="button" />
-                    </div>*@
                 <div class="col-md-2" id="btext">
-
                     <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
                 </div>
-
-
             </div>
         </div>
     }
@@ -123,8 +117,7 @@
                     <div class="col-md-2" id="tripTextButton">
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                @*<input type="submit" value="Обрати" class="btn btn-default btn-success" />*@
-                                @Html.ActionLink("Обрати", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
+                                @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
                             </div>
                         </div>
                     </div>
