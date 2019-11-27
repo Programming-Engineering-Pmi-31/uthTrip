@@ -47,10 +47,13 @@
                                 break;
                             }
                         }
+
+
                         break;
                     }
                 }
             }
+
             IEnumerable<TripViewModel> viewModels = tripViewModels_list;
             viewModels = viewModels.Where(x => x.Trip_ID == id);
             TripViewModel tripViewModel = viewModels.First();

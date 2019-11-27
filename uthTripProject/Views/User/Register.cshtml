@@ -31,13 +31,18 @@
                        <span class="bg-light">OR</span>
                    </p>
                    <form>
+                       <div class="form-group">
+                           <div>
+                               <label class="label-warning">@ViewBag.DuplicateMessage</label>
+                           </div>
+                       </div>
                        <div class="form-group ">
                            <div class="input-group-prepend">
                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @type = "text" } })
                                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
                            </div>
-                       </div> 
+                       </div>
 
                        <div class="form-group">
                            <div class="input-group-prepend">
@@ -53,7 +58,7 @@
                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email address", @type = "email" } })
                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                            </div>
-                       </div> 
+                       </div>
 
                        <div class="form-group">
                            <div class="input-group-prepend">
@@ -61,43 +66,43 @@
                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username", @type = "text" } })
                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                            </div>
-                       </div> 
+                       </div>
 
                        <div class="form-group">
                            <div class="input-group-prepend">
                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                   @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Create password", @type = "password" } })
-                                   @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                               </div>
-                       </div> 
+                               @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Create password", @type = "password" } })
+                               @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                           </div>
+                       </div>
 
                        <div class="form-group input-group">
                            <div class="input-group-prepend">
                                <span class="input-group-text"> <i class="fa fa-birthday-cake"></i> </span>
-                                   @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", @placeholder = "Birthday", @type = "date" } })
-                                   @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
-                               </div>
+                               @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", @placeholder = "Birthday", @type = "date" } })
+                               @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                           </div>
                        </div>
 
                        <div class="form-group input-group">
                            <div class="input-group-prepend">
                                <span class="input-group-text"> <i class="fa fa-camera"></i> </span>
-                                   @Html.EditorFor(model => model.Photo_Url, new { htmlAttributes = new { @class = "form-control" , @placeholder = "Photo URL", @type = "text" } })
-                                   @Html.ValidationMessageFor(model => model.Photo_Url, "", new { @class = "text-danger" })
-                               </div>
-                       </div> 
+                               @Html.EditorFor(model => model.Photo_Url, new { htmlAttributes = new { @class = "form-control", @placeholder = "Photo URL", @type = "text" } })
+                               @Html.ValidationMessageFor(model => model.Photo_Url, "", new { @class = "text-danger" })
+                           </div>
+                       </div>
 
                        <div class="form-group input-group">
                            <div class="input-group-prepend">
                                <span class="input-group-text"> <i class="fa fa-info"></i> </span>
-                                   @Html.EditorFor(model => model.Info, new { htmlAttributes = new { @class = "form-control", @placeholder = "Some information", @type = "textarea" } })
-                                   @Html.ValidationMessageFor(model => model.Info, "", new { @class = "text-danger" })
-                               </div>
-                       </div> 
-                      
+                               @Html.EditorFor(model => model.Info, new { htmlAttributes = new { @class = "form-control", @placeholder = "Some information", @type = "textarea" } })
+                               @Html.ValidationMessageFor(model => model.Info, "", new { @class = "text-danger" })
+                           </div>
+                       </div>
+
                        <div class="form-group">
                            <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-                       </div> 
+                       </div>
 
                        <p class="text-center">Have an account?  @Html.ActionLink("Log in", "Login")</p>
                    </form>

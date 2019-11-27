@@ -54,12 +54,10 @@
                 this.userService.CreateUser(userDto);
                 return this.RedirectToAction("StartPage", "Home");
             }
-            catch (ValidationException ex)
+            catch (ArgumentNullException ex)
             {
-                this.ModelState.AddModelError(ex.Property, ex.Message);
-                this.ModelState.Clear();
                 this.ViewBag.DuplicateMessage = "Username already exists.";
-                return this.View("Register", userModel);
+                return this.View("Register");
             }
         }
 
