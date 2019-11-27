@@ -58,12 +58,18 @@ namespace UthTrip.BLL.Services
                 Start_date = datesRangeDTO.Start_date,
                 End_date = datesRangeDTO.End_date,
             };
-            this.Database.Destinations.Create(destination);
-            this.Database.Dates_ranges.Create(dates_Ranges);
-            this.Database.Trips.Create(trip);
-            this.Database.Save();
-            this.Database.Save();
-            this.Database.Save();
+            try
+            {
+                this.Database.Trips.GetAll().Where(e => e.Trip_Title == trip.Trip_Title).First();
+                throw new ArgumentNullException();
+            }
+            catch (System.InvalidOperationException)
+            {
+                this.Database.Destinations.Create(destination);
+                this.Database.Dates_ranges.Create(dates_Ranges);
+                this.Database.Trips.Create(trip);
+                this.Database.Save();
+            }
         }
         ////public int Authenticate(string username, string password)
         ////{

@@ -38,8 +38,16 @@
                 User_ID = rightsDto.User_ID,
 
             };
-            this.Database.Rights.Create(rights);
-            this.Database.Save();
+            try
+            {
+                this.Database.Rights.GetAll().Where(e => e.Role_ID == rights.Role_ID && e.Trip_ID == rights.Trip_ID && e.User_ID == rights.User_ID).First();
+                throw new ArgumentNullException();
+            }
+            catch (System.InvalidOperationException)
+            {
+                this.Database.Rights.Create(rights);
+                this.Database.Save();
+            }
         }
 
         ////public int Authenticate(string username, string password)

@@ -56,10 +56,16 @@
                 this.tripService.CreateTrip(tripDto, destinationDto, dateDto);
                 return this.RedirectToAction("TripDetail", "TripDetail", new { id = tripModel.Trip_ID });
             }
+            catch (ArgumentNullException)
+            {
+                this.ViewBag.DuplicateMessage = "Trip with this name already exists.";
+                return this.View("Create");
+            }
             catch (System.Data.Entity.Validation.DbEntityValidationException)
             {
                 this.ModelState.Clear();
-                this.ViewBag.DuplicateMessage = "Trip with this name already exists.";
+                this.ViewBag.DuplicateMessage = "Incorrect username or password.";
+
                 return this.View("Create", tripModel);
             }
         }

@@ -30,18 +30,16 @@
             int userId = int.Parse(this.Session["User_ID"].ToString());
             int tripId = int.Parse(trip_id);
             RightDTO rightDTO = new RightDTO(rightsId, userId, roleId, tripId);
-
-            if (this.rightsService.GetAll().Where(e => (e.Role_ID == roleId && e.Trip_ID == tripId && e.User_ID == userId)).First() != null)
+            try
             {
                 this.rightsService.CreateRights(rightDTO);
                 return this.RedirectToAction("../Home/StartPage");
             }
-            else
+            catch (ArgumentNullException ex)
             {
                 this.ViewBag.ErrorMessage = "Ви вже обрали цю подорож.";
                 return this.RedirectToAction($"../TripDetail/TripDetail/{trip_id}");
             }
-
         }
     }
 }

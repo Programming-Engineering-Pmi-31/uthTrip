@@ -43,8 +43,16 @@ namespace UthTrip.BLL.Services
                 Photo_Url = userDto.Photo_Url,
                 Info = userDto.Info,
             };
-            this.Database.Users.Create(user);
-            this.Database.Save();
+            try
+            {
+                this.Database.Users.GetAll().Where(e => e.Username == user.Username).First();
+                throw new ArgumentNullException();
+            }
+            catch (System.InvalidOperationException)
+            {
+                this.Database.Users.Create(user);
+                this.Database.Save();
+            }
         }
 
         ////public int Authenticate(string username, string password)
