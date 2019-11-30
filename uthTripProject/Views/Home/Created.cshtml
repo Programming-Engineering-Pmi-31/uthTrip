@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<UthTripProject.Models.TripViewModel>
 @{
-    ViewBag.Title = "My trips";
+    ViewBag.Title = "Chosen Trips";
 }
 
 <head>
@@ -42,15 +42,14 @@
                             Створити
                         </a>
                     </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Вийти", "../User/Logout")
-                    </li>
+
                 </ul>
             </div>
         </nav>
     </section>
-        <p>Тут відображаються обрані мною подорожі</p>
-        @Html.ActionLink("Переглянути створені мною подорожі", "Created")
+
+    <p>Тут відображаються створені мною подорожі</p>
+    @Html.ActionLink("Переглянути обрані мною подорожі", "MyTrips")
     <hr>
     <div class="container">
         <canvas class="background"></canvas>

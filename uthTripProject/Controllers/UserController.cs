@@ -52,6 +52,9 @@
                 userModel.User_ID = this.userService.FindMaxId() + 1;
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 this.userService.CreateUser(userDto);
+                this.Session["User_ID"] = userDto.User_ID.ToString();
+                this.Session["Username"] = userDto.Username.ToString();
+                this.Session["Password"] = userDto.Password.ToString();
                 return this.RedirectToAction("StartPage", "Home");
             }
             catch (ArgumentNullException ex)
@@ -104,6 +107,14 @@
                 this.ViewBag.DuplicateMessage = "Incorrect username or password.";
                 return this.View("Login");
             }
+        }
+
+        public ActionResult LogOut()
+        {
+            this.Session["User_ID"] = null;
+            this.Session["Username"] = null;
+            this.Session["Password"] = null;
+            return this.View("Login");
         }
     }
 }
