@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <title>site</title>
     <link rel="stylesheet" href="css\createTrip.css">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -28,18 +27,22 @@
                     <li class="nav-item">
                         <p>@Session["Username"]</p>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <i class="fa fa-user" aria-hidden="true"></i>
-                        <a class="nav-link" href="/Home/StartPage">
-                            MAIN PAGE
+                        <a class="nav-link" href="">
+                            Головна
+                        </a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/MyTrips">
+                            Мої подорожі
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">MY TRIPS</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="">NEW TRIP</a>
-                        <span class="sr-only">(current)</span>
+                        <a class="nav-link" href="/Trip/Create"">
+                            Створити
+                        </a>
                     </li>
 
                 </ul>
@@ -47,7 +50,7 @@
         </nav>
     </section>
 
-    <div class="toptop">
+    @*<div class="toptop">
         <h2 class="alow-trips">Доступні подорожі</h2>
         <div class="buton-wrapper">
             <div id="button-trip">
@@ -55,7 +58,7 @@
 
             </div>
         </div>
-    </div>
+    </div>*@
     <hr>
     @using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
     {
