@@ -85,25 +85,28 @@
 
     <div class="container">
         <canvas class="background"></canvas>
+
         @foreach (var item in Model)
         {
-            <div id="row-wrapper">
-                <div class="row" id="row">
-                    <div class="col-md-2" id="tripText">
-                        @Html.DisplayFor(modelItem => item.Trip_Title)
-                    </div>
-                    <div class="col-md-5" id="tripText">
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </div>
-                    <div class="col-md-2" id="tripText">
-                        <h2 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
-                    </div>
-                    <div class="col-md-1" id="tripTextDate">
-                        @Html.DisplayFor(modelItem => item.Start_date)
-                        <br>
-                        @Html.DisplayFor(modelItem => item.End_date)
-                    </div>
-                    @*
+            if (item.Start_date > DateTime.Now)
+            {
+                <div id="row-wrapper">
+                    <div class="row" id="row">
+                        <div class="col-md-2" id="tripText">
+                            @Html.DisplayFor(modelItem => item.Trip_Title)
+                        </div>
+                        <div class="col-md-5" id="tripText">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                        <div class="col-md-2" id="tripText">
+                            <h2 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
+                        </div>
+                        <div class="col-md-1" id="tripTextDate">
+                            @Html.DisplayFor(modelItem => item.Start_date)
+                            <br>
+                            @Html.DisplayFor(modelItem => item.End_date)
+                        </div>
+                        @*
                         <td>
                             @Html.DisplayFor(modelItem => item.Number_Of_People)
                         </td>
@@ -113,16 +116,18 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.City)
                         </td>
-                    *@
-                    <div class="col-md-2" id="tripTextButton">
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
+                        *@
+                        <div class="col-md-2" id="tripTextButton">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+
         }
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
