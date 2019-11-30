@@ -12,6 +12,7 @@
     using UthTrip.BLL.DTO;
     using UthTrip.BLL.Infrastructure;
     using UthTrip.BLL.Interfaces;
+    using uthTripProject.Controllers;
     using UthTripProject.Models;
 
     public class UserController : Controller
@@ -70,13 +71,14 @@
         public ActionResult Account(int id)
         {
             var userAccount = this.userService.Get(id);
-
+            var keyNew = Helper.GeneratePassword(10);
+            var password = Helper.EncodePassword(userAccount.Password, keyNew);
             var viewModel = new UserViewModel
             {
                 User_ID = userAccount.User_ID,
                 First_Name = userAccount.First_Name,
                 Last_Name = userAccount.Last_Name,
-                Username = userAccount.Username,
+                Username = password,
                 Email = userAccount.Email,
                 Password = userAccount.Password,
                 Birthday = userAccount.Birthday,
