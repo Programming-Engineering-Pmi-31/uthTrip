@@ -94,5 +94,36 @@
         {
             return this.View("Login");
         }
+
+        public ActionResult MyTrips()
+        {
+            IEnumerable<TripDTO> trips = this.tripService.GetAll();
+            IEnumerable<DestinationDTO> destinations = this.tripService.GetAllDist();
+            IEnumerable<DatesRangeDTO> dates = this.tripService.GetAllDateRanges();
+            List<TripViewModel> tripViewModels_list = new List<TripViewModel>();
+            foreach (var trip in trips)
+            {
+                foreach (var destination in destinations)
+                {
+                    if (trip.Destination_ID == destination.Destination_ID)
+                    {
+                        foreach (var date in dates)
+                        {
+                            if (trip.Destination_ID == destination.Destination_ID && trip.Date_ID == date.Date_ID)
+                            {
+                                tripViewModels_list.Add(new TripViewModel(trip, destination, date));
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+
+            IEnumerable<TripViewModel> viewModels = tripViewModels_list;
+
+            return this.View(viewModels);
+            //return this.View("MyTrips");
+        }
     }
 }

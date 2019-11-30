@@ -9,69 +9,67 @@
 <h2>@ViewBag.Title</h2>
 @* For now redirect to register after login *@
 @using (Html.BeginForm("Login", "User", FormMethod.Post))
-{   @Html.AntiForgeryToken()
-   @* <h4>Use a local account to log in.</h4>*@
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <head>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </head>
+{@Html.AntiForgeryToken()
+@* <h4>Use a local account to log in.</h4>*@
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 
-    <body class="body-login">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">              
-            <link rel="stylesheet" href="~/Content/login.css">
-        <div class="container ">
-            <canvas class="background"></canvas>
+<body class="body-login">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="~/Content/login.css">
+    <div class="container ">
+        <canvas class="background"></canvas>
 
-            <div class="card bg-light ">
-                <article class="card-body mx-auto" style="max-width: 600px;">
-                    <h4 class="card-title mt-3 text-center">Log in</h4>
-                    <p class="text-center">with your account</p>
-                    <p>
-                        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>  log in via Twitter</a>
-                        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>  log in via Facebook</a>
-                    </p>
-                    <p class="divider-text">
-                        <span class="bg-light">OR</span>
-                    </p>
-                    <form>
-                        <div class="form-group ">
-                            <div class="input-group-prepend" placeholder="Name" type="text">
-                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                                @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username", @type = "text" })
-                                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
-                            </div>
+        <div class="card bg-light ">
+            <article class="card-body mx-auto" style="max-width: 600px;">
+                <h4 class="card-title mt-3 text-center">Log in</h4>
+                <p class="text-center">with your account</p>
+                <p>
+                    <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>  log in via Twitter</a>
+                    <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>  log in via Facebook</a>
+                </p>
+                <p class="divider-text">
+                    <span class="bg-light">OR</span>
+                </p>
+                <form>
+                    <div class="form-group ">
+                        <div class="input-group-prepend" placeholder="Name" type="text">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username", @type = "text" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                       
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Sign in </button>
-                        </div>
-
-                        <p class="text-center">Don't have an account? @Html.ActionLink("Sign up", "Register")</p>
-                    </form>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-2">
-                            <label class="label-danger">@ViewBag.DuplicateMessage</label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
-                        </div> 
-                  </article>
-            </div>
+                    </div>
 
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Sign in </button>
+                    </div>
+
+                    <p class="text-center">Don't have an account? @Html.ActionLink("Sign up", "Register")</p>
+                </form>
+                <div class="form-group">
+                    <label class="label-danger">@ViewBag.DuplicateMessage</label>
+                </div>
+            </article>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-        
-    </body>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+
+</body>
 
 
 
@@ -79,10 +77,10 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/background")
-@Scripts.Render("~/bundles/bootstrap")
-@Styles.Render("~/Content/login.css")
-@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/background")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/login.css")
+    @Styles.Render("~/Content/css")
 }
 
 

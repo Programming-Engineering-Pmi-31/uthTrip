@@ -317,6 +317,7 @@
     <Content Include="Views\Hello\HelloPage.cshtml" />
     <Content Include="Views\TripDetail\TripDetail.cshtml" />
     <Content Include="Views\ChooseTrip\ChooseTrip.cshtml" />
+    <Content Include="Views\Home\MyTrips.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
