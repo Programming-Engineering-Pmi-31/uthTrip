@@ -20,6 +20,8 @@
 
         IEnumerable<DatesRangeDTO> GetAllDateRanges();
 
+        IEnumerable<RightDTO> GetAllRights();
+
         void Dispose(int id);
 
         int FindMaxId();

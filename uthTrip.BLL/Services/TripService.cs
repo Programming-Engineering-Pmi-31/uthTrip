@@ -160,5 +160,10 @@ namespace UthTrip.BLL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Dates_ranges, DatesRangeDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Dates_ranges>, List<DatesRangeDTO>>(this.Database.Dates_ranges.GetAll());
         }
+        public IEnumerable<RightDTO> GetAllRights()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Right, RightDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Right>, List<RightDTO>>(this.Database.Rights.GetAll());
+        }
     }
 }
