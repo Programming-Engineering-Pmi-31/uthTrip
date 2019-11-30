@@ -86,6 +86,7 @@
                 viewModels = viewModels.Where(x => x.Number_Of_People <= persons);
             }
 
+        
             return this.View(viewModels);
         }
 
