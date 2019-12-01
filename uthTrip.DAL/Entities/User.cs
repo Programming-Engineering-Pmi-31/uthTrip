@@ -48,6 +48,7 @@ namespace UthTrip.DAL.Entities
         [StringLength(30)]
         public string Photo_Url { get; set; }
 
+
         [Required]
         [StringLength(30)]
         public string Info { get; set; }

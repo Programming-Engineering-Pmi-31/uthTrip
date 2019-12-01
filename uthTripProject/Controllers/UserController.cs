@@ -3,9 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Infrastructure;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Security.Cryptography;
+    using System.Text;
     using System.Web;
+    using System.Web.Helpers;
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
@@ -51,6 +55,9 @@
             try
             {
                 userModel.User_ID = this.userService.FindMaxId() + 1;
+
+                userModel.Password = Helper.Encrypt(userModel.Password);
+
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 this.userService.CreateUser(userDto);
                 return this.RedirectToAction("StartPage", "Home");
@@ -62,6 +69,7 @@
             }
         }
 
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -71,16 +79,14 @@
         public ActionResult Account(int id)
         {
             var userAccount = this.userService.Get(id);
-            var keyNew = Helper.GeneratePassword(10);
-            var password = Helper.EncodePassword(userAccount.Password, keyNew);
             var viewModel = new UserViewModel
             {
                 User_ID = userAccount.User_ID,
                 First_Name = userAccount.First_Name,
                 Last_Name = userAccount.Last_Name,
-                Username = password,
+                Username = userAccount.Username,
                 Email = userAccount.Email,
-                Password = userAccount.Password,
+                Password = userAccount.Email,
                 Birthday = userAccount.Birthday,
                 Photo_Url = userAccount.Photo_Url,
                 Info = userAccount.Info,
