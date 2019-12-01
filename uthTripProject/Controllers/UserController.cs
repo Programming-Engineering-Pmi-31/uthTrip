@@ -3,15 +3,20 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Infrastructure;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Security.Cryptography;
+    using System.Text;
     using System.Web;
+    using System.Web.Helpers;
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
     using UthTrip.BLL.DTO;
     using UthTrip.BLL.Infrastructure;
     using UthTrip.BLL.Interfaces;
+    using uthTripProject.Controllers;
     using UthTripProject.Models;
 
     public class UserController : Controller
@@ -50,6 +55,9 @@
             try
             {
                 userModel.User_ID = this.userService.FindMaxId() + 1;
+
+                userModel.Password = Helper.Encrypt(userModel.Password);
+
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 this.userService.CreateUser(userDto);
                 this.Session["User_ID"] = userDto.User_ID.ToString();
@@ -64,6 +72,7 @@
             }
         }
 
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -73,7 +82,6 @@
         public ActionResult Account(int id)
         {
             var userAccount = this.userService.Get(id);
-
             var viewModel = new UserViewModel
             {
                 User_ID = userAccount.User_ID,
@@ -81,7 +89,7 @@
                 Last_Name = userAccount.Last_Name,
                 Username = userAccount.Username,
                 Email = userAccount.Email,
-                Password = userAccount.Password,
+                Password = userAccount.Email,
                 Birthday = userAccount.Birthday,
                 Photo_Url = userAccount.Photo_Url,
                 Info = userAccount.Info,

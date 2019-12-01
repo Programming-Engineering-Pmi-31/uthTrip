@@ -223,6 +223,7 @@
     <Compile Include="Controllers\ChooseTripController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
+    <Compile Include="Controllers\Helper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TripController.cs" />
