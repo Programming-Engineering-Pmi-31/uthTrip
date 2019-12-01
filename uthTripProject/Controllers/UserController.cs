@@ -39,11 +39,20 @@ namespace uthTripProject.Controllers
         {
             try
             {
+<<<<<<< Updated upstream
                 userModel.User_ID = userService.FindMaxId() + 1;
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 userService.CreateUser(userDto);  
                 ViewBag.SuccessMessage = "Registration Successful.";
 
+=======
+               
+                    userModel.User_ID = this.userService.FindMaxId() + 1;
+                    var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
+                    this.userService.CreateUser(userDto);
+                    return this.RedirectToAction("StartPage", "Home");
+                
+>>>>>>> Stashed changes
             }
             catch (ValidationException ex)
             {

@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 using uthTrip.DAL.Entities;
 using uthTrip.DAL.EF;
 using uthTrip.DAL.Interfaces;
+<<<<<<< Updated upstream
 using System.Data.Entity;
 
+=======
+//using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+>>>>>>> Stashed changes
 namespace uthTrip.DAL.Repositories
 {
     public class UserRepository : IRepository<User>
@@ -29,7 +36,7 @@ namespace uthTrip.DAL.Repositories
             return db.Users.Find(id);
         }
 
-        public void Create(User user)
+        public void Create( User user)
         {
             db.Users.Add(user);
         }
@@ -52,6 +59,7 @@ namespace uthTrip.DAL.Repositories
         }
         public int MaxId()
         {
+<<<<<<< Updated upstream
             int max = 0;
             try
             {
@@ -60,6 +68,16 @@ namespace uthTrip.DAL.Repositories
             catch(System.InvalidOperationException)
             {  max= -1; }
             return max;
+=======
+            //int max = 0;
+            //try
+            //{
+            //    max = db.Users.Max(a => a.User_ID);
+            //}
+            //catch (System.InvalidOperationException)
+            //{ max = -1; }
+            return -1;
+>>>>>>> Stashed changes
 
         }
 
