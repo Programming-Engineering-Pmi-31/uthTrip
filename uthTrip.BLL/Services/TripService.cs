@@ -165,5 +165,11 @@ namespace UthTrip.BLL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Right, RightDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Right>, List<RightDTO>>(this.Database.Rights.GetAll());
         }
+
+        public IEnumerable<UserDTO> GetAllUsers()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<User>, List<UserDTO>>(this.Database.Users.GetAll());
+        }
     }
 }

@@ -73,6 +73,23 @@
                         <div class="col-md-8">
                             <h2>@Html.DisplayFor(modelItem => modelItem.City) </h2>
                         </div>
+                        
+                        
+                        <div class="col-md-8">
+                            @*@for (int i = 0; i < ViewBag.Subscribers_user.Count; i++)*@
+                            @foreach(var i in ViewBag.Subscribers_user)
+                            {
+                                string name = (string)i.Value;
+                                int user_id = (int) i.Key;
+                                @Html.ActionLink(name, "../User/UserProfile",new { id=user_id })
+                            }
+                        </div>
+
+                        <div class="col-md-8">
+                        <label class="label-danger">@ViewBag.freePlaces</label>
+                        </div>
+                        
+                       
 
                         @using (Html.BeginForm("ChooseTrip", "ChooseTrip", FormMethod.Get, new { @class = "form-horizontal" }))
                         {
