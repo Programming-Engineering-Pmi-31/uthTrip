@@ -67,7 +67,7 @@
             }
             catch (ArgumentNullException ex)
             {
-                this.ViewBag.DuplicateMessage = "Username already exists.";
+                this.ViewBag.DuplicateMessage = "Таке і'мя користувача вже існує.";
                 return this.View("Register");
             }
         }
@@ -112,7 +112,7 @@
             }
             else
             {
-                this.ViewBag.DuplicateMessage = "Incorrect username or password.";
+                this.ViewBag.DuplicateMessage = "Неправильне і'мя користувача або пароль.";
                 return this.View("Login");
             }
         }

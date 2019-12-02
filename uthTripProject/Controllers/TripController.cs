@@ -58,13 +58,13 @@
             }
             catch (ArgumentNullException)
             {
-                this.ViewBag.DuplicateMessage = "Trip with this name already exists.";
+                this.ViewBag.DuplicateMessage = "Подорож з цією назвою вже існує.";
                 return this.View("Create");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException)
             {
                 this.ModelState.Clear();
-                this.ViewBag.DuplicateMessage = "Incorrect username or password.";
+                this.ViewBag.DuplicateMessage = "Неправильне ім'я користувача або пароль.";
 
                 return this.View("Create", tripModel);
             }

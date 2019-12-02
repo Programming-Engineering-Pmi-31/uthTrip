@@ -33,12 +33,12 @@ namespace UthTripProject.Models
         public int Trip_ID { get; set; }
 
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Trip title must have at least 3 chars.")]
-        [DisplayName("Trip title")]
+        [DisplayName("Назва")]
         [Required(ErrorMessage = "This field is required.")]
         public string Trip_Title { get; set; }
 
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Description must have at least 3 chars.")]
-        [DisplayName("Description")]
+        [DisplayName("Опис")]
         [Required(ErrorMessage = "This field is required.")]
         public string Description { get; set; }
 
@@ -46,17 +46,17 @@ namespace UthTripProject.Models
 
         public int Date_ID { get; set; }
 
-        [DisplayName("Start date")]
+        [DisplayName("Початкова дата")]
         [Required(ErrorMessage = "This field is required.")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> Start_date { get; set; }
 
-        [DisplayName("End date")]
+        [DisplayName("Кінцева дата")]
         [Required(ErrorMessage = "This field is required.")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> End_date { get; set; }
 
-        [DisplayName("Number of people")]
+        [DisplayName("Кількість людей")]
         [Required(ErrorMessage = "This field is required.")]
         public int Number_Of_People { get; set; }
 
@@ -64,7 +64,7 @@ namespace UthTripProject.Models
         [Required(ErrorMessage = "This field is required.")]
         public int Destination_ID { get; set; }
 
-        [DisplayName("Is it Abroad ?")]
+        [DisplayName("Це закордоном?")]
         [Required(ErrorMessage = "This field is required.")]
         public bool Is_Abroad { get; set; }
 
