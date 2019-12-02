@@ -1,4 +1,4 @@
-namespace UthTripProject.Models
+п»їnamespace UthTripProject.Models
 {
     using System;
     using System.Collections.Generic;
@@ -33,30 +33,31 @@ namespace UthTripProject.Models
         public int Trip_ID { get; set; }
 
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Trip title must have at least 3 chars.")]
-        [DisplayName("Назва")]
+        [DisplayName("РќР°Р·РІР°")]
         [Required(ErrorMessage = "This field is required.")]
         public string Trip_Title { get; set; }
 
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Description must have at least 3 chars.")]
-        [DisplayName("Опис")]
+        [DisplayName("РћРїРёСЃ")]
         [Required(ErrorMessage = "This field is required.")]
         public string Description { get; set; }
 
+        [DisplayName("Р’Р°СЂС‚С–СЃС‚СЊ")]
         public double Price { get; set; }
 
         public int Date_ID { get; set; }
 
-        [DisplayName("Початкова дата")]
+        [DisplayName("РџРѕС‡Р°С‚РєРѕРІР° РґР°С‚Р°")]
         [Required(ErrorMessage = "This field is required.")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> Start_date { get; set; }
 
-        [DisplayName("Кінцева дата")]
+        [DisplayName("РљС–РЅС†РµРІР° РґР°С‚Р°")]
         [Required(ErrorMessage = "This field is required.")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> End_date { get; set; }
 
-        [DisplayName("Кількість людей")]
+        [DisplayName("РљС–Р»СЊРєС–СЃС‚СЊ Р»СЋРґРµР№")]
         [Required(ErrorMessage = "This field is required.")]
         public int Number_Of_People { get; set; }
 
@@ -64,12 +65,14 @@ namespace UthTripProject.Models
         [Required(ErrorMessage = "This field is required.")]
         public int Destination_ID { get; set; }
 
-        [DisplayName("Це закордоном?")]
+        [DisplayName("Р¦Рµ Р·Р°РєРѕСЂРґРѕРЅРѕРј?")]
         [Required(ErrorMessage = "This field is required.")]
         public bool Is_Abroad { get; set; }
 
+        [DisplayName("РљСЂР°С—РЅР°")]
         public string Country { get; set; }
 
+        [DisplayName("РњС–СЃС‚Рѕ")]
         public string City { get; set; }
 
         public int Creator_ID { get; set; }
