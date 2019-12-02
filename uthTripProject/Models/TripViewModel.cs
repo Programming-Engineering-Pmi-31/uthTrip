@@ -32,14 +32,14 @@
 
         public int Trip_ID { get; set; }
 
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Trip title must have at least 3 chars.")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Назва подорожі має містити принаймні 3 символи.")]
         [DisplayName("Назва")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public string Trip_Title { get; set; }
 
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Description must have at least 3 chars.")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Опис подорожі має містити принаймні 3 символи.")]
         [DisplayName("Опис")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public string Description { get; set; }
 
         [DisplayName("Вартість")]
@@ -48,25 +48,25 @@
         public int Date_ID { get; set; }
 
         [DisplayName("Початкова дата")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> Start_date { get; set; }
 
         [DisplayName("Кінцева дата")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> End_date { get; set; }
 
         [DisplayName("Кількість людей")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public int Number_Of_People { get; set; }
 
         [DisplayName("Destination ID")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public int Destination_ID { get; set; }
 
         [DisplayName("Це закордоном?")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public bool Is_Abroad { get; set; }
 
         [DisplayName("Країна")]

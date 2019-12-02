@@ -27,6 +27,7 @@
         {
             int rightsId = this.rightsService.FindMaxId() + 1;
             int roleId = this.rightsService.GetAllRoles().Where(e => e.Title == "Subscriber").Select(e => e.Role_ID).First();
+            
             int userId = int.Parse(this.Session["User_ID"].ToString());
             int tripId = int.Parse(trip_id);
             RightDTO rightDTO = new RightDTO(rightsId, userId, roleId, tripId);

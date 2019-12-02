@@ -10,25 +10,25 @@
     {
         public int User_ID { get; set; }
 
-        [StringLength(30, MinimumLength = 4, ErrorMessage = "First name must have at least 4 chars.")]
+        [StringLength(30, MinimumLength = 4, ErrorMessage = "Ім'я має містити принаймні 4 символи.")]
         [DisplayName("Ім'я")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public string First_Name { get; set; }
 
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Last name must have at least 3 chars.")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Прізвище має містити принаймні 3 символи.")]
         [DisplayName("Прізвище")]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public string Last_Name { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public string Email { get; set; }
 
-        [StringLength(30, MinimumLength = 4, ErrorMessage = "User name must have at least 4 chars.")]
-        [Required(ErrorMessage = "This field is required.")]
+        [StringLength(30, MinimumLength = 4, ErrorMessage = "Ім'я коростувача має містити принаймні 4 символи.")]
+        [Required(ErrorMessage = "Обов'язкове поле.")]
         public string Username { get; set; }
 
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Password must have at least 5 char.")]
+        [StringLength(30, MinimumLength = 5, ErrorMessage = "Пароль має містити принаймні 4 символи.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
