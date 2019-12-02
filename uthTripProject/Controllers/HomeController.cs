@@ -9,6 +9,8 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
+    using PagedList.Mvc;
+    using PagedList;
     using UthTrip.BLL.DTO;
     using UthTrip.BLL.Infrastructure;
     using UthTrip.BLL.Interfaces;
@@ -24,7 +26,7 @@
             this.tripService = iserv;
         }
 
-        public ActionResult StartPage(string Country, string City, string maxPrice, string maxPeople)
+        public ActionResult StartPage(int? page, string Country, string City, string maxPrice, string maxPeople)
         {
             IEnumerable<TripDTO> trips = this.tripService.GetAll();
             IEnumerable<DestinationDTO> destinations = this.tripService.GetAllDist();
@@ -75,8 +77,10 @@
                 viewModels = viewModels.Where(x => x.Number_Of_People <= persons);
             }
 
+            int pageSize = 7;
+            int pageNumber = page ?? 1;
 
-            return this.View(viewModels);
+            return this.View(viewModels.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult HomeA()

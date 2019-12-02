@@ -33,7 +33,7 @@
             try
             {
                 this.rightsService.CreateRights(rightDTO);
-                return this.RedirectToAction("../Home/StartPage");
+                return this.RedirectToAction("../Home/MyTrips");
             }
             catch (ArgumentNullException ex)
             {

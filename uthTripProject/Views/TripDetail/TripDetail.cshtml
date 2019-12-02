@@ -21,16 +21,24 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
+                            <p>@Session["Username"]</p>
+                        </li>
+                        <li class="nav-item">
                             <i class="fa fa-user" aria-hidden="true"></i>
-                            <a class="nav-link" href="/Home/StartPage">MAIN PAGE</a>
+                            <a class="nav-link" href="/Home/StartPage">
+                                Головна
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">MY TRIPS</a>
+                            <a class="nav-link" href="/Home/MyTrips">
+                                Мої подорожі
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">NEW TRIP</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Trip/Create">
+                                Створити
+                            </a>
                         </li>
-
                     </ul>
                 </div>
             </nav>
