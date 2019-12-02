@@ -15,6 +15,8 @@
             this.Bind<ITripService>().To<TripService>();
             this.Bind<IUserService>().To<UserService>();
             this.Bind<IRightsService>().To<RightsService>();
+            this.Bind<IReviewService>().To<ReviewService>();
+
 
         }
     }
