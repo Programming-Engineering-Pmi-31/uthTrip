@@ -77,8 +77,8 @@
                         @using (Html.BeginForm("ChooseTrip", "ChooseTrip", FormMethod.Get, new { @class = "form-horizontal" }))
                         {
                             <div class="col-md-2" id="btext">
-                                @Html.TextBox("trip_id", Model.Trip_ID.ToString(), new { @class = "form-control" })
-                                <input type="submit" value="Обрати" class="btn" id="hello-btn" />
+                                @Html.TextBox("trip_id", Model.Trip_ID.ToString(), new { @class = "form-control", @style = "display: none"})                          
+                                <input type="submit" value="Підписатись на подорож" class="btn" id="hello-btn" />
                             </div>
                         }
                         @*<asp:LinkButton ID="LinkButton1"
