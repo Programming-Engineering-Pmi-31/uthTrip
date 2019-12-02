@@ -321,6 +321,7 @@
     <Content Include="Views\Home\MyTrips.cshtml" />
     <Content Include="Views\Home\Created.cshtml" />
     <Content Include="Views\User\LogOut.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

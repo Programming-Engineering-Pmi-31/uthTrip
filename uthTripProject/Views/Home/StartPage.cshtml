@@ -90,8 +90,8 @@
         <canvas class="background"></canvas>
         @foreach (var item in Model)
         {
-            if (item.Start_date > DateTime.Now)
-            {
+            //if (item.Start_date > DateTime.Now)
+            //{
                 <div id="row-wrapper">
                     <div class="row" id="row">
                         <div class="col-md-2" id="tripText">
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-            }
+            @*}*@
         }
         <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
     </div>

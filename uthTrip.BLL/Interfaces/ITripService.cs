@@ -22,6 +22,9 @@
 
         IEnumerable<RightDTO> GetAllRights();
 
+        IEnumerable<UserDTO> GetAllUsers();
+
+
         void Dispose(int id);
 
         int FindMaxId();

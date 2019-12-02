@@ -1,4 +1,6 @@
-﻿namespace UthTripProject.Controllers
+﻿using Microsoft.Owin.Security.Facebook;
+
+namespace UthTripProject.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -123,6 +125,15 @@
             this.Session["Username"] = null;
             this.Session["Password"] = null;
             return this.View("Login");
+        }
+
+        public ActionResult UserProfile(int? id)
+        {
+            IEnumerable<UserDTO> users = this.userService.GetAll();
+            var person = (from i in users
+                where i.User_ID == id
+                select i).ToList().First();
+            return View(person);
         }
     }
 }
