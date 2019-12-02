@@ -80,8 +80,15 @@
                             <div class="col-md-offset-2 col-md-10">
                                 @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
                             </div>
+                            <div class="col-md-offset-2 col-md-10">
+                                @if (item.End_date < DateTime.Now)
+                                {
+                                    @Html.ActionLink("Відгук", "../Review/WriteReview", new { id = item.Trip_ID }, new { @class = "button-a" })
+                                }
+                            </div>
+
                         </div>
-                    </div>
+                        </div>
                 </div>
             </div>
         }

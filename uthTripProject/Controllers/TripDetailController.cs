@@ -48,7 +48,6 @@
                             }
                         }
 
-
                         break;
                     }
                 }
@@ -60,6 +59,7 @@
             ////TripDTO trip = tripService.GetById(id);
             return this.View(tripViewModel);
         }
+
 
     }
 }
