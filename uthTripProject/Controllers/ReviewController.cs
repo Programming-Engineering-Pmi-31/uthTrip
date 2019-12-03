@@ -18,15 +18,26 @@
     public class ReviewController : Controller
     {
         private IReviewService reviewService;
+        int trip_id;
 
         public ReviewController(IReviewService iserv)
         {
             this.reviewService = iserv;
         }
 
+        [HttpGet]
+        public ActionResult WriteReview(int id)
+        {
+            this.trip_id = id;
+            ReviewViewModel reviewModel = new ReviewViewModel();
+            return this.View(reviewModel);
+        }
+
+        [HttpPost]
         public ActionResult WriteReview(int id, ReviewViewModel reviewViewModel)
         {
-            reviewViewModel.Review_ID = 3;
+            ////TO DO: change this
+            reviewViewModel.Review_ID = 5;
             reviewViewModel.Writer_ID = int.Parse(this.Session["User_ID"].ToString());
             reviewViewModel.Trip_ID = id;
 
