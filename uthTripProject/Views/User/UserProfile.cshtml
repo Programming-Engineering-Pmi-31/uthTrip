@@ -47,61 +47,74 @@
             </div>
         </nav>
     </section>
-    <div>
-        <h4>UserDTO</h4>
-        <hr />
-        <dl class="dl-horizontal">
+    <div class="container ">
+        <canvas class="background"></canvas>
+        <div>
+            <h4>UserDTO</h4>
+            <hr />
+            <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.First_Name)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.First_Name)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.First_Name)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.First_Name)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Last_Name)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Last_Name)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Last_Name)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Last_Name)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Username)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Username)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Username)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Birthday)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Birthday)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Birthday)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Birthday)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Info)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Info)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Info)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Info)
+                </dd>
 
-        </dl>
+            </dl>
+            @if (ViewBag.Reviews != null)
+            {
+                <p>Відгуки на подорожі, створені користувачем:</p>
+                foreach (var review in ViewBag.Reviews)
+                {
+                    <li>@review</li>
+                }
+            }
+
+        </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
 
 
     @section Scripts {

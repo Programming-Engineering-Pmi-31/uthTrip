@@ -18,7 +18,8 @@
     public class ReviewController : Controller
     {
         private IReviewService reviewService;
-        int trip_id;
+
+        private int tripId;
 
         public ReviewController(IReviewService iserv)
         {
@@ -28,7 +29,7 @@
         [HttpGet]
         public ActionResult WriteReview(int id)
         {
-            this.trip_id = id;
+            this.tripId = id;
             ReviewViewModel reviewModel = new ReviewViewModel();
             return this.View(reviewModel);
         }
@@ -43,7 +44,9 @@
 
             var reviewDto = new ReviewDTO(reviewViewModel.Review_ID, reviewViewModel.Writer_ID, reviewViewModel.Trip_ID, reviewViewModel.Review1, reviewViewModel.Mark);
             this.reviewService.CreateReview(reviewDto);
-            return this.View();
+
+            int creator_id = this.reviewService.GetAllTrips().Where(t => t.Trip_ID == id).Select(t => t.Creator_ID).FirstOrDefault();
+            return this.RedirectToAction($"../User/UserProfile/{creator_id}");
         }
     }
 }

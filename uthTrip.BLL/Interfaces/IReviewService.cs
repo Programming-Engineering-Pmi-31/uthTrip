@@ -14,6 +14,8 @@
 
         IEnumerable<ReviewDTO> GetAll();
 
+        IEnumerable<TripDTO> GetAllTrips();
+
         int FindMaxId();
     }
 }

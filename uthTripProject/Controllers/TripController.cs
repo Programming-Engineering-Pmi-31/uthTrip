@@ -47,6 +47,16 @@
                 tripModel.Trip_ID = this.tripService.FindMaxId() + 1;
                 tripModel.Destination_ID = this.tripService.FindMaxIdDestination() + 1;
                 tripModel.Date_ID = this.tripService.FindMaxIdDateRange() + 1;
+                switch (tripModel.Country.ToLower())
+                {
+                    case "ukraine":
+                        tripModel.Is_Abroad = false;
+                        break;
+                    default:
+                        tripModel.Is_Abroad = true;
+                        break;
+                }
+
                 var sessionUserId = int.Parse(this.Session["User_ID"].ToString());
                 tripModel.Creator_ID = sessionUserId;
 

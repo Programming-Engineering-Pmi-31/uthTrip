@@ -131,9 +131,14 @@ namespace UthTripProject.Controllers
         {
             IEnumerable<UserDTO> users = this.userService.GetAll();
             var person = (from i in users
-                where i.User_ID == id
-                select i).ToList().First();
-            return View(person);
+                          where i.User_ID == id
+                          select i).ToList().First();
+
+            List<int> userTrips = this.userService.GetAllTrips().Where(e => e.Creator_ID == id).Select(e => e.Trip_ID).ToList();
+            var reviews = this.userService.GetAllReviews().Where(e => userTrips.Contains(e.Trip_ID)).Select(e => e.Review1);
+
+            this.ViewBag.Reviews = reviews.ToList();
+            return this.View(person);
         }
     }
 }

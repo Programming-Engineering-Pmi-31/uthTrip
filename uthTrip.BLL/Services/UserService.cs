@@ -156,6 +156,18 @@ namespace UthTrip.BLL.Services
             return mapper.Map<IEnumerable<User>, List<UserDTO>>(this.Database.Users.GetAll());
         }
 
+        public IEnumerable<ReviewDTO> GetAllReviews()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Review, ReviewDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Review>, List<ReviewDTO>>(this.Database.Reviews.GetAll());
+        }
+
+        public IEnumerable<TripDTO> GetAllTrips()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Trip, TripDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Trip>, List<TripDTO>>(this.Database.Trips.GetAll());
+        }
+
         public void Dispose(int id)
         {
             var user = this.Database.Users.Get(id);
