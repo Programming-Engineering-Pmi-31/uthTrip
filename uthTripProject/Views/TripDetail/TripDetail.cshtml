@@ -73,41 +73,32 @@
                         <div class="col-md-8">
                             <h2>@Html.DisplayFor(modelItem => modelItem.City) </h2>
                         </div>
-                        
-                        
+
+
                         <div class="col-md-8">
-                            @*@for (int i = 0; i < ViewBag.Subscribers_user.Count; i++)*@
-                            @foreach(var i in ViewBag.Subscribers_user)
+                            @foreach (var i in ViewBag.Subscribers_user)
                             {
                                 string name = (string)i.Value;
-                                int user_id = (int) i.Key;
-                                @Html.ActionLink(name, "../User/UserProfile",new { id=user_id })
+                                int user_id = (int)i.Key;
+                                @Html.ActionLink(name, "../User/UserProfile", new { id = user_id })
                             }
                         </div>
 
                         <div class="col-md-8">
-                        <label class="label-danger">@ViewBag.freePlaces</label>
+                            <label class="label-danger">@ViewBag.freePlaces</label>
                         </div>
-                        
-                       
 
-                        @using (Html.BeginForm("ChooseTrip", "ChooseTrip", FormMethod.Get, new { @class = "form-horizontal" }))
+
+                        @if (Model.Creator_ID != int.Parse(Session["User_ID"].ToString()))
                         {
-                            <div class="col-md-2" id="btext">
-                                @Html.TextBox("trip_id", Model.Trip_ID.ToString(), new { @class = "form-control", @style = "display: none"})                          
-                                <input type="submit" value="Підписатись на подорож" class="btn" id="hello-btn" />
-                            </div>
+                            using (Html.BeginForm("ChooseTrip", "ChooseTrip", FormMethod.Get, new { @class = "form-horizontal" }))
+                            {
+                                <div class="col-md-2" id="btext">
+                                    @Html.TextBox("trip_id", Model.Trip_ID.ToString(), new { @class = "form-control", @style = "display: none" })
+                                    <input type="submit" value="Підписатись на подорож" class="btn" id="hello-btn" />
+                                </div>
+                            }
                         }
-                        @*<asp:LinkButton ID="LinkButton1"
-            Text='<%#Eval("Likes")%>'
-            CommandArgument='<%#Eval("@Model.Trip_ID")%>'
-            OnCommand="ChooseTrip"
-            CssClass="icon fa-heart"
-            runat="server" />*@
-                        @*<div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("Обрати", "../ChooseTripController/ChooseTrip", new { id = Model.Trip_ID }, new { @class = "button-a" })
-            </div>*@
-                        @*<input type="button" title="Add" value="Більше" onclick="location.href='@Url.Action("ChooseTrip", "ChooseTrip", new { id = Model.Trip_ID })'" />*@
                     </div>
                 </article>
             </div>

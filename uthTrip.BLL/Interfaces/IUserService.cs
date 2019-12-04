@@ -22,6 +22,10 @@
 
         IEnumerable<UserDTO> GetAll();
 
+        IEnumerable<ReviewDTO> GetAllReviews();
+
+        IEnumerable<TripDTO> GetAllTrips();
+
         void Dispose(int id);
 
         int FindMaxId();
