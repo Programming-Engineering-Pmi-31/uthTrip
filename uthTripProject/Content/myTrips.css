@@ -15,6 +15,7 @@ body {
     font-size: 16px;
     font-family: sans-serif;
 }
+
 .background {
     position: absolute;
     top: 0;
@@ -23,6 +24,7 @@ body {
     right: 0;
     z-index: -1;
 }
+
 #nav-bar {
     position: sticky;
     top: 0;
@@ -30,7 +32,7 @@ body {
 }
 
 .navbar {
-   /* padding: 10 !important;*/
+    /* padding: 10 !important;*/
     background-color: #FFFFFE;
 }
 
@@ -53,6 +55,7 @@ body {
 .navbar-toggler {
     outline: none !important;
 }
+
 .container .card {
     /* background-color: rgba(245, 245, 245, 1);*/
     margin: 0 auto;
@@ -82,16 +85,37 @@ body {
     content: "";
     position: absolute;
     width: 100%;
-    border-bottom: 1px solid #ddd;
     top: 55%;
     left: 0;
     z-index: 1;
 }
 
-
-
 .body h2 {
     color: #ffffff;
     text-align: center;
     margin: 50px;
+}
+
+span {
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #0062cc;
+}
+
+.box {
+    padding: 60px 0px;
+}
+
+.box-part {
+    background: #FFF;
+    border-radius: 0;
+    padding: 60px 10px;
+    margin: 15px 0px;
+}
+
+.text {
+    margin: 20px 0px;
 }
