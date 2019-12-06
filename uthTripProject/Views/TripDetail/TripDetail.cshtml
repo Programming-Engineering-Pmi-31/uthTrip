@@ -58,7 +58,6 @@
                         <div class="col-md-8">
                             @Html.DisplayFor(modelItem => modelItem.Description)
                         </div>
-                        @*<img src="C:\Users\Andriy\Documents\UthTrip\UthTripProject\Views\photoes\logo2.jfif" width="30" height="30" alt="">*@
                         <div class="col-md-8">
                             <h2>@Html.DisplayFor(modelItem => modelItem.Price) ₴ </h2>
                         </div>
@@ -73,8 +72,10 @@
                         <div class="col-md-8">
                             <h2>@Html.DisplayFor(modelItem => modelItem.City) </h2>
                         </div>
-
-
+                        <div class="col-md-8">
+                            <p>Кількіть вільних місць: @ViewBag.freePlaces</p>
+                        </div>
+                        <p>Користувачі, які вже підписались на подорож:</p>
                         <div class="col-md-8">
                             @foreach (var i in ViewBag.Subscribers_user)
                             {
@@ -84,9 +85,7 @@
                             }
                         </div>
 
-                        <div class="col-md-8">
-                            <label class="label-danger">@ViewBag.freePlaces</label>
-                        </div>
+
 
 
                         @if (Model.Creator_ID != int.Parse(Session["User_ID"].ToString()))
