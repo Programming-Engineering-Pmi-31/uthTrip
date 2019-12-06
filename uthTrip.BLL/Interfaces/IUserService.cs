@@ -12,6 +12,8 @@
     {
         void CreateUser(UserDTO userDto);
 
+        void CreateBlocked(BlockedUsersDTO userDto);
+
         UserDTO GetById(int? id);
 
         UserDTO Get(int userAccountId);
@@ -26,8 +28,14 @@
 
         IEnumerable<TripDTO> GetAllTrips();
 
+        IEnumerable<BlockedUsersDTO> GetAllBlocked();
+
         void Dispose(int id);
+        void DisposeBlocked(int id);
+
 
         int FindMaxId();
+
+        int FindMaxIdBl();
     }
 }

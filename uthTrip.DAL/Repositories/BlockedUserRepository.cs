@@ -21,7 +21,17 @@
 
         public int MaxId()
         {
-            return 0;
+            int max = 0;
+            try
+            {
+                max = this.db.Blocked_Users.Max(a => a.Blocked_ID);
+            }
+            catch (System.InvalidOperationException)
+            {
+                max = -1;
+            }
+
+            return max;
         }
 
         public IEnumerable<Blocked_Users> GetAll()

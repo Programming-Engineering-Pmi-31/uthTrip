@@ -53,8 +53,15 @@
                         <a class="nav-link" href="/User/Logout">
                             Вийти
                         </a>
-
                     </li>
+                    @if (Session["isAdmin"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/User/AllUsers">
+                                Користувачі
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </nav>

@@ -21,7 +21,16 @@
 
         public int MaxId()
         {
-            return 0;
+            int max;
+            try
+            {
+                max = this.db.Reviews.Max(a => a.Review_ID);
+            }
+            catch (System.InvalidOperationException)
+            {
+                max = -1;
+            }
+            return max;
         }
 
         public IEnumerable<Review> GetAll()
