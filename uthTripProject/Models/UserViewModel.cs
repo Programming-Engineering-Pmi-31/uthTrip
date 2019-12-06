@@ -48,7 +48,7 @@
         public string Photo_Url { get; set; }
 
         ////[StringLength(30, MinimumLength = 10, ErrorMessage = "Info must have at least 3 char.")]
-        [DisplayName("Трохи інформаці про тебе")]
+        [DisplayName("Трохи інформації про тебе")]
         [DataType(DataType.MultilineText)]
         ////[Required(ErrorMessage = "This field is required.")]
         public string Info { get; set; }

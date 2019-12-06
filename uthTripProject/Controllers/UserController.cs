@@ -35,7 +35,6 @@ namespace UthTripProject.Controllers
             IEnumerable<UserDTO> userDtos = this.userService.GetAll();
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<UserDTO, UserViewModel>()).CreateMapper();
             var users = mapper.Map<IEnumerable<UserDTO>, List<UserViewModel>>(userDtos);
-            ////var model = repo.GetComputerList();
             if (users.Count > 0)
             {
                 this.ViewBag.Message = string.Format("В базі даних {0} об'єкт", users.Count);
@@ -57,9 +56,7 @@ namespace UthTripProject.Controllers
             try
             {
                 userModel.User_ID = this.userService.FindMaxId() + 1;
-
                 userModel.Password = Helper.Encrypt(userModel.Password);
-
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 this.userService.CreateUser(userDto);
                 this.Session["User_ID"] = userDto.User_ID.ToString();
@@ -105,7 +102,15 @@ namespace UthTripProject.Controllers
         {
             this.ModelState.Clear();
             var obj = this.userService.GetByUsernamePassword(userModel.Username, userModel.Password);
-            if (obj != null)
+            if (obj != null && userModel.Username == "admin" && userModel.Password == "admin")
+            {
+                this.Session["isAdmin"] = "true";
+                this.Session["User_ID"] = obj.User_ID.ToString();
+                this.Session["Username"] = obj.Username.ToString();
+                this.Session["Password"] = obj.Password.ToString();
+                return this.RedirectToAction("StartPage", "Home");
+            }
+            else if (obj != null)
             {
                 this.Session["User_ID"] = obj.User_ID.ToString();
                 this.Session["Username"] = obj.Username.ToString();
@@ -139,6 +144,61 @@ namespace UthTripProject.Controllers
 
             this.ViewBag.Reviews = reviews.ToList();
             return this.View(person);
+        }
+
+        public ActionResult AllUsers()
+        {
+            IEnumerable<UserDTO> users = this.userService.GetAll();
+            IEnumerable<BlockedUsersDTO> blockedUsers = this.userService.GetAllBlocked();
+            List<UserBlockedModel> userBlockedModels = new List<UserBlockedModel>();
+            if (blockedUsers != null)
+            {
+                foreach (var item in users)
+                {
+                    bool found = false;
+                    foreach (var bl in blockedUsers)
+                    {
+                        if (item.User_ID == bl.User_ID)
+                        {
+                            userBlockedModels.Add(new UserBlockedModel(item.User_ID, item.First_Name, item.Last_Name, item.Email,
+                                item.Username, item.Password, item.Birthday, item.Photo_Url, item.Info, true));
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (found == false)
+                    {
+                        userBlockedModels.Add(new UserBlockedModel(item.User_ID, item.First_Name, item.Last_Name, item.Email,
+                                item.Username, item.Password, item.Birthday, item.Photo_Url, item.Info, false));
+                    }
+                }
+            }
+            else
+            {
+                foreach (var u in users)
+                {
+                    userBlockedModels.Add(new UserBlockedModel(u.User_ID, u.First_Name, u.Last_Name, u.Email,
+                                u.Username, u.Password, u.Birthday, u.Photo_Url, u.Info, false));
+                }
+            }
+
+            return this.View(userBlockedModels);
+        }
+
+        public ActionResult Block(int id)
+        {
+            int bl_id = this.userService.FindMaxIdBl()+1;
+            BlockedUsersDTO blockedUsersDTO = new BlockedUsersDTO(bl_id, id);
+            this.userService.CreateBlocked(blockedUsersDTO);
+            return this.RedirectToAction("AllUsers");
+        }
+
+        public ActionResult Unblock(int id)
+        {
+            int id_ = this.userService.GetAllBlocked().Where(e => e.User_ID == id).Select(e => e.Blocked_ID).First();
+            this.userService.DisposeBlocked(id_);
+            return this.RedirectToAction("AllUsers");
         }
     }
 }

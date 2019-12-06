@@ -32,6 +32,12 @@ namespace UthTrip.BLL.Services
             return max;
         }
 
+        public int FindMaxIdBl()
+        {
+            int max = this.Database.Blocked_Users.MaxId();
+            return max;
+        }
+
         public void CreateUser(UserDTO userDto)
         {
             User user = new User
@@ -56,6 +62,16 @@ namespace UthTrip.BLL.Services
                 this.Database.Users.Create(user);
                 this.Database.Save();
             }
+        }
+        public void CreateBlocked(BlockedUsersDTO userDto)
+        {
+            Blocked_Users user = new Blocked_Users
+            {
+                User_ID = userDto.User_ID,
+                Blocked_ID = userDto.Blocked_ID,
+            };
+            this.Database.Blocked_Users.Create(user);
+            this.Database.Save();
         }
 
         ////public int Authenticate(string username, string password)
@@ -168,12 +184,27 @@ namespace UthTrip.BLL.Services
             return mapper.Map<IEnumerable<Trip>, List<TripDTO>>(this.Database.Trips.GetAll());
         }
 
+        public IEnumerable<BlockedUsersDTO> GetAllBlocked()
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Blocked_Users, BlockedUsersDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<Blocked_Users>, List<BlockedUsersDTO>>(this.Database.Blocked_Users.GetAll());
+        }
+
         public void Dispose(int id)
         {
             var user = this.Database.Users.Get(id);
             if (user != null)
             {
                 this.Database.Users.Delete(id);
+                this.Database.Save();
+            }
+        }
+        public void DisposeBlocked(int id)
+        {
+            var user = this.Database.Blocked_Users.Get(id);
+            if (user != null)
+            {
+                this.Database.Blocked_Users.Delete(id);
                 this.Database.Save();
             }
         }
@@ -224,7 +255,7 @@ namespace UthTrip.BLL.Services
 
 
 
-    public UserDTO GetByUsernamePassword(string username, string password)
+        public UserDTO GetByUsernamePassword(string username, string password)
         {
             try
             {

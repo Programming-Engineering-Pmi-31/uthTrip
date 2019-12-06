@@ -235,6 +235,7 @@
     </Compile>
     <Compile Include="Models\ReviewViewModel.cs" />
     <Compile Include="Models\TripViewModel.cs" />
+    <Compile Include="Models\UserBlockedModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -326,6 +327,7 @@
     <Content Include="Views\User\LogOut.cshtml" />
     <Content Include="Views\Review\WriteReview.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\User\AllUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,18 +27,25 @@
         }
 
         [HttpGet]
-        public ActionResult WriteReview(int id)
+        public ActionResult WriteReview(int? id)
         {
-            this.tripId = id;
-            ReviewViewModel reviewModel = new ReviewViewModel();
-            return this.View(reviewModel);
+            if (this.Session["User_ID"] == null)
+            {
+                return this.RedirectToAction("../User/Login");
+            }
+            else
+            {
+                this.tripId = (int)id;
+                ReviewViewModel reviewModel = new ReviewViewModel();
+                return this.View(reviewModel);
+            }
         }
 
         [HttpPost]
         public ActionResult WriteReview(int id, ReviewViewModel reviewViewModel)
         {
             ////TO DO: change this
-            reviewViewModel.Review_ID = 5;
+            reviewViewModel.Review_ID = this.reviewService.FindMaxId()+1;
             reviewViewModel.Writer_ID = int.Parse(this.Session["User_ID"].ToString());
             reviewViewModel.Trip_ID = id;
 
