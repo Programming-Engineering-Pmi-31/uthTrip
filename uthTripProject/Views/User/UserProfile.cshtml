@@ -1,10 +1,8 @@
 ﻿@model UthTrip.BLL.DTO.UserDTO
-
 @{
     ViewBag.Title = "UserProfile";
 }
 
-<h2>UserProfile</h2>
 <head>
     <meta charset="utf-8">
     <title>site</title>
@@ -50,12 +48,11 @@
     <div class="container ">
         <canvas class="background"></canvas>
         <div>
-            <h4>UserDTO</h4>
             <hr />
             <dl class="dl-horizontal">
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.First_Name)
+                    <p>Ім'я: </p>
                 </dt>
 
                 <dd>
@@ -63,7 +60,7 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Last_Name)
+                    <p>Прізвище: </p>
                 </dt>
 
                 <dd>
@@ -71,7 +68,7 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Email)
+                    <p>Пошта: </p>
                 </dt>
 
                 <dd>
@@ -79,7 +76,7 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Username)
+                    <p>Юзернейм: </p>
                 </dt>
 
                 <dd>
@@ -87,7 +84,7 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Birthday)
+                    <p>Дата народження: </p>
                 </dt>
 
                 <dd>
@@ -95,7 +92,7 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Info)
+                    <p>Інформація: </p>
                 </dt>
 
                 <dd>
