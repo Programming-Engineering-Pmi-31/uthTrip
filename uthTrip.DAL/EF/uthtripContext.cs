@@ -1,6 +1,7 @@
 namespace uthTrip.DAL.EF
 {
     using System;
+    using System.Data.Common;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
@@ -17,6 +18,11 @@ namespace uthTrip.DAL.EF
         public uthtripContext()
             : base("name=uthtripContext")
         {
+        }
+        public UthTripContext(DbConnection connection)
+         : base(connection, true)
+        {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Blocked_Users> Blocked_Users { get; set; }
