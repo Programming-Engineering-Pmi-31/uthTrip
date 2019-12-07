@@ -1,7 +1,6 @@
 namespace UthTrip.DAL.EF
 {
     using System;
-    using System.Data.Common;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
@@ -15,11 +14,7 @@ namespace UthTrip.DAL.EF
         {
             this.connectionString = conString;
         }
-        public UthTripContext(DbConnection connection)
-          : base(connection, true)
-        {
-            Configuration.LazyLoadingEnabled = false;
-        }
+
         public UthTripContext()
             : base("name=UthTripContext")
         {
