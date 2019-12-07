@@ -18,8 +18,7 @@ namespace UthTrip.DAL.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Role_ID { get; set; }
 
-        [StringLength(50, MinimumLength = 3)]
-
+        [StringLength(50)]
         public string Title { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]

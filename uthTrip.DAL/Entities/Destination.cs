@@ -20,8 +20,7 @@ namespace UthTrip.DAL.Entities
 
         public bool Is_Abroad { get; set; }
 
-        [StringLength(50, MinimumLength = 5)]
-
+        [StringLength(50)]
         public string Country { get; set; }
 
         [StringLength(100)]
