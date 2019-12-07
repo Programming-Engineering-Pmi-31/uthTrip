@@ -1,11 +1,19 @@
 namespace UthTrip.DAL.EF
 {
+    using System.Data.Common;
+    using System.Data;
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+   using uthTrip.DAL.Entities;
+
+    public partial class uthtripContext : DbContext
+
     using UthTrip.DAL.Entities;
-    //// /using Microsoft.EntityFrameworkCore;
+    public partial class UthTripContext : DbContext
+
+    using UthTrip.DAL.Entities;
     public partial class UthTripContext : DbContext
     {
         private string connectionString;
@@ -18,6 +26,11 @@ namespace UthTrip.DAL.EF
         public UthTripContext()
             : base("name=UthTripContext")
         {
+        }
+        public UthTripContext(DbConnection connection)
+          : base(connection, true)
+        {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Blocked_Users> Blocked_Users { get; set; }
