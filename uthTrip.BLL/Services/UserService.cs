@@ -1,4 +1,16 @@
-﻿////using Microsoft.EntityFrameworkCore;
+﻿using System;
+using uthTrip.BLL.DTO;
+using uthTrip.DAL.Entities;
+using uthTrip.DAL.Interfaces;
+using uthTrip.BLL.Infrastructure;
+using uthTrip.BLL.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
+using uthTrip.DAL.EF;
+
+using AutoMapper;
+
+
 namespace UthTrip.BLL.Services
 {
     using System;
@@ -14,7 +26,6 @@ namespace UthTrip.BLL.Services
     using UthTrip.BLL.Interfaces;
     using UthTrip.DAL.EF;
     using UthTrip.DAL.Entities;
-    ////using UthTrip.BLL.BusinessModels;
     using UthTrip.DAL.Interfaces;
 
     public class UserService : IUserService
@@ -52,6 +63,38 @@ namespace UthTrip.BLL.Services
                 Photo_Url = userDto.Photo_Url,
                 Info = userDto.Info,
             };
+            Database.Users.Create(user);
+            Database.Save();
+        }
+
+        //public int Authenticate(string username, string password)
+        //{
+        //    if (string.IsNullOrEmpty(username))
+        //    {
+        //        throw new Exception("Username is empty.");
+        //    }
+        //    else if (string.IsNullOrEmpty(password))
+        //    {
+        //        throw new Exception("Password is empty.");
+        //    }
+
+        //    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
+        //    if (user == null)
+        //    {
+        //        throw new Exception("User with current name does not exist.");
+        //    }
+        //    else if (!VerifyHash(password, user.Hash))
+        //    {
+        //        throw new Exception("Invalid password.");
+        //    }
+
+        //    return user.Id;
+        //}
+        
+        public string GetFirstName(int userAccountId)
+        {
+            var result = GetAllUsers()
+
             try
             {
                 this.Database.Users.GetAll().Where(e => e.Username == user.Username).First();
@@ -107,6 +150,10 @@ namespace UthTrip.BLL.Services
 
             return result;
         }
+        public UserDTO Get(int userAccountId)
+        {
+            var userAccount = GetAllUsers()
+
 
         public UserDTO Get(int userAccountId)
         {
@@ -115,6 +162,31 @@ namespace UthTrip.BLL.Services
 
             return userAccount;
         }
+        //public int Authenticate(string username, string password)
+        //{
+        //    if (string.IsNullOrEmpty(username))
+        //    {
+        //        throw new Exception("Username is empty.");
+        //    }
+        //    else if (string.IsNullOrEmpty(password))
+        //    {
+        //        throw new Exception("Password is empty.");
+        //    }
+
+        //    var user = Database.Users.Find(u => u.Username == username).SingleOrDefault();
+        //    if (user == null)
+        //    {
+        //        throw new Exception("User with current name does not exist.");
+        //    }
+        //    else if (!VerifyHash(password, user.Hash))
+        //    {
+        //        throw new Exception("Invalid password.");
+        //    }
+
+        //    return user.Id;
+        //}
+
+
         ////public int Authenticate(string username, string password)
         ////{
         ////    if (string.IsNullOrEmpty(username))
@@ -279,6 +351,17 @@ namespace UthTrip.BLL.Services
             }
         }
 
+
+            private List<UserDTO> GetAllUsers()
+            {
+            DateTime somedate = new DateTime(2000, 07, 21);
+            return new List<UserDTO>()
+            {
+                    
+
+            
+
+
         private List<UserDTO> GetAllUsers()
         {
             DateTime somedate = new DateTime(2000, 07, 21);
@@ -290,6 +373,15 @@ namespace UthTrip.BLL.Services
                     First_Name = "Simon",
                     Last_Name = "Gilbert",
                     Username = "simongilbert",
+                    Email= "simongilbert@com",
+                    Password = "1111",
+                    Birthday = somedate,
+                    Photo_Url = "www",
+                    Info = "some boy"
+
+                },
+                new UserDTO
+
                     Email = "simongilbert@com",
                     Password = "1111",
                     Birthday = somedate,
@@ -302,6 +394,17 @@ namespace UthTrip.BLL.Services
                     First_Name = "Alexander",
                     Last_Name = "Hill",
                     Username = "alexhill",
+ 
+                    Email= "alexhill@com",
+                    Password = "1111",
+                    Birthday = somedate,
+                    Photo_Url = "www",
+                    Info = "anpther boy"
+                },
+            };
+            }
+        }
+
                     Email = "alexhill@com",
                     Password = "1111",
                     Birthday = somedate,
