@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace uthTrip.BLL.DTO
+﻿namespace UthTrip.BLL.DTO
 {
-    class RoleDTO
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class RoleDTO
     {
         public int Role_ID { get; set; }
+
         public string Title { get; set; }
     }
 }

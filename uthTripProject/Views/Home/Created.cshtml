@@ -1,0 +1,96 @@
+﻿@model IEnumerable<UthTripProject.Models.TripViewModel>
+@{
+    ViewBag.Title = "Chosen Trips";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>site</title>
+    <link rel="stylesheet" href="css\createTrip.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+                <img src="~/Views/photoes/logo2.png" width="30" height="30" alt="">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <p>@Session["Username"]</p>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <a class="nav-link" href="/Home/StartPage">
+                            Головна
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">
+                            Мої подорожі
+                        </a>
+                        <span class="sr-only">(current)</span>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Trip/Create">
+                            Створити
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Вийти", "../User/Logout")
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <p>Тут відображаються створені мною подорожі</p>
+    @Html.ActionLink("Переглянути обрані мною подорожі", "MyTrips")
+    <hr>
+    <div class="container">
+        <canvas class="background"></canvas>
+        @foreach (var item in Model)
+        {
+            <div id="row-wrapper">
+                <div class="row" id="row">
+                    <div class="col-md-2" id="tripText">
+                        @Html.DisplayFor(modelItem => item.Trip_Title)
+                    </div>
+                    <div class="col-md-5" id="tripText">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+                    <div class="col-md-2" id="tripText">
+                        <h2 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
+                    </div>
+                    <div class="col-md-1" id="tripTextDate">
+                        @Html.DisplayFor(modelItem => item.Start_date)
+                        <br>
+                        @Html.DisplayFor(modelItem => item.End_date)
+                    </div>
+                    <div class="col-md-2" id="tripTextButton">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    </div>
+</body>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/background")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/home.css")
+    @Styles.Render("~/Content/css")
+}

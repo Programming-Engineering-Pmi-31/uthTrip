@@ -1,78 +1,142 @@
-﻿@model IEnumerable<uthTripProject.Models.TripViewModel>
-
+﻿@*@model IEnumerable<UthTripProject.Models.TripViewModel>
+    @{
+        ViewBag.Title = "UthTrip";
+    }*@
+@model PagedList.IPagedList<UthTripProject.Models.TripViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-                /**/
-
-                ViewBag.Title = "uthTrip";
+    ViewBag.Title = "UthTrip";
 }
 
-<h2>Доступні подорожі</h2>
-<div>
-    @Html.ActionLink("Створити нову подорож", "../Trip/Create")
-</div>
-<hr>
-@using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
-{
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                @Html.DropDownList("Country", "Країна")
+<head>
+    <meta charset="utf-8">
+    <title>site</title>
+    <link rel="stylesheet" href="css\createTrip.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+                <img src="~/Views/photoes/logo2.png" width="30" height="30" alt="">
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <p>@Session["Username"]</p>
+                    </li>
+                    <li class="nav-item active">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <a class="nav-link" href="">
+                            Головна
+                        </a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/MyTrips">
+                            Мої подорожі
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Trip/Create" ">
+                            Створити
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/User/Logout">
+                            Вийти
+                        </a>
+                    </li>
+                    @if (Session["isAdmin"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/User/AllUsers">
+                                Користувачі
+                            </a>
+                        </li>
+                    }
+                </ul>
             </div>
-            <div class="col-md-2">
-                @Html.DropDownList("City", "Місто")
-            </div>
-            <div class="col-md-2">
-                @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
-            </div>
-            <div class="col-md-2">
-                @Html.TextBox("maxPeople", "макс. к-ть осіб..", new { @class = "form-control" })
-            </div>
-            <div class="col-md-2">
-                <input type="submit" value="Фільтрувати" class="btn-sm btn-info" />
+        </nav>
+    </section>
+    <hr>
+    @using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
+    {
+        <link rel="stylesheet" href="~/Content/style.css">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.DropDownList("Country", "Країна")
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownList("City", "Місто")
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
+                </div>
+                <div class="col-md-2" id="input">
+                    @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
+                </div>
+                <div class="col-md-2" id="btext">
+                    <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
+                </div>
             </div>
         </div>
-    </div>
-        }
+    }
     <hr>
 
     <div class="container">
+        <canvas class="background"></canvas>
         @foreach (var item in Model)
         {
-            <div class="row">
-                <div class="col-md-2">
-                    @Html.DisplayFor(modelItem => item.Trip_Title)
-                </div>
-                <div class="col-md-5">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </div>
-                <div class="col-md-2">
-                    <h2>@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
-                </div>
-                <div class="col-md-1">
-                    @Html.DisplayFor(modelItem => item.Start_date)
-                    <br>
-                    @Html.DisplayFor(modelItem => item.End_date)
-                </div>
-                @*
-                <td>
-                    @Html.DisplayFor(modelItem => item.Number_Of_People)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                *@
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Обрати" class="btn btn-default btn-success" />
+            //if (item.Start_date > DateTime.Now)
+            //{
+                <div id="row-wrapper">
+                    <div class="row" id="row">
+                        <div class="col-md-2" id="tripText">
+                            @Html.DisplayFor(modelItem => item.Trip_Title)
+                        </div>
+                        <div class="col-md-5" id="tripText">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                        <div class="col-md-2" id="tripText">
+                            <h2 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
+                        </div>
+                        <div class="col-md-1" id="tripTextDate">
+                            @Html.DisplayFor(modelItem => item.Start_date)
+                            <br>
+                            @Html.DisplayFor(modelItem => item.End_date)
+                        </div>
+                        <div class="col-md-2" id="tripTextButton">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @*}*@
         }
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
     </div>
+</body>
+@Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
 
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/background")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/home.css")
+    @Styles.Render("~/Content/css")
+}

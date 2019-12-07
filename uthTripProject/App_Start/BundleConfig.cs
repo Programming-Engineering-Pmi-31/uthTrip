@@ -1,11 +1,11 @@
-﻿using System.Web;
-using System.Web.Optimization;
-
-namespace uthTripProject
+﻿namespace UthTripProject
 {
+    using System.Web;
+    using System.Web.Optimization;
+
     public class BundleConfig
     {
-        // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
+        //// For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -26,11 +26,8 @@ namespace uthTripProject
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-
             bundles.Add(new ScriptBundle("~/bundles/background").Include(
                       "~/Scripts/background.js"));
-
-
         }
     }
 }
