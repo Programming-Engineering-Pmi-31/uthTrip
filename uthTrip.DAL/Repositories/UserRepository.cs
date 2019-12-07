@@ -1,21 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using uthTrip.DAL.Entities;
-using uthTrip.DAL.EF;
-using uthTrip.DAL.Interfaces;
-using System.Data.Entity;
-
-
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-namespace uthTrip.DAL.Repositories
-
+////using Microsoft.EntityFrameworkCore;
 namespace UthTrip.DAL.Repositories
-
 {
     using System;
     using System.Collections.Generic;
@@ -46,7 +30,7 @@ namespace UthTrip.DAL.Repositories
             return this.db.Users.Find(id);
         }
 
-        public void Create( User user)
+        public void Create(User user)
         {
             this.db.Users.Add(user);
         }
@@ -81,18 +65,6 @@ namespace UthTrip.DAL.Repositories
             {
                 max = -1;
             }
-            catch(System.InvalidOperationException)
-            {  max= -1; }
-            return max;
-            //int max = 0;
-            //try
-            //{
-            //    max = db.Users.Max(a => a.User_ID);
-            //}
-            //catch (System.InvalidOperationException)
-            //{ max = -1; }
-            return -1;
-
 
             return max;
         }
