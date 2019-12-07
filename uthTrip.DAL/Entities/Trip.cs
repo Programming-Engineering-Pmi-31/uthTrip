@@ -19,7 +19,15 @@ namespace UthTrip.DAL.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Trip_ID { get; set; }
 
-        [StringLength(100)]
+
+       
+        [StringLength(100, MinimumLength = 10, ErrorMessage = "Title of trip shold have from 10 to 100 symbols")]
+        [Required]
+        public string Trip_Title { get; set; }
+
+        [Required]
+        [StringLength(300, MinimumLength = 10, ErrorMessage = "Write some information about your trip")]
+
         public string Trip_Title { get; set; }
 
         [StringLength(300)]
