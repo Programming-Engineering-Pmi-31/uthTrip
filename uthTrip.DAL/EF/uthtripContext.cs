@@ -1,12 +1,19 @@
 namespace uthTrip.DAL.EF
 {
+    using System.Data.Common;
+    using System.Data;
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+<<<<<<< Updated upstream
     using uthTrip.DAL.Entities;
 
     public partial class uthtripContext : DbContext
+=======
+    using UthTrip.DAL.Entities;
+    public partial class UthTripContext : DbContext
+>>>>>>> Stashed changes
     {
         private string connectionString;
         
@@ -17,6 +24,11 @@ namespace uthTrip.DAL.EF
         public uthtripContext()
             : base("name=uthtripContext")
         {
+        }
+        public UthTripContext(DbConnection connection)
+          : base(connection, true)
+        {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Blocked_Users> Blocked_Users { get; set; }
