@@ -19,6 +19,7 @@ namespace UthTrip.DAL.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Trip_ID { get; set; }
 
+
        
         [StringLength(100, MinimumLength = 10, ErrorMessage = "Title of trip shold have from 10 to 100 symbols")]
         [Required]
@@ -26,12 +27,16 @@ namespace UthTrip.DAL.Entities
 
         [Required]
         [StringLength(300, MinimumLength = 10, ErrorMessage = "Write some information about your trip")]
+
+        public string Trip_Title { get; set; }
+
+        [StringLength(300)]
         public string Description { get; set; }
-        [Required]
+
         public double Price { get; set; }
 
         public int Date_ID { get; set; }
-        [Required]
+
         public int Number_Of_People { get; set; }
 
         public int Destination_ID { get; set; }

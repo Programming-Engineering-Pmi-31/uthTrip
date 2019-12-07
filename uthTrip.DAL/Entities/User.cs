@@ -29,22 +29,28 @@ namespace UthTrip.DAL.Entities
         public string First_Name { get; set; }
 
         [Required]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Surname should be from  2 to 30 symbols")] public string Last_Name { get; set; }
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Surname should be from  2 to 30 symbols")]
+         public string Last_Name { get; set; }
 
         [Required]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email is invalid")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email is invalid")
+        [StringLength(30)]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(30, MinimumLength = 8, ErrorMessage = "Username should be from  8 to 50 symbols")]
+        [StringLength(30)]
         public string Username { get; set; }
 
         [Required]
+
         [StringLength(30, MinimumLength = 8, ErrorMessage = "Password should be from  8 to 50 symbols")]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; 
 
-        [DataType(DataType.Date)]
+        [StringLength(30)]
+        
+
+        [Column(TypeName = "date")]
         public DateTime Birthday { get; set; }
 
         [Required]
