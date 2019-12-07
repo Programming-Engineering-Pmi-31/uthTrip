@@ -1,157 +1,199 @@
+﻿
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-//using NUnit.Framework;
-using UthTrip.BLL.Services;
-using UthTrip.BLL.Interfaces;
-using UthTripProject.Models;
-using UthTrip.DAL.Interfaces;
+using Xunit;
 using UthTrip.DAL.EF;
-using UthTrip.DAL.Repositories;
-using UthTrip.BLL.DTO;
 using UthTrip.DAL.Entities;
-using UthTrip.BLL.Infrastructure;
-using UthTripProject.Controllers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Mvc;
-
+using System.Collections.Generic;
+using UthTrip.DAL.Repositories;
 using Moq;
-
-namespace UthTrip.Tests
+using UthTrip.BLL.DTO;
+using System.Data.Entity;
+using System.Linq;
+using Effort;
+using UthTrip.BLL.Services;
+using System.Data;
+using System.Data.Common;
+namespace UnitTestProject1
 {
-    //    [TestClass]
-    //    public class UnitTest1
-    //    {
-    //        readonly string testConnectionString = "Initial Catalog=UthTripDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-    //        UserService CreateUserService()
-    //        {
-    //            return new UserService(
-    //                new EFUnitOfWork(
-    //                    new UthTripContext(testConnectionString)
-    //                )
-    //            );
-    //        }
 
-    //        //[TearDown]
-    //        //public void ClearDB()
-    //        //{
-    //        //    var context = new UthTripContext(testConnectionString);
-    //        //    context.Users.RemoveRange(context.Users);
-    //        //    context.SaveChanges();
-    //        //}
+    public class UserServiceTest : IDisposable
+    {
+        DbConnection connection;
+        UthTripContext databaseContext;
 
-    //        //[Test]
-    //        //public void CreateTest()
-    //        //{
-    //        //    var userService = CreateUserService();
+        UserService CreateUserService()
+        {
+            connection = Effort.DbConnectionFactory.CreateTransient();
+            databaseContext = new UthTripContext(connection);
+            return new UserService(new EFUnitOfWork(databaseContext));
+        }
 
-    //        //    DateTime somedate = new DateTime(2000, 07, 21);
+        public void Dispose()
+        {
+            databaseContext.Dispose();
 
-    //        //    UserDTO usermodel = new UserDTO();
-    //        //    usermodel.User_ID = 2;
-    //        //    usermodel.First_Name = "Nadia";
-    //        //    usermodel.Last_Name = "Padalka";
-    //        //    usermodel.Email = "nadiapadalka@gmail.com";
-    //        //    usermodel.Username = "nadiapadalka";
-    //        //    usermodel.Password = "1111";
-    //        //    usermodel.Birthday = somedate;
-    //        //    usermodel.Photo_Url = "www";
-    //        //    usermodel.Info = "super girl";
-    //        //    userService.CreateUser(usermodel);
+        }
+        [Fact]
+        public void TestCreateUserMethod()
+        {
+            var userService = CreateUserService();
 
-    //        //    var user = userService.GetAll().SingleOrDefault();
-    //        //    Assert.AreEqual("Nadia", user.First_Name);
-    //        //}
-    //        [TestMethod]
-    //        public void Sum_Products_Correctly()
-    //        {
-    //            // Arrange (добавляем имитированный объект)
-    //            Mock<UserService> mock = new Mock<UserService>();
-    //            mock.Setup(m => m.GetAll());
 
-    //            UserController controller = new UserController(mock.Object);
-    //            //string expected = "В базе данных 1 объект";
-
-    //            // Act
-
-    //            ViewResult result = controller.Index() as ViewResult;
-    //            string actual = result.ViewBag.Message as string;
-
-    //            // Assert
-    //            Assert.IsNotNull(result.Model);
-    //        }
-    //        //[Test]
-    //        //public void DeleteUser()
-    //        //{
-    //        //    var userService = CreateUserService();
-
-    //        //    DateTime somedate = new DateTime(2000, 07, 21);
-
-    //        //    UserDTO usermodel = new UserDTO();
-    //        //    usermodel.User_ID = 2;
-    //        //    usermodel.First_Name = "Nadia";
-    //        //    usermodel.Last_Name = "Padalka";
-    //        //    usermodel.Email = "nadiapadalka@gmail.com";
-    //        //    usermodel.Username = "nadiapadalka";
-    //        //    usermodel.Password = "1111";
-    //        //    usermodel.Birthday = somedate;
-    //        //    usermodel.Photo_Url = "www";
-    //        //    usermodel.Info = "super girl";
-    //        //    userService.CreateUser(usermodel);
-
-    //        //    var user = userService.GetAll().SingleOrDefault();
-
-    //        //    userService.Dispose(user.User_ID);
-    //        //    Assert.AreEqual(0, userService.GetAll().Count());
-    //        //}
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 132,
+                First_Name = "Yaroslav",
+                Last_Name = "Nolkuchak",
+                Username = "user2",
+                Email = "simonnolkuchak@com",
+                Password = "1178",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "another boy"
+            });
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 123,
+                First_Name = "Simon",
+                Last_Name = "Gilbert",
+                Username = "simongilbert",
+                Email = "simongilbert@com",
+                Password = "1111",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "some boy"
+            });
 
 
 
-    //        //[Test]
-    //        //public void GetByIdTest()
-    //        //{
-    //        //    var userService = CreateUserService();
+            int res = userService.GetAll().Count();
 
-    //        //    DateTime somedate = new DateTime(2000, 07, 21);
- 
-    ////    UserDTO usermodel = new UserDTO();
-    //        //    usermodel.User_ID = 2;
-    //        //    usermodel.First_Name = "Nadia";
-    //        //    usermodel.Last_Name = "Padalka";
-    //        //    usermodel.Email = "nadiapadalka@gmail.com";
-    //        //    usermodel.Username = "nadiapadalka";
-    //        //    usermodel.Password = "1111";
-    //        //    usermodel.Birthday = somedate;
-    //        //    usermodel.Photo_Url = "www";
-    //        //    usermodel.Info = "super girl";
-    //        //    userService.CreateUser(usermodel);
-    //        //    var user = userService.GetAll().FirstOrDefault();
-    //        //    Assert.NotNull(userService.GetById(user.User_ID));
-    //        //}
+            Assert.Equal(2, res);
 
-    //        //[Test]
-    //        //public void GetAll()
-    //        //{
-    //        //    var userService = CreateUserService();
+        }
 
-    //        //    DateTime somedate = new DateTime(2000, 07, 21);
+        [Fact]
+        public void TestDeleteUserMethod()
+        {
+            var userService = CreateUserService();
 
-    //        //    UserDTO usermodel = new UserDTO();
-    //        //    usermodel.User_ID = 2;
-    //        //    usermodel.First_Name = "Nadia";
-    //        //    usermodel.Last_Name = "Padalka";
-    //        //    usermodel.Email = "nadiapadalka@gmail.com";
-    //        //    usermodel.Username = "nadiapadalka";
-    //        //    usermodel.Password = "1111";
-    //        //    usermodel.Birthday = somedate;
-    //        //    usermodel.Photo_Url = "www";
-    //        //    usermodel.Info = "super girl";
-    //        //    userService.CreateUser(usermodel);
-    //        //    UserDTO user1 = new UserDTO(3, "Marichka", "Dymyd", "mariia@gmail.com", "mariicka", "1212", somedate, "www", "giirl");
-    //        //    userService.CreateUser(user1);
 
-    //        //    Assert.AreEqual(2, userService.GetAll().Count());
-    //        //}
-    //    }
+
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 132,
+                First_Name = "Yaroslav",
+                Last_Name = "Nolkuchak",
+                Username = "user2",
+                Email = "simonnolkuchak@com",
+                Password = "1178",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "another boy"
+            });
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 123,
+                First_Name = "Simon",
+                Last_Name = "Gilbert",
+                Username = "simongilbert",
+                Email = "simongilbert@com",
+                Password = "1111",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "some boy"
+            });
+
+
+            var user = userService.GetAll().FirstOrDefault();
+            userService.Dispose(user.User_ID);
+            int res = userService.GetAll().Count();
+
+            Assert.Equal(1, res);
+
+        }
+        [Fact]
+        public void TestGetByID()
+        {
+
+
+            var userService = CreateUserService();
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 132,
+                First_Name = "Yaroslav",
+                Last_Name = "Nolkuchak",
+                Username = "user2",
+                Email = "simonnolkuchak@com",
+                Password = "1178",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "another boy"
+            });
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 123,
+                First_Name = "Simon",
+                Last_Name = "Gilbert",
+                Username = "simongilbert",
+                Email = "simongilbert@com",
+                Password = "1111",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "some boy"
+            });
+
+            var user = userService.GetAll().FirstOrDefault();
+            Assert.NotNull(userService.GetById(user.User_ID));
+
+
+
+        }
+
+
+
+        [Fact]
+        public void TestFindMax_Id()
+        {
+
+            var userService = CreateUserService();
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 132,
+                First_Name = "Yaroslav",
+                Last_Name = "Nolkuchak",
+                Username = "user2",
+                Email = "simonnolkuchak@com",
+                Password = "1178",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "another boy"
+            });
+            userService.CreateUser(new UserDTO
+            {
+                User_ID = 123,
+                First_Name = "Simon",
+                Last_Name = "Gilbert",
+                Username = "simongilbert",
+                Email = "simongilbert@com",
+                Password = "1111",
+                Birthday = DateTime.Now,
+                Photo_Url = "www",
+                Info = "some boy"
+            });
+
+            var user = userService.GetAll().FirstOrDefault();
+
+            Assert.Equal(2, userService.FindMaxId());
+
+
+
+        }
+
+
+
+
+
+
+    }
 }

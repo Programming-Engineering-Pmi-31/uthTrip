@@ -55,19 +55,7 @@ namespace UthTripProject.Controllers
         {
             try
             {
-
-                userModel.User_ID = userService.FindMaxId() + 1;
-                var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
-                userService.CreateUser(userDto);  
-                ViewBag.SuccessMessage = "Registration Successful.";
-
-
-               
-                    userModel.User_ID = this.userService.FindMaxId() + 1;
-                    var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
-                    this.userService.CreateUser(userDto);
-                    return this.RedirectToAction("StartPage", "Home");
-       userModel.User_ID = this.userService.FindMaxId() + 1;
+                userModel.User_ID = this.userService.FindMaxId() + 1;
                 userModel.Password = Helper.Encrypt(userModel.Password);
                 var userDto = new UserDTO(userModel.User_ID, userModel.First_Name, userModel.Last_Name, userModel.Email, userModel.Username, userModel.Password, userModel.Birthday, userModel.Photo_Url, userModel.Info);
                 this.userService.CreateUser(userDto);
@@ -75,7 +63,6 @@ namespace UthTripProject.Controllers
                 this.Session["Username"] = userDto.Username.ToString();
                 this.Session["Password"] = userDto.Password.ToString();
                 return this.RedirectToAction("StartPage", "Home");
-
             }
             catch (ArgumentNullException ex)
             {
@@ -110,26 +97,6 @@ namespace UthTripProject.Controllers
             return this.View(viewModel);
         }
 
-
-        public ActionResult Account(int id)
-        {
-            var userAccount = userService.Get(id);
-
-            var viewModel = new UserViewModel
-            {
-                User_ID = userAccount.User_ID,
-            First_Name = userAccount.First_Name,
-                Last_Name = userAccount.Last_Name,
-                Username = userAccount.Username,
-                Email = userAccount.Email,
-                Password = userAccount.Password,
-                Birthday = userAccount.Birthday,
-                Photo_Url = userAccount.Photo_Url,
-                Info = userAccount.Info
-            };
-
-   return View(viewModel);
-        }
         [HttpPost]
         public ActionResult Login(UserViewModel userModel)
         {
