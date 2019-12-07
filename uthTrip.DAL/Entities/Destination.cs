@@ -1,4 +1,4 @@
-namespace UthTrip.DAL.Entities
+namespace uthTrip.DAL.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -8,10 +8,10 @@ namespace UthTrip.DAL.Entities
 
     public partial class Destination
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Reviewed.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Destination()
         {
-            this.Trips = new HashSet<Trip>();
+            Trips = new HashSet<Trip>();
         }
 
         [Key]
@@ -26,7 +26,7 @@ namespace UthTrip.DAL.Entities
         [StringLength(100, MinimumLength = 5)]
         public string City { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trip> Trips { get; set; }
     }
 }

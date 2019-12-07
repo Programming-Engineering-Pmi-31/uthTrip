@@ -1,73 +1,64 @@
-////using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using uthTrip.DAL.Entities;
+using uthTrip.DAL.EF;
+using uthTrip.DAL.Interfaces;
+using System.Data.Entity;
 
-namespace UthTrip.DAL.Repositories
+namespace uthTrip.DAL.Repositories
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
-
     public class TripRepository : IRepository<Trip>
     {
-        private UthTripContext db;
-
-        public TripRepository(UthTripContext context)
-        {
-            this.db = context;
-        }
-
+        private uthtripContext db;
         public int MaxId()
         {
             int max;
             try
             {
-                max = this.db.Trips.Max(a => a.Trip_ID);
+                 max = db.Trips.Max(a => a.Trip_ID);
             }
-            catch (System.InvalidOperationException)
-            {
-                max = -1;
-            }
-
+            catch(System.InvalidOperationException)
+            {  max = -1; }
             return max;
+        }
+        public TripRepository(uthtripContext context)
+        {
+            this.db = context;
         }
 
         public IEnumerable<Trip> GetAll()
         {
-            return this.db.Trips;
+            return db.Trips;
         }
 
         public Trip Get(int id)
         {
-            return this.db.Trips.Find(id);
+            return db.Trips.Find(id);
         }
 
         public void Create(Trip trip)
         {
-            this.db.Trips.Add(trip);
+            db.Trips.Add(trip);
         }
 
         public void Update(Trip trip)
         {
-            this.db.Entry(trip).State = EntityState.Modified;
+            db.Entry(trip).State = EntityState.Modified;
         }
 
-        public IEnumerable<Trip> Find(Func<Trip, bool> predicate)
+        public IEnumerable<Trip> Find(Func<Trip, Boolean> predicate)
         {
-            return this.db.Trips.Where(predicate).ToList();
+            return db.Trips.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            Trip trip = this.db.Trips.Find(id);
+            Trip trip = db.Trips.Find(id);
             if (trip != null)
-            {
-                this.db.Trips.Remove(trip);
-            }
+                db.Trips.Remove(trip);
         }
 
         public Trip GetbyPass(string username, string password)

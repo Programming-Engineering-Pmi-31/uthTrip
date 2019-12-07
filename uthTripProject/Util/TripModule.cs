@@ -1,23 +1,18 @@
-﻿namespace UthTripProject.Util
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
-    using Ninject.Modules;
-    using UthTrip.BLL.Interfaces;
-    using UthTrip.BLL.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Ninject.Modules;
+using uthTrip.BLL.Services;
+using uthTrip.BLL.Interfaces;
 
-    public class UthTripModule : NinjectModule
+namespace uthTripProject.Util
+{
+    public class TripModule : NinjectModule
     {
         public override void Load()
         {
-            this.Bind<ITripService>().To<TripService>();
-            this.Bind<IUserService>().To<UserService>();
-            this.Bind<IRightsService>().To<RightsService>();
-            this.Bind<IReviewService>().To<ReviewService>();
-
-
+            Bind<ITripService>().To<TripService>();
         }
     }
 }

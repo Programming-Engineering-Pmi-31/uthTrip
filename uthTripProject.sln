@@ -1,21 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29503.13
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UthTripProject", "uthTripProject\UthTripProject.csproj", "{32E72533-0BDC-440A-9540-AF7783555306}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTripProject", "uthTripProject\uthTripProject.csproj", "{32E72533-0BDC-440A-9540-AF7783555306}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.DAL", "uthTrip.DAL\uthTrip.DAL.csproj", "{F78C2CCB-0AA4-48F9-8DC1-9F65A5135E05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.BLL", "uthTrip.BLL\uthTrip.BLL.csproj", "{EDEC0E39-CC42-426B-8773-F9356BA20DF9}"
 EndProject
-
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{8B8D5CC4-86F5-4793-89EB-296325CA02F9}"
-
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{8B8D5CC4-86F5-4793-89EB-296325CA02F9}"
-EndProject
+=======
+=======
+>>>>>>> Stashed changes
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.Tests", "uthTrip.Tests\uthTrip.Tests.csproj", "{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}"
+>>>>>>> parent of 3e60396... added unit tests to userservice
 EndProject
+=======
+>>>>>>> parent of aa645ae... added unit tests for userservice
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,17 +39,23 @@ Global
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Release|Any CPU.Build.0 = Release|Any CPU
-
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+<<<<<<< HEAD
 		{8B8D5CC4-86F5-4793-89EB-296325CA02F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B8D5CC4-86F5-4793-89EB-296325CA02F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B8D5CC4-86F5-4793-89EB-296325CA02F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B8D5CC4-86F5-4793-89EB-296325CA02F9}.Release|Any CPU.Build.0 = Release|Any CPU
-
+=======
+=======
+>>>>>>> Stashed changes
 		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Release|Any CPU.Build.0 = Release|Any CPU
-
+>>>>>>> parent of 3e60396... added unit tests to userservice
+=======
+>>>>>>> parent of aa645ae... added unit tests for userservice
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

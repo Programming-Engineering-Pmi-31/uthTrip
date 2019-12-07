@@ -1,71 +1,57 @@
-﻿namespace UthTrip.DAL.Repositories
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using uthTrip.DAL.Entities;
+using uthTrip.DAL.EF;
+using uthTrip.DAL.Interfaces;
+using System.Data.Entity;
 
+namespace uthTrip.DAL.Repositories
+{
     public class BlockedUserRepository : IRepository<Blocked_Users>
     {
-        private UthTripContext db;
-
-        public BlockedUserRepository(UthTripContext context)
+        private uthtripContext db;
+        public int MaxId()
+        {
+            return 0;
+        }
+        public BlockedUserRepository(uthtripContext context)
         {
             this.db = context;
         }
 
-        public int MaxId()
-        {
-            int max = 0;
-            try
-            {
-                max = this.db.Blocked_Users.Max(a => a.Blocked_ID);
-            }
-            catch (System.InvalidOperationException)
-            {
-                max = -1;
-            }
-
-            return max;
-        }
-
         public IEnumerable<Blocked_Users> GetAll()
         {
-            return this.db.Blocked_Users;
+            return db.Blocked_Users;
         }
 
         public Blocked_Users Get(int id)
         {
-            return this.db.Blocked_Users.Find(id);
+            return db.Blocked_Users.Find(id);
         }
 
         public void Create(Blocked_Users user)
         {
-            this.db.Blocked_Users.Add(user);
+            db.Blocked_Users.Add(user);
         }
 
         public void Update(Blocked_Users user)
         {
-            ////this.db.Entry(user).State = EntityState.Modified;
+            db.Entry(user).State = EntityState.Modified;
         }
 
-        public IEnumerable<Blocked_Users> Find(Func<Blocked_Users, bool> predicate)
+        public IEnumerable<Blocked_Users> Find(Func<Blocked_Users, Boolean> predicate)
         {
-            return this.db.Blocked_Users.Where(predicate).ToList();
+            return db.Blocked_Users.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            Blocked_Users user = this.db.Blocked_Users.Find(id);
+            Blocked_Users user = db.Blocked_Users.Find(id);
             if (user != null)
-            {
-                this.db.Blocked_Users.Remove(user);
-            }
+                db.Blocked_Users.Remove(user);
         }
 
         public Blocked_Users GetbyPass(string username, string password)

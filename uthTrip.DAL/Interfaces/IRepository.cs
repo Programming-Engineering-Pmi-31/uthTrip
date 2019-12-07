@@ -1,28 +1,20 @@
-﻿namespace UthTrip.DAL.Interfaces
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public interface IRepository<T>
-        where T : class
+namespace uthTrip.DAL.Interfaces
+{
+    public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
-
         T Get(int id);
-
         T GetbyPass(string username, string password);
-
-        IEnumerable<T> Find(Func<T, bool> predicate);
-
+        IEnumerable<T> Find(Func<T, Boolean> predicate);
         void Create(T item);
-
         void Update(T item);
-
         void Delete(int id);
-
         int MaxId();
     }
 }

@@ -1,18 +1,18 @@
-﻿namespace UthTrip.DAL.Repositories
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using uthTrip;
+using uthTrip.DAL.EF;
+using uthTrip.DAL.Interfaces;
+using uthTrip.DAL.Entities;
+ 
+namespace uthTrip.DAL.Repositories
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using UthTrip;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
-
     public class EFUnitOfWork : IUnitOfWork
     {
-        private UthTripContext db;
+        private uthtripContext db;
         private UserRepository userRepository;
         private TripRepository tripRepository;
         private ReviewRepository reviewRepository;
@@ -21,36 +21,18 @@
         private DestinationRepository destinationRepository;
         private RoleRepository roleRepository;
         private RightRepository rightRepository;
-        private bool disposed = false;
 
         public EFUnitOfWork(string connectionString)
         {
-            this.db = new UthTripContext(connectionString);
+            db = new uthtripContext(connectionString);
         }
-
-        public EFUnitOfWork(UthTripContext db)
-        {
-            this.db = db;
-            this.userRepository = new UserRepository(db);
-            this.tripRepository = new TripRepository(db);
-            this.reviewRepository = new ReviewRepository(db);
-            this.blockedUserRepository = new BlockedUserRepository(db);
-            this.dateRangeRepository = new DateRangeRepository(db);
-            this.destinationRepository = new DestinationRepository(db);
-            this.roleRepository = new RoleRepository(db);
-            this.rightRepository = new RightRepository(db);
-        }
-
         public IRepository<User> Users
         {
             get
             {
-                if (this.userRepository == null)
-                {
-                    this.userRepository = new UserRepository(this.db);
-                }
-
-                return this.userRepository;
+                if (userRepository == null)
+                    userRepository = new UserRepository(db);
+                return userRepository;
             }
         }
 
@@ -58,97 +40,71 @@
         {
             get
             {
-                if (this.tripRepository == null)
-                {
-                    this.tripRepository = new TripRepository(this.db);
-                }
-
-                return this.tripRepository;
+                if (tripRepository == null)
+                    tripRepository = new TripRepository(db);
+                return tripRepository;
             }
         }
-
         public IRepository<Review> Reviews
         {
             get
             {
-                if (this.reviewRepository == null)
-                {
-                    this.reviewRepository = new ReviewRepository(this.db);
-                }
-
-                return this.reviewRepository;
+                if (reviewRepository == null)
+                    reviewRepository = new ReviewRepository(db);
+                return reviewRepository;
             }
         }
-
         public IRepository<Blocked_Users> Blocked_Users
         {
             get
             {
-                if (this.blockedUserRepository == null)
-                {
-                    this.blockedUserRepository = new BlockedUserRepository(this.db);
-                }
-
-                return this.blockedUserRepository;
+                if (blockedUserRepository == null)
+                    blockedUserRepository = new BlockedUserRepository(db);
+                return blockedUserRepository;
             }
         }
-
         public IRepository<Dates_ranges> Dates_ranges
         {
             get
             {
-                if (this.dateRangeRepository == null)
-                {
-                    this.dateRangeRepository = new DateRangeRepository(this.db);
-                }
-
-                return this.dateRangeRepository;
+                if (dateRangeRepository == null)
+                    dateRangeRepository = new DateRangeRepository(db);
+                return dateRangeRepository;
             }
         }
-
         public IRepository<Destination> Destinations
         {
             get
             {
-                if (this.destinationRepository == null)
-                {
-                    this.destinationRepository = new DestinationRepository(this.db);
-                }
-
-                return this.destinationRepository;
+                if (destinationRepository == null)
+                    destinationRepository = new DestinationRepository(db);
+                return destinationRepository;
             }
         }
-
         public IRepository<Role> Roles
         {
             get
             {
-                if (this.roleRepository == null)
-                {
-                    this.roleRepository = new RoleRepository(this.db);
-                }
-
-                return this.roleRepository;
+                if (roleRepository == null)
+                    roleRepository = new RoleRepository(db);
+                return roleRepository;
             }
         }
-
         public IRepository<Right> Rights
         {
             get
             {
-                if (this.rightRepository == null)
-                {
-                    this.rightRepository = new RightRepository(this.db);
-                }
-
-                return this.rightRepository;
+                if (rightRepository == null)
+                    rightRepository = new RightRepository(db);
+                return rightRepository;
             }
         }
-
         public void Save()
         {
-            this.db.SaveChanges();
+            db.SaveChanges();
         }
+
+        private bool disposed = false;
 
         public virtual void Dispose(bool disposing)
         {
@@ -156,17 +112,29 @@
             {
                 if (disposing)
                 {
-                    this.db.Dispose();
+                    db.Dispose();
                 }
-
                 this.disposed = true;
             }
         }
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+        public EFUnitOfWork(uthtripContext db)
+        {
+            this.db = db;
+            userRepository = new UserRepository(db);
+            tripRepository = new TripRepository(db);
+            reviewRepository = new ReviewRepository(db);
+            blockedUserRepository = new BlockedUserRepository(db);
+            dateRangeRepository = new DateRangeRepository(db);
+            destinationRepository = new DestinationRepository(db);
+            roleRepository = new RoleRepository(db);
+            rightRepository = new RightRepository(db);
+
         }
     }
 }

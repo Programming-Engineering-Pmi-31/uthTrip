@@ -1,4 +1,4 @@
-namespace UthTrip.DAL.Entities
+namespace uthTrip.DAL.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -8,10 +8,10 @@ namespace UthTrip.DAL.Entities
 
     public partial class Role
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Reviewed.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.Rights = new HashSet<Right>();
+            Rights = new HashSet<Right>();
         }
 
         [Key]
@@ -21,7 +21,7 @@ namespace UthTrip.DAL.Entities
         [StringLength(50,MinimumLength = 5)]
         public string Title { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Right> Rights { get; set; }
     }
 }

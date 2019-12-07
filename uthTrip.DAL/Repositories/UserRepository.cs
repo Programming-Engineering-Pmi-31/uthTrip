@@ -6,84 +6,69 @@ using System.Threading.Tasks;
 using uthTrip.DAL.Entities;
 using uthTrip.DAL.EF;
 using uthTrip.DAL.Interfaces;
+<<<<<<< Updated upstream
 using System.Data.Entity;
 
-
+=======
+//using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+>>>>>>> Stashed changes
 namespace uthTrip.DAL.Repositories
-
-namespace UthTrip.DAL.Repositories
-
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
-
     public class UserRepository : IRepository<User>
     {
-        private UthTripContext db;
+        private uthtripContext db;
 
-        public UserRepository(UthTripContext context)
+        public UserRepository(uthtripContext context)
         {
             this.db = context;
         }
 
         public IEnumerable<User> GetAll()
         {
-            return this.db.Users;
+            return db.Users;
         }
 
         public User Get(int id)
         {
-            return this.db.Users.Find(id);
+            return db.Users.Find(id);
         }
 
         public void Create( User user)
         {
-            this.db.Users.Add(user);
+            db.Users.Add(user);
         }
 
         public void Update(User user)
         {
-            this.db.Entry(user).State = EntityState.Modified;
+            db.Entry(user).State = EntityState.Modified;
         }
 
-        public IEnumerable<User> Find(Func<User, bool> predicate)
+        public IEnumerable<User> Find(Func<User, Boolean> predicate)
         {
-            return this.db.Users.Where(predicate).ToList();
+            return db.Users.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            User user = this.db.Users.Find(id);
+            User user = db.Users.Find(id);
             if (user != null)
-            {
-                this.db.Users.Remove(user);
-            }
+                db.Users.Remove(user);
         }
-
         public int MaxId()
         {
+<<<<<<< Updated upstream
             int max = 0;
             try
             {
-                max = this.db.Users.Max(a => a.User_ID);
-            }
-            catch (System.InvalidOperationException)
-            {
-                max = -1;
+                 max = db.Users.Max(a => a.User_ID);
             }
             catch(System.InvalidOperationException)
             {  max= -1; }
             return max;
+=======
             //int max = 0;
             //try
             //{
@@ -92,14 +77,13 @@ namespace UthTrip.DAL.Repositories
             //catch (System.InvalidOperationException)
             //{ max = -1; }
             return -1;
+>>>>>>> Stashed changes
 
-
-            return max;
         }
 
         public User GetbyPass(string username, string password)
         {
-            return this.db.Users.Where(a => a.Username == username && a.Password == password).ToList().FirstOrDefault();
+            return db.Users.Where(a => a.Username == username && a.Password==password).ToList().FirstOrDefault();
         }
     }
 }

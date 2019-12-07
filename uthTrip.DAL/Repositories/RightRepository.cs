@@ -1,70 +1,64 @@
-﻿namespace UthTrip.DAL.Repositories
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using UthTrip.DAL.EF;
-    using UthTrip.DAL.Entities;
-    using UthTrip.DAL.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using uthTrip.DAL.Entities;
+using uthTrip.DAL.EF;
+using uthTrip.DAL.Interfaces;
+using System.Data.Entity;
 
+namespace uthTrip.DAL.Repositories
+{
     public class RightRepository : IRepository<Right>
     {
-        private UthTripContext db;
-
-        public RightRepository(UthTripContext context)
-        {
-            this.db = context;
-        }
-
+        private uthtripContext db;
         public int MaxId()
         {
             int max;
             try
             {
-                max = this.db.Rights.Max(a => a.Rights_ID);
+                max = db.Rights.Max(a => a.Rights_ID);
             }
             catch (System.InvalidOperationException)
-            {
-                max = -1;
-            }
+            { max = -1; }
             return max;
+        }
+        public RightRepository(uthtripContext context)
+        {
+            this.db = context;
         }
 
         public IEnumerable<Right> GetAll()
         {
-            return this.db.Rights;
+            return db.Rights;
         }
 
         public Right Get(int id)
         {
-            return this.db.Rights.Find(id);
+            return db.Rights.Find(id);
         }
 
         public void Create(Right right)
         {
-            this.db.Rights.Add(right);
+            db.Rights.Add(right);
         }
 
         public void Update(Right right)
         {
-            ////this.db.Entry(right).State = EntityState.Modified;
+            db.Entry(right).State = EntityState.Modified;
         }
 
-        public IEnumerable<Right> Find(Func<Right, bool> predicate)
+        public IEnumerable<Right> Find(Func<Right, Boolean> predicate)
         {
-            return this.db.Rights.Where(predicate).ToList();
+            return db.Rights.Where(predicate).ToList();
         }
 
         public void Delete(int id)
         {
-            Right right = this.db.Rights.Find(id);
+            Right right = db.Rights.Find(id);
             if (right != null)
-            {
-                this.db.Rights.Remove(right);
-            }
+                db.Rights.Remove(right);
         }
 
         public Right GetbyPass(string username, string password)

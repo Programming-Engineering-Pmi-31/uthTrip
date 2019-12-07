@@ -1,4 +1,4 @@
-namespace UthTrip.DAL.EF
+namespace uthTrip.DAL.EF
 {
     using System.Data.Common;
     using System.Data;
@@ -6,25 +6,23 @@ namespace UthTrip.DAL.EF
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-   using uthTrip.DAL.Entities;
+<<<<<<< Updated upstream
+    using uthTrip.DAL.Entities;
 
     public partial class uthtripContext : DbContext
-
+=======
     using UthTrip.DAL.Entities;
     public partial class UthTripContext : DbContext
-
-    using UthTrip.DAL.Entities;
-    public partial class UthTripContext : DbContext
+>>>>>>> Stashed changes
     {
         private string connectionString;
-
-        public UthTripContext(string conString)
+        
+        public uthtripContext(string conString)
         {
-            this.connectionString = conString;
+            connectionString = conString;
         }
-
-        public UthTripContext()
-            : base("name=UthTripContext")
+        public uthtripContext()
+            : base("name=uthtripContext")
         {
         }
         public UthTripContext(DbConnection connection)
@@ -34,19 +32,12 @@ namespace UthTrip.DAL.EF
         }
 
         public virtual DbSet<Blocked_Users> Blocked_Users { get; set; }
-
         public virtual DbSet<Dates_ranges> Dates_ranges { get; set; }
-
         public virtual DbSet<Destination> Destinations { get; set; }
-
         public virtual DbSet<Review> Reviews { get; set; }
-
         public virtual DbSet<Right> Rights { get; set; }
-
         public virtual DbSet<Role> Roles { get; set; }
-
         public virtual DbSet<Trip> Trips { get; set; }
-
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

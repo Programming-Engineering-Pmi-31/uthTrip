@@ -1,19 +1,17 @@
-﻿namespace UthTrip.BLL.Infrastructure
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+namespace uthTrip.BLL.Infrastructure
+{
     public class ValidationException : Exception
     {
-        public ValidationException(string message, string prop)
-            : base(message)
-        {
-            this.Property = prop;
-        }
-
         public string Property { get; protected set; }
-    }
+        public ValidationException(string message, string prop) : base(message)
+        {
+            Property = prop;
+        }
+    }   
 }
