@@ -11,7 +11,7 @@ namespace UthTrip.DAL.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Rights_ID { get; set; }
-        
+
         public int User_ID { get; set; }
 
         public int Role_ID { get; set; }
