@@ -9,13 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.DAL", "uthTrip.DAL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.BLL", "uthTrip.BLL\uthTrip.BLL.csproj", "{EDEC0E39-CC42-426B-8773-F9356BA20DF9}"
 EndProject
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{8B8D5CC4-86F5-4793-89EB-296325CA02F9}"
 =======
-=======
->>>>>>> Stashed changes
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uthTrip.Tests", "uthTrip.Tests\uthTrip.Tests.csproj", "{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}"
 >>>>>>> parent of 3e60396... added unit tests to userservice
 EndProject
@@ -39,7 +36,6 @@ Global
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDEC0E39-CC42-426B-8773-F9356BA20DF9}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 		{8B8D5CC4-86F5-4793-89EB-296325CA02F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -47,8 +43,6 @@ Global
 		{8B8D5CC4-86F5-4793-89EB-296325CA02F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B8D5CC4-86F5-4793-89EB-296325CA02F9}.Release|Any CPU.Build.0 = Release|Any CPU
 =======
-=======
->>>>>>> Stashed changes
 		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92D1958E-8110-402B-8A96-4C7FE9FFF0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
