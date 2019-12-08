@@ -50,73 +50,73 @@
     </section>
     <div class="container bg-light" style="border-radius:18px; width:500px; margin-top: 40px; padding: 20px">
 
-            <canvas class="background"></canvas>
-            <div>
-                <dl class="dl-horizontal">
+        <canvas class="background"></canvas>
+        <div>
+            <dl class="dl-horizontal">
 
-                    <dt>
-                        <a>Ім'я: </a>
-                    </dt>
+                <dt>
+                    <a>Ім'я: </a>
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.First_Name)
-                    </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.First_Name)
+                </dd>
 
-                    <dt>
-                        <a>Прізвище: </a>
-                    </dt>
+                <dt>
+                    <a>Прізвище: </a>
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Last_Name)
-                    </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Last_Name)
+                </dd>
 
-                    <dt>
-                        <a>Пошта: </a>
-                    </dt>
+                <dt>
+                    <a>Пошта: </a>
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Email)
-                    </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-                    <dt>
-                        <a>Ім'я користувача: </a>
-                    </dt>
+                <dt>
+                    <a>Ім'я користувача: </a>
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Username)
-                    </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
 
-                    <dt>
-                        <a>Дата народження: </a>
-                    </dt>
+                <dt>
+                    <a>Дата народження: </a>
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Birthday)
-                    </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Birthday)
+                </dd>
 
-                    <dt>
-                        <a>Інформація: </a>
-                    </dt>
+                <dt>
+                    <a>Інформація: </a>
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Info)
-                    </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Info)
+                </dd>
 
-                </dl>
-                @if (ViewBag.Reviews != null)
+            </dl>
+            @if (ViewBag.Reviews != null)
             {
-                    <h4>Відгуки на подорожі, створені користувачем:</h4>
-                    foreach (var review in ViewBag.Reviews)
-                    {
-                        <li>@review</li>
-                    }
+                <h4>Відгуки на подорожі, створені користувачем:</h4>
+                foreach (var review in ViewBag.Reviews)
+                {
+                    <li>@review</li>
                 }
+            }
 
-            </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-
-
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+   
+</body>
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
             @Scripts.Render("~/bundles/background")
