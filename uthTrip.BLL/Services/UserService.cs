@@ -49,8 +49,8 @@ namespace UthTrip.BLL.Services
             };
             try
             {
-                //this.Database.Users.GetAll().Where(e => e.Username == user.Username).First();
-                //throw new ArgumentNullException();
+                this.Database.Users.GetAll().Where(e => e.Username == user.Username).First();
+                throw new ArgumentNullException();
             }
             catch (System.InvalidOperationException)
             {

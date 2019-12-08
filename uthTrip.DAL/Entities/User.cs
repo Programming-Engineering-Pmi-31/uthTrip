@@ -69,6 +69,6 @@ namespace UthTrip.DAL.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Trip> Trips { get; set; }
 
-        public virtual ImageEntity image { get; set; }
+        ////public virtual ImageEntity image { get; set; }
     }
 }

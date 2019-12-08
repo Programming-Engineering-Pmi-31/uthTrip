@@ -137,6 +137,11 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201912082127237_ImageEntity.cs" />
+    <Compile Include="Migrations\201912082127237_ImageEntity.designer.cs">
+      <DependentUpon>201912082127237_ImageEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DestinationRepository.cs" />
     <Compile Include="Repositories\DateRangeRepository.cs" />
@@ -158,6 +163,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912082127237_ImageEntity.resx">
+      <DependentUpon>201912082127237_ImageEntity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -16,7 +16,7 @@ namespace UthTrip.DAL.EF
         }
 
         public UthTripContext()
-            : base("name=UthTripContext")
+            : base("UthTripContext")
         {
         }
 
@@ -109,9 +109,9 @@ namespace UthTrip.DAL.EF
                 .Property(e => e.Password)
                 .IsUnicode(false);
 
-            //modelBuilder.Entity<User>()
-            //    .Property(e => e.Photo_Url)
-            //    .IsUnicode(false);
+            modelBuilder.Entity<User>()
+                .Property(e => e.Photo_Url)
+                .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Info)
@@ -134,10 +134,10 @@ namespace UthTrip.DAL.EF
                 .HasForeignKey(e => e.Creator_ID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ImageEntity>()
-                .HasMany(e => e.users)
-                 .WithRequired(e => e.image)
-                 .HasForeignKey(e => e.User_ID);
+            //modelBuilder.Entity<ImageEntity>()
+            //    .HasMany(e => e.users)
+            //     .WithRequired(e => e.image)
+            //     .HasForeignKey(e => e.User_ID);
 
         }
     }
