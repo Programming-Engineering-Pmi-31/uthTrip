@@ -74,8 +74,6 @@
             catch (System.Data.Entity.Validation.DbEntityValidationException)
             {
                 this.ModelState.Clear();
-                this.ViewBag.DuplicateMessage = "Неправильне ім'я користувача або пароль.";
-
                 return this.View("Create", tripModel);
             }
         }

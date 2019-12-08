@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
     <section id="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">
@@ -47,78 +46,54 @@
     </section>
     <div class="container ">
         <canvas class="background"></canvas>
-        <div>
-            <hr />
-            <dl class="dl-horizontal">
+        <div class="card bg-light ">
+            <article class="card-body mx-auto" style="max-width: 600px;">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Ім'я: </p>
+                        @Html.DisplayFor(model => model.First_Name)
+                    </div>
 
-                <dt>
-                    <p>Ім'я: </p>
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.First_Name)
-                </dd>
-
-                <dt>
-                    <p>Прізвище: </p>
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Last_Name)
-                </dd>
-
-                <dt>
-                    <p>Пошта: </p>
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
-
-                <dt>
-                    <p>Юзернейм: </p>
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Username)
-                </dd>
-
-                <dt>
-                    <p>Дата народження: </p>
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Birthday)
-                </dd>
-
-                <dt>
-                    <p>Інформація: </p>
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Info)
-                </dd>
-
-            </dl>
-            @if (ViewBag.Reviews != null)
-            {
-                <p>Відгуки на подорожі, створені користувачем:</p>
-                foreach (var review in ViewBag.Reviews)
-                {
-                    <li>@review</li>
-                }
-            }
-
+                    <div class="col-md-8">
+                        <p>Прізвище: </p>
+                        @Html.DisplayFor(model => model.Last_Name)
+                    </div>
+                    <div class="col-md-8">
+                        <p>Пошта: </p>
+                        @Html.DisplayFor(model => model.Email)
+                    </div>
+                    <div class="col-md-8">
+                        <p>Юзернейм: </p>
+                        @Html.DisplayFor(model => model.Username)
+                    </div>
+                    <div class="col-md-8">
+                        <p>Дата народження: </p>
+                        @Html.DisplayFor(model => model.Birthday)
+                    </div>
+                    <div class="col-md-8">
+                        <p>Інформація: </p>
+                        @Html.DisplayFor(model => model.Info)
+                    </div>
+                    @if (ViewBag.Reviews != null)
+                    {
+                        <p>Відгуки на подорожі, створені користувачем:</p>
+                        foreach (var review in ViewBag.Reviews)
+                        {
+                            <li>@review</li>
+                        }
+                    }
+                </div>
+            </article>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+</body>
 
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        @Scripts.Render("~/bundles/background")
-        @Scripts.Render("~/bundles/bootstrap")
-        @Styles.Render("~/Content/tripDetail.css")
-        @Styles.Render("~/Content/css")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/background")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/tripDetail.css")
+    @Styles.Render("~/Content/css")
+}
 
