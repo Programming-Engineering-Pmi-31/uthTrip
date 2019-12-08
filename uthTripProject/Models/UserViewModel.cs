@@ -5,6 +5,7 @@
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using UthTrip.DAL.Entities;
 
     public class UserViewModel
     {
@@ -52,5 +53,7 @@
         [DataType(DataType.MultilineText)]
         ////[Required(ErrorMessage = "This field is required.")]
         public string Info { get; set; }
+
+        public ImageEntity imageEntity { get; set; }
     }
 }

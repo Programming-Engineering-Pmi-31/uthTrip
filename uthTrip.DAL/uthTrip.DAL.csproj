@@ -115,6 +115,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -128,6 +129,7 @@
     <Compile Include="Entities\Blocked_Users.cs" />
     <Compile Include="Entities\Dates_ranges.cs" />
     <Compile Include="Entities\Destination.cs" />
+    <Compile Include="Entities\ImageEntity.cs" />
     <Compile Include="Entities\Review.cs" />
     <Compile Include="Entities\Right.cs" />
     <Compile Include="Entities\Role.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="Repositories\DestinationRepository.cs" />
     <Compile Include="Repositories\DateRangeRepository.cs" />
     <Compile Include="Repositories\EFUnitOfWork.cs" />
+    <Compile Include="Repositories\ImageRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\RightRepository.cs" />
     <Compile Include="Repositories\BlockedUserRepository.cs" />

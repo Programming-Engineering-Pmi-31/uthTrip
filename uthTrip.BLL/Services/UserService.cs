@@ -45,11 +45,12 @@ namespace UthTrip.BLL.Services
                 Birthday = userDto.Birthday,
                 Photo_Url = userDto.Photo_Url,
                 Info = userDto.Info,
+               
             };
             try
             {
-                this.Database.Users.GetAll().Where(e => e.Username == user.Username).First();
-                throw new ArgumentNullException();
+                //this.Database.Users.GetAll().Where(e => e.Username == user.Username).First();
+                //throw new ArgumentNullException();
             }
             catch (System.InvalidOperationException)
             {

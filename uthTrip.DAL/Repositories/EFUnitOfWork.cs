@@ -21,6 +21,7 @@
         private DestinationRepository destinationRepository;
         private RoleRepository roleRepository;
         private RightRepository rightRepository;
+        private ImageRepository imageRepository;
         private bool disposed = false;
 
         public EFUnitOfWork(string connectionString)
@@ -39,6 +40,7 @@
             this.destinationRepository = new DestinationRepository(db);
             this.roleRepository = new RoleRepository(db);
             this.rightRepository = new RightRepository(db);
+            this.imageRepository = new ImageRepository(db);
         }
 
         public IRepository<User> Users
@@ -167,6 +169,20 @@
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+
+        public IRepository<ImageEntity> ImageEntity
+        {
+            get
+            {
+                if (this.imageRepository == null)
+                {
+                    this.imageRepository = new ImageRepository(this.db);
+                }
+
+                return this.imageRepository;
+            }
         }
     }
 }

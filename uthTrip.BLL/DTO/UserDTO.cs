@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using System.Text;
 
+    using UthTrip.BLL.DTO;
     public class UserDTO
     {
         public UserDTO()
@@ -42,5 +43,6 @@
         public string Photo_Url { get; set; }
 
         public string Info { get; set; }
+
     }
 }

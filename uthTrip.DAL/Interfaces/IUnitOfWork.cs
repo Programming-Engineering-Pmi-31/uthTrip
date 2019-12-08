@@ -25,6 +25,8 @@
 
         IRepository<Blocked_Users> Blocked_Users { get; }
 
+        IRepository<ImageEntity> ImageEntity { get;  }
+
         void Save();
     }
 }

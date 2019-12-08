@@ -36,6 +36,8 @@ namespace UthTrip.DAL.EF
 
         public virtual DbSet<User> Users { get; set; }
 
+        public virtual DbSet<ImageEntity> ImageEntity { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Dates_ranges>()
@@ -107,9 +109,9 @@ namespace UthTrip.DAL.EF
                 .Property(e => e.Password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User>()
-                .Property(e => e.Photo_Url)
-                .IsUnicode(false);
+            //modelBuilder.Entity<User>()
+            //    .Property(e => e.Photo_Url)
+            //    .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Info)
@@ -131,6 +133,12 @@ namespace UthTrip.DAL.EF
                 .WithRequired(e => e.User)
                 .HasForeignKey(e => e.Creator_ID)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ImageEntity>()
+                .HasMany(e => e.users)
+                 .WithRequired(e => e.image)
+                 .HasForeignKey(e => e.User_ID);
+
         }
     }
 }

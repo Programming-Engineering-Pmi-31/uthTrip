@@ -8,6 +8,8 @@ namespace UthTrip.DAL.Entities
 
     public partial class User
     {
+        internal ICollection<object> ImageEntity;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Reviewed.")]
         public User()
         {
@@ -48,6 +50,8 @@ namespace UthTrip.DAL.Entities
         [StringLength(30)]
         public string Photo_Url { get; set; }
 
+        //public ImageEntity image { get; set; }
+
 
         [Required]
         [StringLength(30)]
@@ -64,5 +68,7 @@ namespace UthTrip.DAL.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Reviewed.")]
         public virtual ICollection<Trip> Trips { get; set; }
+
+        public virtual ImageEntity image { get; set; }
     }
 }

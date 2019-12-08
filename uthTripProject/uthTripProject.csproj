@@ -225,6 +225,7 @@
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\Helper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="Controllers\TripDetailController.cs" />
@@ -321,6 +322,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -343,6 +345,10 @@
     <ProjectReference Include="..\uthTrip.BLL\uthTrip.BLL.csproj">
       <Project>{edec0e39-cc42-426b-8773-f9356ba20df9}</Project>
       <Name>uthTrip.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uthTrip.DAL\uthTrip.DAL.csproj">
+      <Project>{F78C2CCB-0AA4-48F9-8DC1-9F65A5135E05}</Project>
+      <Name>uthTrip.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
