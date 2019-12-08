@@ -16,81 +16,95 @@
 <body>
     <section id="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">
-                <img src="~/Views/photoes/logo2.png" width="30" height="30" alt="">
-            </a>
+            <a class="navbar-brand" href="#">uthTRIP</a>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <p>@Session["Username"]</p>
+                    <li class="nav-item" style="float:right">
+                        <a class="fa fa-user fa-lg" aria-hidden="true"> @Session["Username"]</a>
                     </li>
                     <li class="nav-item">
-                        <i class="fa fa-user" aria-hidden="true"></i>
                         <a class="nav-link" href="/Home/StartPage">
                             Головна
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="">
-                            Мої подорожі
-                        </a>
-                        <span class="sr-only">(current)</span>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="/Home/MyTrips" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Мої подорожі
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/Home/MyTrips">Обрані</a>
+                                <a class="dropdown-item active" href="/Home/Created">Створені</a>
+                            </div>
+                            <span class="sr-only">(current)</span>
+                        </li>
 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Trip/Create">
-                            Створити
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Вийти", "../User/Logout")
-                    </li>
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Trip/Create">
+                                Створити
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../User/Logout">
+                                Вийти
+                            </a>
+                        </li>
+                    </ul>
             </div>
         </nav>
     </section>
-
-    <p>Тут відображаються створені мною подорожі</p>
-    @Html.ActionLink("Переглянути обрані мною подорожі", "MyTrips")
-    <hr>
-    <div class="container">
+    
+    <div class="card_top bg-light ">
+        <h3>Тут відображаються подорожі, які Ви створили.</h3>
+      @*  @Html.ActionLink("Переглянути обрані Вами подорожі", "MyTrips")*@
+    </div>
+   
+    <div class="box">
         <canvas class="background"></canvas>
-        @foreach (var item in Model)
-        {
-            <div id="row-wrapper">
-                <div class="row" id="row">
-                    <div class="col-md-2" id="tripText">
-                        @Html.DisplayFor(modelItem => item.Trip_Title)
-                    </div>
-                    <div class="col-md-5" id="tripText">
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </div>
-                    <div class="col-md-2" id="tripText">
-                        <h2 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
-                    </div>
-                    <div class="col-md-1" id="tripTextDate">
-                        @Html.DisplayFor(modelItem => item.Start_date)
-                        <br>
-                        @Html.DisplayFor(modelItem => item.End_date)
-                    </div>
-                    <div class="col-md-2" id="tripTextButton">
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
-                            </div>
+
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    <div class="box-part text-center">
+
+                        <i class="fa fa-globe fa-3x" aria-hidden="true"></i>
+
+                        <div class="title">
+                            @Html.DisplayFor(modelItem => item.Trip_Title)
                         </div>
+
+                        <div class="text">
+                            @Html.DisplayFor(modelItem => item.Description)
+                            <p class="text">
+                                @Html.DisplayFor(modelItem => item.Start_date) -
+                                @Html.DisplayFor(modelItem => item.End_date)
+                            </p>
+                            <h4 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h4>
+                        </div>
+
+                        <a>@Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "card-link" })</a>
+
+                        @if (item.End_date < DateTime.Now)
+                        {
+                            @Html.ActionLink("Відгук", "../Review/WriteReview", new { id = item.Trip_ID }, new { @class = "card-link" })
+                        }
+
+
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
     </div>
+
 </body>
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/background")
     @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/home.css")
+    @Styles.Render("~/Content/myTrips.css")
     @Styles.Render("~/Content/css")
 }

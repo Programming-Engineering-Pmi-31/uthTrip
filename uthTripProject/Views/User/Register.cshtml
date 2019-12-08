@@ -12,7 +12,7 @@
     <head> <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script></head>
-   <body class="body-user">
+   <body class="body-user" style="margin-top: 20px">
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
      <link rel="stylesheet" href="~/Content/user.css">
     @* <h2>User Registration</h2>*@
@@ -21,90 +21,90 @@
            <canvas class="background"></canvas>
            <div class="card bg-light ">
                <article class="card-body mx-auto" style="max-width: 600px;">
-                   <h4 class="card-title mt-3 text-center">Create Account</h4>
-                   <p class="text-center">Get started with your account</p>
+                   <h4 class="card-title mt-3 text-center">Створити аккаунт</h4>
+                   <p class="text-center">за допомогою соцмереж</p>
                    <p>
-                       <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>  sign up via Twitter</a>
-                       <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>  sign up via Facebook</a>
+                       <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>  через Twitter</a>
+                       <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i> через Facebook</a>
                    </p>
                    <p class="divider-text">
-                       <span class="bg-light">OR</span>
+                       <span class="bg-light">АБО</span>
                    </p>
                    <form>
-                       <div class="form-group">
+                      @* <div class="form-group">
                            <div>
                                <label class="label-warning">@ViewBag.DuplicateMessage</label>
                            </div>
-                       </div>
+                       </div>*@
                        <div class="form-group ">
-                           <div class="input-group-prepend">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                               @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @type = "text" } })
+                               @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ім'я", @type = "text" } })
                                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
                        <div class="form-group">
-                           <div class="input-group-prepend">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                               @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Surname", @type = "text" } })
+                               @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Прізвище", @type = "text" } })
                                @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
                        <div class="form-group">
-                           <div class="input-group-prepend">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                               @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email address", @type = "email" } })
+                               @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ел. пошта", @type = "email" } })
                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
                        <div class="form-group">
-                           <div class="input-group-prepend">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
-                               @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username", @type = "text" } })
+                               @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ім'я користувача", @type = "text" } })
                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
                        <div class="form-group">
-                           <div class="input-group-prepend">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                               @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Create password", @type = "password" } })
+                               @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Створіть пароль", @type = "password" } })
                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
-                       <div class="form-group input-group">
-                           <div class="input-group-prepend">
+                       <div class="form-group">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-birthday-cake"></i> </span>
-                               @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", @placeholder = "Birthday", @type = "date" } })
+                               @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", @placeholder = "Дата народження", @type = "date" } })
                                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
-                       <div class="form-group input-group">
-                           <div class="input-group-prepend">
+                       <div class="form-group">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-camera"></i> </span>
-                               @Html.EditorFor(model => model.Photo_Url, new { htmlAttributes = new { @class = "form-control", @placeholder = "Photo URL", @type = "text" } })
+                               @Html.EditorFor(model => model.Photo_Url, new { htmlAttributes = new { @class = "form-control", @placeholder = "Фото URL", @type = "text" } })
                                @Html.ValidationMessageFor(model => model.Photo_Url, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
-                       <div class="form-group input-group">
-                           <div class="input-group-prepend">
+                       <div class="form-group">
+                           <div class="input-group-prepend justify-content-center">
                                <span class="input-group-text"> <i class="fa fa-info"></i> </span>
-                               @Html.EditorFor(model => model.Info, new { htmlAttributes = new { @class = "form-control", @placeholder = "Some information", @type = "textarea" } })
+                               @Html.EditorFor(model => model.Info, new { htmlAttributes = new { @class = "form-control", @placeholder = "Інформація про себе", @type = "textarea" } })
                                @Html.ValidationMessageFor(model => model.Info, "", new { @class = "text-danger" })
                            </div>
                        </div>
 
                        <div class="form-group">
-                           <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+                           <button type="submit" class="btn btn-primary btn-block"> Створити аккаунт </button>
                        </div>
 
-                       <p class="text-center">Have an account?  @Html.ActionLink("Log in", "Login")</p>
+                       <p class="text-center">Вже є аккаунт?  @Html.ActionLink("Увійти", "Login")</p>
                    </form>
                </article>
            </div> 

@@ -31,6 +31,7 @@
         [DisplayName("Відгук")]
         public string Review1 { get; set; }
 
+        [DisplayName("Оцінка")]
         public int? Mark { get; set; }
     }
 }

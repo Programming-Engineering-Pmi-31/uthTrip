@@ -19,37 +19,37 @@
     <body>
         <section id="nav-bar">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">
-                    <img src="~/Views/photoes/logo2.png" width="30" height="30" alt="">
-                </a>
+                <a class="navbar-brand" href="#">uthTRIP</a>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <p>@Session["Username"]</p>
+                        <li class="nav-item" style="float:right">
+                            <a class="fa fa-user fa-lg" aria-hidden="true"> @Session["Username"]</a>
                         </li>
                         <li class="nav-item">
-                            <i class="fa fa-user" aria-hidden="true"></i>
                             <a class="nav-link" href="/Home/StartPage">
                                 Головна
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Home/MyTrips">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/Home/MyTrips" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Мої подорожі
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/Home/MyTrips">Обрані</a>
+                                <a class="dropdown-item" href="/Home/Created">Створені</a>
+                            </div>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Trip/Create">
                                 Створити
                             </a>
-                            <span class="sr-only">(current)</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/User/Logout">
+                            <a class="nav-link" href="../User/Logout">
                                 Вийти
                             </a>
-
                         </li>
                     </ul>
                 </div>
