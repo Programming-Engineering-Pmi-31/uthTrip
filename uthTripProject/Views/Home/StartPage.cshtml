@@ -11,8 +11,6 @@
 
 <head>
     <meta charset="utf-8">
-    <title>site</title>
-    <link rel="stylesheet" href="css\createTrip.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -20,37 +18,41 @@
 </head>
 
 
-<body>
+<body>@* style="background: url('https://tripway.com/blog/wp-content/uploads/2018/05/severnoe-siyanie.jpg') ">*@
+    
     <section id="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">
-                <img src="~/Views/photoes/logo2.png" width="30" height="30" alt="">
-            </a>
+            <a class="navbar-brand" href="#">uthTRIP</a>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <p>@Session["Username"]</p>
+                    <li class="nav-item" style="float:right">
+                        <a class="fa fa-user fa-lg" aria-hidden="true"> @Session["Username"]</a>
                     </li>
-                    <li class="nav-item active">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <a class="nav-link" href="">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/Home/StartPage">
                             Головна
                         </a>
-                        <span class="sr-only">(current)</span>
+                       <span class="sr-only">(current)</span>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Home/MyTrips">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="/Home/MyTrips" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Мої подорожі
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/Home/MyTrips">Обрані</a>
+                            <a class="dropdown-item" href="/Home/Created">Створені</a>
+                        </div>
+                        
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/Trip/Create" ">
+                        <a class="nav-link" href="/Trip/Create">
                             Створити
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/User/Logout">
+                        <a class="nav-link" href="../User/Logout">
                             Вийти
                         </a>
                     </li>
@@ -66,39 +68,39 @@
             </div>
         </nav>
     </section>
-    <hr>
-    @using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
-    {
-        <link rel="stylesheet" href="~/Content/style.css">
+        <hr>
+        @using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
+        {
+            <link rel="stylesheet" href="~/Content/style.css">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    @Html.DropDownList("Country", "Країна")
-                </div>
-                <div class="col-md-2">
-                    @Html.DropDownList("City", "Місто")
-                </div>
-                <div class="col-md-2">
-                    @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
-                </div>
-                <div class="col-md-2" id="input">
-                    @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
-                </div>
-                <div class="col-md-2" id="btext">
-                    <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        @Html.DropDownList("Country", "Країна")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownList("City", "Місто")
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2" id="input">
+                        @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2" id="btext">
+                        <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-    <hr>
+        }
+        <hr>
 
-    <div class="container">
-        <canvas class="background"></canvas>
-        @foreach (var item in Model)
-        {
-            //if (item.Start_date > DateTime.Now)
-            //{
+        <div class="container">
+            <canvas class="background"></canvas>
+            @foreach (var item in Model)
+            {
+                //if (item.Start_date > DateTime.Now)
+                //{
                 <div id="row-wrapper">
                     <div class="row" id="row">
                         <div class="col-md-2" id="tripText">
@@ -124,19 +126,22 @@
                         </div>
                     </div>
                 </div>
-            @*}*@
-        }
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-    </div>
-</body>
-@Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
+                @*}*@
+            }
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+        </div>
+    </body>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
+
+</div>
 
 
 
-@section Scripts {
+    @section Scripts {
 
-    @Scripts.Render("~/bundles/background")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/home.css")
-    @Styles.Render("~/Content/css")
-}
+        @Scripts.Render("~/bundles/background")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Styles.Render("~/Content/home.css")
+        @Styles.Render("~/Content/css")
+    }

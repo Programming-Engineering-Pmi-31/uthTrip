@@ -4,9 +4,6 @@
     ViewBag.Title = "AllUsers";
 }
 <head>
-    <meta charset="utf-8">
-    <title>site</title>
-    <link rel="stylesheet" href="css\createTrip.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -15,35 +12,38 @@
 
 
 <body>
-    <section id="nav-bar">
+    <section id="nav-bar" >
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">
-                <img src="~/Views/photoes/logo2.png" width="30" height="30" alt="">
-            </a>
+            <a class="navbar-brand" href="#">uthTRIP</a>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <p>@Session["Username"]</p>
+                    <li class="nav-item" style="float:right">
+                        <a class="fa fa-user fa-lg" aria-hidden="true"> @Session["Username"]</a>
                     </li>
                     <li class="nav-item">
-                        <i class="fa fa-user" aria-hidden="true"></i>
                         <a class="nav-link" href="/Home/StartPage">
                             Головна
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Home/MyTrips">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="/Home/MyTrips" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Мої подорожі
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/Home/MyTrips">Обрані</a>
+                            <a class="dropdown-item" href="/Home/Created">Створені</a>
+                        </div>
+
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/Trip/Create" ">
+                        <a class="nav-link" href="/Trip/Create">
                             Створити
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/User/Logout">
+                        <a class="nav-link" href="../User/Logout">
                             Вийти
                         </a>
                     </li>
@@ -60,14 +60,14 @@
             </div>
         </nav>
     </section>
-    <hr>
-
-    <div class="container">
-        <table class="table">
-            <tr>
-                <th>
+    
+    <div class="container bg-light" style="border-radius:18px; width:1000px; margin-top: 40px">
+        <canvas class="background"></canvas>
+        <table class="table"> 
+           <tr>
+                @*<th>
                     @Html.DisplayNameFor(model => model.User_ID)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.First_Name)
                 </th>
@@ -95,15 +95,14 @@
                 <th>
                     @Html.DisplayNameFor(model => model.isBlocked)
                 </th>
-                <th></th>
-            </tr>
+                </tr>
 
             @foreach (var item in Model)
             {
             <tr>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.User_ID)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.First_Name)
                 </td>
@@ -151,7 +150,7 @@
 
     @Scripts.Render("~/bundles/background")
     @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/home.css")
+    @Styles.Render("~/Content/myTrips.css")
     @Styles.Render("~/Content/css")
 }
 

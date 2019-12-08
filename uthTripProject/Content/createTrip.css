@@ -58,6 +58,7 @@ body {
     margin: 0 auto;
     width: 500px;
     border-radius: 22px;
+    margin-top: 40px;
 }
 
 .divider-text {
@@ -87,8 +88,6 @@ body {
     left: 0;
     z-index: 1;
 }
-
-
 
 .body h2 {
     color: #ffffff;

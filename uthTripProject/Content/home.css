@@ -1,8 +1,8 @@
 ﻿body {
     padding-top: 8px;
     padding-bottom: 5px;
-    background: url('https://images.1plus1.video/news-1/29456/1020x565.jpg') bottom no-repeat transparent;
-    background-repeat: no-repeat center center fixed;
+    background: url('https://tripway.com/blog/wp-content/uploads/2018/05/severnoe-siyanie.jpg') bottom no-repeat transparent;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: 100%;
@@ -104,14 +104,12 @@
     text-align: center;
 }
 
-#button-trip {
 
-}
 #link-to-add-trip {
     background: rgba(0,0,0,0.35);
     padding: 10px;
 }
-. /*body-content {
+/*.body-content {
     margin-top:100px;
 }*/
 .toptop {
@@ -185,3 +183,27 @@
 .navbar-toggler {
     outline: none !important;
 }
+
+.pagination {
+    display: inline-block;
+}
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
