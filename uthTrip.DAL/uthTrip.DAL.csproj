@@ -133,6 +133,7 @@
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Trip.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

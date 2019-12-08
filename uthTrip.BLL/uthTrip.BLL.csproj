@@ -128,6 +128,7 @@
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\TripDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\IDateRangeService.cs" />

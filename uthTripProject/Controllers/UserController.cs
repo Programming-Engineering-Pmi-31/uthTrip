@@ -102,6 +102,8 @@ namespace UthTripProject.Controllers
         {
             this.ModelState.Clear();
             var obj = this.userService.GetByUsernamePassword(userModel.Username, userModel.Password);
+          
+
             if (obj != null && userModel.Username == "admin" && userModel.Password == "admin")
             {
                 this.Session["isAdmin"] = "true";
@@ -112,10 +114,19 @@ namespace UthTripProject.Controllers
             }
             else if (obj != null)
             {
-                this.Session["User_ID"] = obj.User_ID.ToString();
-                this.Session["Username"] = obj.Username.ToString();
-                this.Session["Password"] = obj.Password.ToString();
-                return this.RedirectToAction("StartPage", "Home");
+                try
+                {
+                    var user_blocked = this.userService.GetAllBlocked().Where(e => e.User_ID == userModel.User_ID).First();
+                    this.ViewBag.DuplicateMessage = "Ви заблоковані.";
+                    return this.View("Login");
+                }
+                catch (System.InvalidOperationException)
+                {
+                    this.Session["User_ID"] = obj.User_ID.ToString();
+                    this.Session["Username"] = obj.Username.ToString();
+                    this.Session["Password"] = obj.Password.ToString();
+                    return this.RedirectToAction("StartPage", "Home");
+                }
             }
             else
             {
@@ -188,7 +199,7 @@ namespace UthTripProject.Controllers
 
         public ActionResult Block(int id)
         {
-            int bl_id = this.userService.FindMaxIdBl()+1;
+            int bl_id = this.userService.FindMaxIdBl() + 1;
             BlockedUsersDTO blockedUsersDTO = new BlockedUsersDTO(bl_id, id);
             this.userService.CreateBlocked(blockedUsersDTO);
             return this.RedirectToAction("AllUsers");
