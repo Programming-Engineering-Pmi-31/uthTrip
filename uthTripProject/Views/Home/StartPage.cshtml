@@ -84,7 +84,7 @@
                     @Html.DropDownList("City", "Місто")
                 </div>
                 <div class="col-md-2">
-                    @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
+                    @Html.TextBox("maxPrice", "Макс. ціна..", new { @class = "form-control" })
                 </div>
                 <div class="col-md-2" id="input">
                     @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
@@ -139,6 +139,8 @@
         <div class="container">
             @foreach (var item in Model)
             {
+                if (item.Start_date > DateTime.Now)
+                {
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                     <div class="box-part text-center">
@@ -168,15 +170,18 @@
 
                     </div>
                 </div>
+                }
             }
         </div>
+
+        <div class="pagination">
+            @Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
+
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-    </div>
-
-    <div class="pagination">
-        @Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
 
     </div>
+
 
 </body>
 
