@@ -96,7 +96,7 @@
         </div>
     }
     <hr>
-
+@*
     <div class="container">
         <canvas class="background"></canvas>
         @foreach (var item in Model)
@@ -128,11 +128,51 @@
                     </div>
                 </div>
             </div>
-                @*}*@
+                @*}*/@
         }
         <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-    </div>
+    </div> *@
    
+    <div class="box">
+        <canvas class="background"></canvas>
+
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    <div class="box-part text-center">
+
+                        <i class="fa fa-globe fa-3x" aria-hidden="true"></i>
+
+                        <div class="title">
+                            @Html.DisplayFor(modelItem => item.Trip_Title)
+                        </div>
+
+                        <div class="text">
+                            @Html.DisplayFor(modelItem => item.Description)
+                            <p class="text">
+                                @Html.DisplayFor(modelItem => item.Start_date) -
+                                @Html.DisplayFor(modelItem => item.End_date)
+                            </p>
+                            <h4 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h4>
+                        </div>
+
+                        <a>@Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "card-link" })</a>
+
+                        @if (item.End_date < DateTime.Now)
+                        {
+                            @Html.ActionLink("Відгук", "../Review/WriteReview", new { id = item.Trip_ID }, new { @class = "card-link" })
+                        }
+
+
+                    </div>
+                </div>
+            }
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    </div>
+
     <div class="pagination">
         @Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
 
