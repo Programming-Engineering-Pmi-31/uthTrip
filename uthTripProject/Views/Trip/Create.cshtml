@@ -56,11 +56,13 @@
             </nav>
         </section>
 
-        <div class="container ">
+
+        <div class="container" style=" margin-top: 45px">
             <canvas class="background"></canvas>
 
-            <div class="card bg-light ">
-                <article class="card-body mx-auto" style="max-width: 600px;">
+            <div class="card bg-light " style="width: 700px">
+                <article class="card-body">@* mx-auto" style="max-width: 600px;">*@
+
                     <h4 class="card-title mt-3 text-center">Створити подорож</h4>
                     <form>
                         <div class="form-group">
@@ -68,7 +70,9 @@
                                 <label class="label-warning">@ViewBag.DuplicateMessage</label>
                             </div>
                         </div>
-                        <div class="form-group ">
+
+                        <div class="form-group col-md-6">
+
                             @Html.LabelFor(model => model.Trip_Title, htmlAttributes: new { @class = " input-group" })
                             <div class="input-group-prepend">
                                 @Html.EditorFor(model => model.Trip_Title, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
@@ -76,7 +80,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = " input-group" })
                             <div class="input-group-prepend">
 
@@ -86,15 +90,51 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "input-group" })
                             <div class="input-group-prepend">
                                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "1" } })
                                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                             </div>
+                        </div> 
+                        
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.Number_Of_People, htmlAttributes: new { @class = "input-group", @type = "number", @min = "0", @step = "1" })
+                            <div class="input-group-prepend justify-content-center">
+                                @Html.EditorFor(model => model.Number_Of_People, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Number_Of_People, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend justify-content-center">
+                                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                                               
+               @*     </form>
+                </article>
+            </div>
+
+        </div>
+        <div class="container col-md-6">
+
+            <div class="card bg-light ">
+                <article class="card-body mx-auto" style="max-width: 600px;">
+                    <form>*@
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "input-group" })
+                            <div class="input-group-prepend justify-content-center">
+                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                            </div>
+
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             @Html.LabelFor(model => model.Start_date, htmlAttributes: new { @class = "input-group" })
                             <div class="input-group-prepend">
                                 @Html.EditorFor(model => model.Start_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
@@ -102,19 +142,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             @Html.LabelFor(model => model.End_date, htmlAttributes: new { @class = "input-group" })
                             <div class="input-group-prepend">
                                 @Html.EditorFor(model => model.End_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                                 @Html.ValidationMessageFor(model => model.End_date, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group input-group">
-                            @Html.LabelFor(model => model.Number_Of_People, htmlAttributes: new { @class = "input-group", @type = "number", @min = "0", @step = "1" })
-                            <div class="input-group-prepend">
-                                @Html.EditorFor(model => model.Number_Of_People, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Number_Of_People, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -142,8 +174,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"> Створити </button>
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block" style="width:200px; position: relative; left: 70%"> Створити </button>
                         </div>
                         <div class="form-group">
                             <div>
@@ -153,9 +185,7 @@
                     </form>
                 </article>
             </div>
-
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
 
 
     </body>
