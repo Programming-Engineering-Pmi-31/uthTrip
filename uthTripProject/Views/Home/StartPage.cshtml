@@ -18,8 +18,7 @@
 </head>
 
 
-<body>@* style="background: url('https://tripway.com/blog/wp-content/uploads/2018/05/severnoe-siyanie.jpg') ">*@
-    
+<body>
     <section id="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">uthTRIP</a>
@@ -33,7 +32,7 @@
                         <a class="nav-link active" href="/Home/StartPage">
                             Головна
                         </a>
-                       <span class="sr-only">(current)</span>
+                        <span class="sr-only">(current)</span>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="/Home/MyTrips" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,7 +42,7 @@
                             <a class="dropdown-item" href="/Home/MyTrips">Обрані</a>
                             <a class="dropdown-item" href="/Home/Created">Створені</a>
                         </div>
-                        
+
                     </li>
 
                     <li class="nav-item">
@@ -68,80 +67,84 @@
             </div>
         </nav>
     </section>
-        <hr>
-        @using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
-        {
-            <link rel="stylesheet" href="~/Content/style.css">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
-                        @Html.DropDownList("Country", "Країна")
-                    </div>
-                    <div class="col-md-2">
-                        @Html.DropDownList("City", "Місто")
-                    </div>
-                    <div class="col-md-2">
-                        @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-2" id="input">
-                        @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-2" id="btext">
-                        <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
-                    </div>
-                </div>
-            </div>
-        }
-        <hr>
+    <div class="card_top bg-light ">
+        <h3>Актуальні подорожі</h3>
+    </div>
+    <hr>
+    @using (Html.BeginForm("../Home/StartPage", "HomeController", FormMethod.Get, new { @class = "form-horizontal" }))
+    {
+        <link rel="stylesheet" href="~/Content/style.css">
 
         <div class="container">
-            <canvas class="background"></canvas>
-            @foreach (var item in Model)
-            {
-                //if (item.Start_date > DateTime.Now)
-                //{
-                <div id="row-wrapper">
-                    <div class="row" id="row">
-                        <div class="col-md-2" id="tripText">
-                            @Html.DisplayFor(modelItem => item.Trip_Title)
-                        </div>
-                        <div class="col-md-5" id="tripText">
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </div>
-                        <div class="col-md-2" id="tripText">
-                            <h2 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
-                        </div>
-                        <div class="col-md-1" id="tripTextDate">
-                            @Html.DisplayFor(modelItem => item.Start_date)
-                            <br>
-                            @Html.DisplayFor(modelItem => item.End_date)
-                        </div>
-                        <div class="col-md-2" id="tripTextButton">
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
-                                </div>
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.DropDownList("Country", "Країна")
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownList("City", "Місто")
+                </div>
+                <div class="col-md-2">
+                    @Html.TextBox("maxPrice", "Максимальна ціна..", new { @class = "form-control" })
+                </div>
+                <div class="col-md-2" id="input">
+                    @Html.TextBox("maxPeople", "Макс. к-ть осіб..", new { @class = "form-control" })
+                </div>
+                <div class="col-md-2" id="btext">
+                    <input type="submit" value="Фільтрувати" class="btn" id="hello-btn" />
+                </div>
+            </div>
+        </div>
+    }
+    <hr>
+
+    <div class="container">
+        <canvas class="background"></canvas>
+        @foreach (var item in Model)
+        {
+            //if (item.Start_date > DateTime.Now)
+            //{
+            <div id="row-wrapper">
+                <div class="row" id="row">
+                    <div class="col-md-2" id="tripText">
+                        @Html.DisplayFor(modelItem => item.Trip_Title)
+                    </div>
+                    <div class="col-md-5" id="tripText">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+                    <div class="col-md-2" id="tripText">
+                        <h2 id="price">@Html.DisplayFor(modelItem => item.Price) ₴ </h2>
+                    </div>
+                    <div class="col-md-1" id="tripTextDate">
+                        @Html.DisplayFor(modelItem => item.Start_date)
+                        <br>
+                        @Html.DisplayFor(modelItem => item.End_date)
+                    </div>
+                    <div class="col-md-2" id="tripTextButton">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "button-a" })
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
                 @*}*@
-            }
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-        </div>
-    </body>
-<div class="pagination">
-    @Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
+        }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    </div>
+   
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("StartPage", new { page }))
 
-</div>
+    </div>
 
-
+</body>
 
     @section Scripts {
 
         @Scripts.Render("~/bundles/background")
         @Scripts.Render("~/bundles/bootstrap")
+        @Styles.Render("~/Content/startPage.css")
         @Styles.Render("~/Content/home.css")
         @Styles.Render("~/Content/css")
     }
