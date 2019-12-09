@@ -86,7 +86,7 @@
                             {
                                 string name = (string)i.Value;
                                 int user_id = (int)i.Key;
-                                @Html.ActionLink(name, "../User/UserProfile", new { id = user_id })
+                                <p>@Html.ActionLink(name, "../User/UserProfile", new { id = user_id })</p>
                             }
                         </div>
 
