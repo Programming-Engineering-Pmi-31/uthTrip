@@ -86,10 +86,10 @@
                             {
                                 string name = (string)i.Value;
                                 int user_id = (int)i.Key;
-                                <p>@Html.ActionLink(name, "../User/UserProfile", new { id = user_id })</p>
+                                 <div class="col-md-4">
+                                    @Html.ActionLink(name, "../User/UserProfile", new { id = user_id })
+                                 </div>
                             }
-                        </div>
-
                         @if (Model.Creator_ID != int.Parse(Session["User_ID"].ToString()))
                         {
                             using (Html.BeginForm("ChooseTrip", "ChooseTrip", FormMethod.Get, new { @class = "form-horizontal" }))

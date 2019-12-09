@@ -61,7 +61,7 @@
         </nav>
     </section>
     
-    <div class="container bg-light" style="border-radius:18px; width:1000px; margin-top: 40px">
+    <div class="container bg-light" style="border-radius:18px; width:800px; margin-top: 40px">
         <canvas class="background"></canvas>
         <table class="table"> 
            <tr>
@@ -80,15 +80,15 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Username)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Password)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Birthday)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Photo_Url)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Info)
                 </th>
@@ -115,15 +115,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Username)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Password)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Birthday)
                 </td>
-                <td>
+               @*<td>
                     @Html.DisplayFor(modelItem => item.Photo_Url)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Info)
                 </td>
