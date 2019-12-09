@@ -1,0 +1,23 @@
+﻿
+@model UthTripProject.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+@using (Html.BeginForm("Add", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-camera"></i> </span>
+            @*@Html.EditorFor(model => model.Photo_Url, new { htmlAttributes = new { @class = "form-control", @placeholder = "Photo URL", @type = "text" } })
+                @Html.ValidationMessageFor(model => model.Photo_Url, "", new { @class = "text-danger" })
+            *@
+            <input type="file" name="imageFile" required />
+        </div>
+        <input type="submit" value="create">
+    </div>
+
+}

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.ModelBinding;
-using uthTrip.BLL.DTO;
+using UthTrip.BLL.DTO;
 using UthTrip.BLL.Interfaces;
 using UthTrip.DAL.Entities;
 using UthTrip.DAL.Interfaces;
@@ -16,21 +16,39 @@ namespace uthTrip.BLL.Services
 {
     class ImageService : IImageService
     {
+
+        public ImageService()
+        {
+        }
+
         public ImageService(IUnitOfWork uow)
         {
             this.Database = uow;
         }
 
-        public IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; set; }
 
-
-        public void addImage(UthTrip.DAL.Entities.ImageEntity image)
+        public IEnumerable<ImageDTO> GetAll()
         {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ImageEntity, ImageDTO>()).CreateMapper();
+            return mapper.Map<IEnumerable<ImageEntity>, List<ImageDTO>>(this.Database.ImageEntity.GetAll());
+        }
+
+
+        public void addImage(ImageDTO imageDTO)
+        {
+
+            ImageEntity image = new ImageEntity
+            {
+                id = imageDTO.id,
+                ImagePath = imageDTO.ImagePath,
+                ImageFile = imageDTO.ImageFile
+            };
             string fileName = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
             string extension = Path.GetExtension(image.ImageFile.FileName);
 
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            image.ImagePath = "~/Images/" + fileName;
+            image.ImagePath = "~/Image/" + fileName;
             fileName = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/"), fileName);
             image.ImageFile.SaveAs(fileName);
 

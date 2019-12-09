@@ -5,7 +5,7 @@ namespace UthTrip.DAL.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using UthTrip.DAL.Entities;
-    //// /using Microsoft.EntityFrameworkCore;
+    /////using Microsoft.EntityFrameworkCore;
     public partial class UthTripContext : DbContext
     {
         private string connectionString;
@@ -16,7 +16,7 @@ namespace UthTrip.DAL.EF
         }
 
         public UthTripContext()
-            : base("UthTripContext")
+            : base("name=UthTripContext")
         {
         }
 

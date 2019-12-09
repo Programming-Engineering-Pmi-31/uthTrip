@@ -154,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessModels\" />
-    <Folder Include="Images\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

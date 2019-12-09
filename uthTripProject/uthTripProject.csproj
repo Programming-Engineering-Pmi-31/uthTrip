@@ -234,6 +234,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Models\TripViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -320,6 +321,7 @@
     <Content Include="Views\Hello\HelloPage.cshtml" />
     <Content Include="Views\TripDetail\TripDetail.cshtml" />
     <Content Include="Views\ChooseTrip\ChooseTrip.cshtml" />
+    <Content Include="Views\User\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

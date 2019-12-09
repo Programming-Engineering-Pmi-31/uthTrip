@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using uthTrip.BLL.DTO;
+
 using UthTrip.DAL.Entities;
 using UthTrip.BLL.Interfaces;
+using uthTripProject.Models;
+using UthTrip.BLL.DTO;
+using AutoMapper;
 
 namespace uthTripProject.Controllers
 {
@@ -18,6 +21,14 @@ namespace uthTripProject.Controllers
             this.imageService = iserv;
         }
 
+        public ActionResult Index()
+        {
+            IEnumerable<ImageDTO> imageDtos = this.imageService.GetAll();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ImageDTO, ImageViewModel>()).CreateMapper();
+            var images = mapper.Map<IEnumerable<ImageDTO>>(imageDtos);
+            return this.View(images);
+        }
+
 
         [HttpGet]
         public ActionResult Add()
@@ -26,10 +37,15 @@ namespace uthTripProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(ImageEntity image)
+        public ActionResult Add(ImageViewModel image)
         {
-            this.imageService.addImage(image);
-            return RedirectToAction("Home");
+
+
+
+            var imageDto = new ImageDTO(image.id, image.ImagePath, image.ImageFile);
+
+            this.imageService.addImage(imageDto);
+            return this.RedirectToAction("Home");
         }
 
     }
