@@ -62,22 +62,23 @@
                             <h4> @Html.DisplayFor(modelItem => modelItem.Description)</h4>
                         </div>
                         <div class="col-md-8">
-                            <h2> Вартість: @Html.DisplayFor(modelItem => modelItem.Price) ₴ </h2>
+                            <h3> Вартість: @Html.DisplayFor(modelItem => modelItem.Price) ₴ </h3>
                             <br />
                         </div>
-                        <div class="col-md-5"> 
-                            <h4>Дні поїздки:</h4>
-                          <p> @Html.DisplayFor(modelItem => modelItem.Start_date) - 
+                        <div class="col-md-9"> 
+                            
+                          <p>Дні поїздки: @Html.DisplayFor(modelItem => modelItem.Start_date) - 
                             @Html.DisplayFor(modelItem => modelItem.End_date) </p>
                         </div>
-                        <div class="col-md-8">
-                            <h2>@Html.DisplayFor(modelItem => modelItem.Country) </h2>
+                        <div class="col-md-4">
+                            <h3>@Html.DisplayFor(modelItem => modelItem.Country)</h3>
+                        </div>
+                        <h2>-</h2>
+                        <div class="col-md-5">
+                            <h3>@Html.DisplayFor(modelItem => modelItem.City) </h3>
                         </div>
                         <div class="col-md-8">
-                            <h2>@Html.DisplayFor(modelItem => modelItem.City) </h2>
-                        </div>
-                        <div class="col-md-8">
-                            <p>Кількіть вільних місць: @ViewBag.freePlaces</p>
+                            <h4>Кількіть вільних місць: @ViewBag.freePlaces</h4>
                         </div>
                         <p> Користувачі, які вже підписались на подорож:</p>
                         <div class="col-md-8">

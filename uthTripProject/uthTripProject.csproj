@@ -256,6 +256,7 @@
     <Content Include="Content\login.css" />
     <Content Include="Content\myTrips.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\startPage.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\registration.css" />
     <Content Include="Content\tripDetail.css" />

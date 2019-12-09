@@ -1,0 +1,41 @@
+﻿body {
+    
+   
+}
+.box {
+    padding: 10px 0;
+}
+
+.box-part {
+    background: #FFF;
+    border-radius: 18px;
+    padding: 40px 10px;
+    margin: 15px 0;
+}
+
+.box .title {
+    margin-top: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
+
+.text {
+    margin: 10px 10px;
+}
+
+#price {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.card_top {
+    margin: 0 auto;
+    width: 400px;
+    border-radius: 15px;
+    text-align: center;
+    padding-bottom: 6px;
+    padding-top: 1px;
+}
