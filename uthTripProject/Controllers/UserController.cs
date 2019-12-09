@@ -62,7 +62,7 @@ namespace UthTripProject.Controllers
                 this.Session["User_ID"] = userDto.User_ID.ToString();
                 this.Session["Username"] = userDto.Username.ToString();
                 this.Session["Password"] = userDto.Password.ToString();
-                return this.RedirectToAction("StartPage", "Home");
+                return this.RedirectToAction("Login", "User");
             }
             catch (ArgumentNullException ex)
             {
@@ -116,7 +116,7 @@ namespace UthTripProject.Controllers
             {
                 try
                 {
-                    var user_blocked = this.userService.GetAllBlocked().Where(e => e.User_ID == userModel.User_ID).First();
+                    var user_blocked = this.userService.GetAllBlocked().Where(e => e.User_ID == obj.User_ID).First();
                     this.ViewBag.DuplicateMessage = "Ви заблоковані.";
                     return this.View("Login");
                 }
@@ -140,6 +140,7 @@ namespace UthTripProject.Controllers
             this.Session["User_ID"] = null;
             this.Session["Username"] = null;
             this.Session["Password"] = null;
+            this.Session["isAdmin"] = null;
             return this.View("Login");
         }
 
