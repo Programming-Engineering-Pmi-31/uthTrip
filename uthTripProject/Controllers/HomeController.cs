@@ -39,7 +39,6 @@
                                                        && trip.Date_ID == date.Date_ID
                                                        select new TripViewModel(trip, destination, date)).ToList();
 
-
             IEnumerable<TripViewModel> viewModels = tripViewModels_list;
 
             var countries = new SelectList((from i in destinations
@@ -77,7 +76,7 @@
                 viewModels = viewModels.Where(x => x.Number_Of_People <= persons);
             }
 
-            int pageSize = 7;
+            int pageSize = 6;
             int pageNumber = page ?? 1;
 
             return this.View(viewModels.ToPagedList(pageNumber, pageSize));
