@@ -161,13 +161,6 @@
                         </div>
 
                         <a>@Html.ActionLink("Деталі", "../TripDetail/TripDetail", new { id = item.Trip_ID }, new { @class = "card-link" })</a>
-
-                        @if (item.End_date < DateTime.Now)
-                        {
-                            @Html.ActionLink("Відгук", "../Review/WriteReview", new { id = item.Trip_ID }, new { @class = "card-link" })
-                        }
-
-
                     </div>
                 </div>
                 }
